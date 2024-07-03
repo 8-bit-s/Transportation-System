@@ -147,6 +147,7 @@ Trip parseLine(const string& lne) {//存档格式：cityName->cityName: AIR 101.
     
 }
 
+/*
 int readFile(const string& path, Menu m) {//之后可以改成异常处理,写入异常流或错误日志等
     ifstream ifs(path);
     if (!ifs.is_open()) {
@@ -163,3 +164,4 @@ int readFile(const string& path, Menu m) {//之后可以改成异常处理,写�
         
     }
 }
+*/
