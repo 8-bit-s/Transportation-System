@@ -142,7 +142,7 @@ Trip parseLine(const string& lne) {//存档格式：cityName->cityName: AIR 101.
         auto div = rd.find('-');
     }
     catch(rdinErr e) {
-        cout << e.msg;
+        //cout << e.msg;
     }
     
 }
