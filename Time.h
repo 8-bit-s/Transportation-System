@@ -1,3 +1,4 @@
+#pragma once
 #include <string>
 #include "exceptions.h"
 #include <regex>
@@ -31,6 +32,18 @@ public:
             tmErr e("invalid time", (std::to_string(hour)+": "+std::to_string(minute)));
             throw e;
         }
+    }
+
+    int minutes() {
+        return 60*hour+minute;
+    }
+
+    int getHour() {
+        return hour;
+    }
+
+    int getMinute() {
+        return minute;
     }
 
 private:
