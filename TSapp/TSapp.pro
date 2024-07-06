@@ -11,14 +11,19 @@ CONFIG += c++17
 SOURCES += \
     main.cpp \
     mainwindow.cpp \
-    mypushbutton.cpp
+    mypushbutton.cpp \
+    mypushbutton2.cpp \
+    signinwindow.cpp
 
 HEADERS += \
     mainwindow.h \
-    mypushbutton.h
+    mypushbutton.h \
+    mypushbutton2.h \
+    signinwindow.h
 
 FORMS += \
-    mainwindow.ui
+    mainwindow.ui \
+    signinwindow.ui
 
 TRANSLATIONS += \
     TSapp_zh_CN.ts

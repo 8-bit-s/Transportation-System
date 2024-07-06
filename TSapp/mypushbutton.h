@@ -3,6 +3,7 @@
 
 #include <QPushButton>
 
+// 遇到鼠标事件字体颜色发生改变
 class MyPushButton : public QPushButton
 {
     Q_OBJECT

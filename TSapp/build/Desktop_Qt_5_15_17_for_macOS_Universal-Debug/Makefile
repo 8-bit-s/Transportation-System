@@ -54,17 +54,25 @@ OBJECTS_DIR   = ./
 
 SOURCES       = ../../main.cpp \
 		../../mainwindow.cpp \
-		../../mypushbutton.cpp qrc_Img.cpp \
+		../../mypushbutton.cpp \
+		../../mypushbutton2.cpp \
+		../../signinwindow.cpp qrc_Img.cpp \
 		qrc_qmake_qmake_qm_files.cpp \
 		moc_mainwindow.cpp \
-		moc_mypushbutton.cpp
+		moc_mypushbutton.cpp \
+		moc_mypushbutton2.cpp \
+		moc_signinwindow.cpp
 OBJECTS       = main.o \
 		mainwindow.o \
 		mypushbutton.o \
+		mypushbutton2.o \
+		signinwindow.o \
 		qrc_Img.o \
 		qrc_qmake_qmake_qm_files.o \
 		moc_mainwindow.o \
-		moc_mypushbutton.o
+		moc_mypushbutton.o \
+		moc_mypushbutton2.o \
+		moc_signinwindow.o
 DIST          = /Users/5.15.17/macos/mkspecs/features/spec_pre.prf \
 		/Users/5.15.17/macos/mkspecs/qdevice.pri \
 		/Users/5.15.17/macos/mkspecs/features/device_config.prf \
@@ -283,9 +291,13 @@ DIST          = /Users/5.15.17/macos/mkspecs/features/spec_pre.prf \
 		/Users/5.15.17/macos/mkspecs/features/yacc.prf \
 		/Users/5.15.17/macos/mkspecs/features/lex.prf \
 		../../../../TSapp.pro ../../mainwindow.h \
-		../../mypushbutton.h ../../main.cpp \
+		../../mypushbutton.h \
+		../../mypushbutton2.h \
+		../../signinwindow.h ../../main.cpp \
 		../../mainwindow.cpp \
-		../../mypushbutton.cpp
+		../../mypushbutton.cpp \
+		../../mypushbutton2.cpp \
+		../../signinwindow.cpp
 QMAKE_TARGET  = TSapp
 DESTDIR       = 
 TARGET        = TSapp.app/Contents/MacOS/TSapp
@@ -306,7 +318,7 @@ include /Users/zhangjunbo/Qt/5.15.17/macos/mkspecs/features/mac/sdk.mk
 first: all
 ####### Build rules
 
-TSapp.app/Contents/MacOS/TSapp: ui_mainwindow.h $(OBJECTS)  
+TSapp.app/Contents/MacOS/TSapp: ui_mainwindow.h ui_signinwindow.h $(OBJECTS)  
 	@test -d TSapp.app/Contents/MacOS/ || mkdir -p TSapp.app/Contents/MacOS/
 	$(LINK) $(LFLAGS) -o $(TARGET) $(OBJECTS) $(OBJCOMP) $(LIBS)
 
@@ -788,9 +800,9 @@ distdir: FORCE
 	$(COPY_FILE) --parents $(DIST) $(DISTDIR)/
 	$(COPY_FILE) --parents ../../TSapp_zh_CN.ts $(DISTDIR)/
 	$(COPY_FILE) --parents ../../Img.qrc qmake_qmake_qm_files.qrc $(DISTDIR)/
-	$(COPY_FILE) --parents ../../mainwindow.h ../../mypushbutton.h $(DISTDIR)/
-	$(COPY_FILE) --parents ../../main.cpp ../../mainwindow.cpp ../../mypushbutton.cpp $(DISTDIR)/
-	$(COPY_FILE) --parents ../../mainwindow.ui $(DISTDIR)/
+	$(COPY_FILE) --parents ../../mainwindow.h ../../mypushbutton.h ../../mypushbutton2.h ../../signinwindow.h $(DISTDIR)/
+	$(COPY_FILE) --parents ../../main.cpp ../../mainwindow.cpp ../../mypushbutton.cpp ../../mypushbutton2.cpp ../../signinwindow.cpp $(DISTDIR)/
+	$(COPY_FILE) --parents ../../mainwindow.ui ../../signinwindow.ui $(DISTDIR)/
 	$(COPY_FILE) --parents ../../TSapp_zh_CN.ts $(DISTDIR)/
 
 
@@ -838,12 +850,15 @@ qrc_qmake_qmake_qm_files.cpp: qmake_qmake_qm_files.qrc \
 		.qm/TSapp_zh_CN.qm
 	/Users/zhangjunbo/Qt/5.15.17/macos/bin/rcc -name qmake_qmake_qm_files qmake_qmake_qm_files.qrc -o qrc_qmake_qmake_qm_files.cpp
 
-compiler_moc_header_make_all: moc_mainwindow.cpp moc_mypushbutton.cpp
+compiler_moc_header_make_all: moc_mainwindow.cpp moc_mypushbutton.cpp moc_mypushbutton2.cpp moc_signinwindow.cpp
 compiler_moc_header_clean:
-	-$(DEL_FILE) moc_mainwindow.cpp moc_mypushbutton.cpp
+	-$(DEL_FILE) moc_mainwindow.cpp moc_mypushbutton.cpp moc_mypushbutton2.cpp moc_signinwindow.cpp
 moc_mainwindow.cpp: ../../mainwindow.h \
 		../../../5.15.17/macos/lib/QtWidgets.framework/Headers/QMainWindow \
 		../../../5.15.17/macos/lib/QtWidgets.framework/Headers/qmainwindow.h \
+		../../signinwindow.h \
+		../../../5.15.17/macos/lib/QtWidgets.framework/Headers/QWidget \
+		../../../5.15.17/macos/lib/QtWidgets.framework/Headers/qwidget.h \
 		../../../5.15.17/macos/bin/moc
 	/Users/zhangjunbo/Qt/5.15.17/macos/bin/moc $(DEFINES) -D__APPLE__ -D__GNUC__=4 -D__APPLE_CC__ -D__cplusplus=199711L -D__APPLE_CC__=6000 -D__clang__ -D__clang_major__=15 -D__clang_minor__=0 -D__clang_patchlevel__=0 -D__GNUC__=4 -D__GNUC_MINOR__=2 -D__GNUC_PATCHLEVEL__=1 -I/Users/zhangjunbo/Qt/5.15.17/macos/mkspecs/macx-clang -I/Users/zhangjunbo/Qt/TSapp -I/Users/zhangjunbo/Qt/5.15.17/macos/lib/QtWidgets.framework/Headers -I/Users/zhangjunbo/Qt/5.15.17/macos/lib/QtGui.framework/Headers -I/Users/zhangjunbo/Qt/5.15.17/macos/lib/QtCore.framework/Headers -I. -I/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1 -I/Library/Developer/CommandLineTools/usr/lib/clang/15.0.0/include -I/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include -I/Library/Developer/CommandLineTools/usr/include -F/Users/zhangjunbo/Qt/5.15.17/macos/lib ../../mainwindow.h -o moc_mainwindow.cpp
 
@@ -853,19 +868,38 @@ moc_mypushbutton.cpp: ../../mypushbutton.h \
 		../../../5.15.17/macos/bin/moc
 	/Users/zhangjunbo/Qt/5.15.17/macos/bin/moc $(DEFINES) -D__APPLE__ -D__GNUC__=4 -D__APPLE_CC__ -D__cplusplus=199711L -D__APPLE_CC__=6000 -D__clang__ -D__clang_major__=15 -D__clang_minor__=0 -D__clang_patchlevel__=0 -D__GNUC__=4 -D__GNUC_MINOR__=2 -D__GNUC_PATCHLEVEL__=1 -I/Users/zhangjunbo/Qt/5.15.17/macos/mkspecs/macx-clang -I/Users/zhangjunbo/Qt/TSapp -I/Users/zhangjunbo/Qt/5.15.17/macos/lib/QtWidgets.framework/Headers -I/Users/zhangjunbo/Qt/5.15.17/macos/lib/QtGui.framework/Headers -I/Users/zhangjunbo/Qt/5.15.17/macos/lib/QtCore.framework/Headers -I. -I/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1 -I/Library/Developer/CommandLineTools/usr/lib/clang/15.0.0/include -I/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include -I/Library/Developer/CommandLineTools/usr/include -F/Users/zhangjunbo/Qt/5.15.17/macos/lib ../../mypushbutton.h -o moc_mypushbutton.cpp
 
+moc_mypushbutton2.cpp: ../../mypushbutton2.h \
+		../../../5.15.17/macos/lib/QtWidgets.framework/Headers/QPushButton \
+		../../../5.15.17/macos/lib/QtWidgets.framework/Headers/qpushbutton.h \
+		../../../5.15.17/macos/bin/moc
+	/Users/zhangjunbo/Qt/5.15.17/macos/bin/moc $(DEFINES) -D__APPLE__ -D__GNUC__=4 -D__APPLE_CC__ -D__cplusplus=199711L -D__APPLE_CC__=6000 -D__clang__ -D__clang_major__=15 -D__clang_minor__=0 -D__clang_patchlevel__=0 -D__GNUC__=4 -D__GNUC_MINOR__=2 -D__GNUC_PATCHLEVEL__=1 -I/Users/zhangjunbo/Qt/5.15.17/macos/mkspecs/macx-clang -I/Users/zhangjunbo/Qt/TSapp -I/Users/zhangjunbo/Qt/5.15.17/macos/lib/QtWidgets.framework/Headers -I/Users/zhangjunbo/Qt/5.15.17/macos/lib/QtGui.framework/Headers -I/Users/zhangjunbo/Qt/5.15.17/macos/lib/QtCore.framework/Headers -I. -I/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1 -I/Library/Developer/CommandLineTools/usr/lib/clang/15.0.0/include -I/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include -I/Library/Developer/CommandLineTools/usr/include -F/Users/zhangjunbo/Qt/5.15.17/macos/lib ../../mypushbutton2.h -o moc_mypushbutton2.cpp
+
+moc_signinwindow.cpp: ../../signinwindow.h \
+		../../../5.15.17/macos/lib/QtWidgets.framework/Headers/QWidget \
+		../../../5.15.17/macos/lib/QtWidgets.framework/Headers/qwidget.h \
+		../../../5.15.17/macos/bin/moc
+	/Users/zhangjunbo/Qt/5.15.17/macos/bin/moc $(DEFINES) -D__APPLE__ -D__GNUC__=4 -D__APPLE_CC__ -D__cplusplus=199711L -D__APPLE_CC__=6000 -D__clang__ -D__clang_major__=15 -D__clang_minor__=0 -D__clang_patchlevel__=0 -D__GNUC__=4 -D__GNUC_MINOR__=2 -D__GNUC_PATCHLEVEL__=1 -I/Users/zhangjunbo/Qt/5.15.17/macos/mkspecs/macx-clang -I/Users/zhangjunbo/Qt/TSapp -I/Users/zhangjunbo/Qt/5.15.17/macos/lib/QtWidgets.framework/Headers -I/Users/zhangjunbo/Qt/5.15.17/macos/lib/QtGui.framework/Headers -I/Users/zhangjunbo/Qt/5.15.17/macos/lib/QtCore.framework/Headers -I. -I/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1 -I/Library/Developer/CommandLineTools/usr/lib/clang/15.0.0/include -I/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include -I/Library/Developer/CommandLineTools/usr/include -F/Users/zhangjunbo/Qt/5.15.17/macos/lib ../../signinwindow.h -o moc_signinwindow.cpp
+
 compiler_moc_objc_header_make_all:
 compiler_moc_objc_header_clean:
 compiler_moc_source_make_all:
 compiler_moc_source_clean:
-compiler_uic_make_all: ui_mainwindow.h
+compiler_uic_make_all: ui_mainwindow.h ui_signinwindow.h
 compiler_uic_clean:
-	-$(DEL_FILE) ui_mainwindow.h
+	-$(DEL_FILE) ui_mainwindow.h ui_signinwindow.h
 ui_mainwindow.h: ../../mainwindow.ui \
 		../../../5.15.17/macos/bin/uic \
 		../../mypushbutton.h \
+		../../mypushbutton2.h \
+		../../../5.15.17/macos/lib/QtWidgets.framework/Headers/QPushButton \
+		../../../5.15.17/macos/lib/QtWidgets.framework/Headers/qpushbutton.h \
 		../../../5.15.17/macos/lib/QtWidgets.framework/Headers/QPushButton \
 		../../../5.15.17/macos/lib/QtWidgets.framework/Headers/qpushbutton.h
 	/Users/zhangjunbo/Qt/5.15.17/macos/bin/uic ../../mainwindow.ui -o ui_mainwindow.h
+
+ui_signinwindow.h: ../../signinwindow.ui \
+		../../../5.15.17/macos/bin/uic
+	/Users/zhangjunbo/Qt/5.15.17/macos/bin/uic ../../signinwindow.ui -o ui_signinwindow.h
 
 compiler_rez_source_make_all:
 compiler_rez_source_clean:
@@ -882,6 +916,9 @@ compiler_clean: compiler_lrelease_clean compiler_rcc_clean compiler_moc_header_c
 main.o: ../../main.cpp ../../mainwindow.h \
 		../../../5.15.17/macos/lib/QtWidgets.framework/Headers/QMainWindow \
 		../../../5.15.17/macos/lib/QtWidgets.framework/Headers/qmainwindow.h \
+		../../signinwindow.h \
+		../../../5.15.17/macos/lib/QtWidgets.framework/Headers/QWidget \
+		../../../5.15.17/macos/lib/QtWidgets.framework/Headers/qwidget.h \
 		../../../5.15.17/macos/lib/QtWidgets.framework/Headers/QApplication \
 		../../../5.15.17/macos/lib/QtWidgets.framework/Headers/qapplication.h \
 		../../../5.15.17/macos/lib/QtCore.framework/Headers/QLocale \
@@ -893,11 +930,32 @@ main.o: ../../main.cpp ../../mainwindow.h \
 mainwindow.o: ../../mainwindow.cpp ../../mainwindow.h \
 		../../../5.15.17/macos/lib/QtWidgets.framework/Headers/QMainWindow \
 		../../../5.15.17/macos/lib/QtWidgets.framework/Headers/qmainwindow.h \
+		../../signinwindow.h \
+		../../../5.15.17/macos/lib/QtWidgets.framework/Headers/QWidget \
+		../../../5.15.17/macos/lib/QtWidgets.framework/Headers/qwidget.h \
 		ui_mainwindow.h \
+		../../mypushbutton2.h \
+		../../../5.15.17/macos/lib/QtWidgets.framework/Headers/QPushButton \
+		../../../5.15.17/macos/lib/QtWidgets.framework/Headers/qpushbutton.h \
+		../../mypushbutton.h \
 		../../../5.15.17/macos/lib/QtCore.framework/Headers/QSize \
 		../../../5.15.17/macos/lib/QtCore.framework/Headers/qsize.h \
 		../../../5.15.17/macos/lib/QtGui.framework/Headers/QPixmap \
-		../../../5.15.17/macos/lib/QtGui.framework/Headers/qpixmap.h
+		../../../5.15.17/macos/lib/QtGui.framework/Headers/qpixmap.h \
+		../../../5.15.17/macos/lib/QtWidgets.framework/Headers/QTextEdit \
+		../../../5.15.17/macos/lib/QtWidgets.framework/Headers/qtextedit.h \
+		../../../5.15.17/macos/lib/QtWidgets.framework/Headers/QLabel \
+		../../../5.15.17/macos/lib/QtWidgets.framework/Headers/qlabel.h \
+		../../../5.15.17/macos/lib/QtWidgets.framework/Headers/QLineEdit \
+		../../../5.15.17/macos/lib/QtWidgets.framework/Headers/qlineedit.h \
+		../../../5.15.17/macos/lib/QtWidgets.framework/Headers/QListWidget \
+		../../../5.15.17/macos/lib/QtWidgets.framework/Headers/qlistwidget.h \
+		../../../5.15.17/macos/lib/QtWidgets.framework/Headers/QTableWidget \
+		../../../5.15.17/macos/lib/QtWidgets.framework/Headers/qtablewidget.h \
+		../../../5.15.17/macos/lib/QtWidgets.framework/Headers/QGraphicsView \
+		../../../5.15.17/macos/lib/QtWidgets.framework/Headers/qgraphicsview.h \
+		../../../5.15.17/macos/lib/QtWidgets.framework/Headers/QGraphicsScene \
+		../../../5.15.17/macos/lib/QtWidgets.framework/Headers/qgraphicsscene.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o mainwindow.o ../../mainwindow.cpp
 
 mypushbutton.o: ../../mypushbutton.cpp ../../mypushbutton.h \
@@ -906,6 +964,17 @@ mypushbutton.o: ../../mypushbutton.cpp ../../mypushbutton.h \
 		../../../5.15.17/macos/lib/QtCore.framework/Headers/QString \
 		../../../5.15.17/macos/lib/QtCore.framework/Headers/qstring.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o mypushbutton.o ../../mypushbutton.cpp
+
+mypushbutton2.o: ../../mypushbutton2.cpp ../../mypushbutton2.h \
+		../../../5.15.17/macos/lib/QtWidgets.framework/Headers/QPushButton \
+		../../../5.15.17/macos/lib/QtWidgets.framework/Headers/qpushbutton.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o mypushbutton2.o ../../mypushbutton2.cpp
+
+signinwindow.o: ../../signinwindow.cpp ../../signinwindow.h \
+		../../../5.15.17/macos/lib/QtWidgets.framework/Headers/QWidget \
+		../../../5.15.17/macos/lib/QtWidgets.framework/Headers/qwidget.h \
+		ui_signinwindow.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o signinwindow.o ../../signinwindow.cpp
 
 qrc_Img.o: qrc_Img.cpp 
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o qrc_Img.o qrc_Img.cpp
@@ -918,6 +987,12 @@ moc_mainwindow.o: moc_mainwindow.cpp
 
 moc_mypushbutton.o: moc_mypushbutton.cpp 
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_mypushbutton.o moc_mypushbutton.cpp
+
+moc_mypushbutton2.o: moc_mypushbutton2.cpp 
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_mypushbutton2.o moc_mypushbutton2.cpp
+
+moc_signinwindow.o: moc_signinwindow.cpp 
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_signinwindow.o moc_signinwindow.cpp
 
 ####### Install
 
