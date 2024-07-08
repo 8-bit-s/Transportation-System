@@ -11,19 +11,18 @@ CONFIG += c++17
 SOURCES += \
     main.cpp \
     mainwindow.cpp \
-    mypushbutton.cpp \
-    mypushbutton2.cpp \
-    signinwindow.cpp
+    signinwindow.cpp \
+    tripunit.cpp
 
 HEADERS += \
     mainwindow.h \
-    mypushbutton.h \
-    mypushbutton2.h \
-    signinwindow.h
+    signinwindow.h \
+    tripunit.h
 
 FORMS += \
     mainwindow.ui \
-    signinwindow.ui
+    signinwindow.ui \
+    tripunit.ui
 
 TRANSLATIONS += \
     TSapp_zh_CN.ts
@@ -36,4 +35,14 @@ else: unix:!android: target.path = /opt/$${TARGET}/bin
 !isEmpty(target.path): INSTALLS += target
 
 RESOURCES += \
-    Img.qrc
+    resource/res.qrc
+
+DISTFILES += \
+    resource/airtype.png \
+    resource/apppic.png \
+    resource/citypic.png \
+    resource/plane.png \
+    resource/railtype.png \
+    resource/train.png \
+    resource/trippic.png \
+    resource/userpic.png
