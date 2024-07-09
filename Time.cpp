@@ -49,7 +49,7 @@ int Time::getMinute() {
 
 std::string Time::str() {
     std::string str;
-    str = std::to_string(hour)+"时 "+std::to_string(minute)+"分";
+    str = std::to_string(hour) + "Hour " + std::to_string(minute) + "Minute";
     return str;
 }
 
@@ -58,8 +58,8 @@ int Time::parseTiming(const std::string& s) {//解析hh:mm字符串表示的时�
     if (!regex_match(s, sm, timingPattern)) return 1;//并不是hh:mm表示
     
     int h, m;
-    h = stoi(sm[0].str());
     h = stoi(sm[1].str());
+    m = stoi(sm[2].str());
 
     if (!legal(h, m)) return -1;
 
@@ -74,8 +74,8 @@ int Time::parseTime(const std::string& s) {//解析2h30min字符串表示的时�
     if (!regex_match(s, sm, timePattern)) return 1;//并不是这种表示
         
     int h, m;
-    h = stoi(sm[0].str());
     h = stoi(sm[1].str());
+    m = stoi(sm[2].str());
 
     if (!legal(h, m)) return -1;
 
@@ -86,7 +86,7 @@ int Time::parseTime(const std::string& s) {//解析2h30min字符串表示的时�
 }
 
 int Time::legal(int h, int m) noexcept{//一系列检测合法的函数
-    return legalHour(h)&&legalMin(m);
+    return legalHour(h) && legalMin(m);
 }
 int Time::legalHour(int hour) noexcept{
     if (hour >= 24) return 0;

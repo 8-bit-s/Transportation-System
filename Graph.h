@@ -12,19 +12,21 @@ public:
     bool operator<(Node& n);
 };
 
-//typedef Node (*Matrix)[MAXCITY];
+typedef Node (*Matrix)[MAXCITY];//一行
 
 class Graph {//用于算法的图
 public:
     Graph();
 
-    ~Graph();
+    //~Graph();
 
     int init(Menu& m);
 
-    void Dijkstra(Node**, int, int, int, int);
+    void Dijkstra(Matrix, int, int, int, int);
+
+    void printTrips(const City& stf, const City& arv);//测试用函数
 private:
     int numV;//顶点数，即城市数
-    int numE;//边数，即Trip数
-    Node matrix[MAXCITY][MAXCITY];//邻接矩阵
+    int numE;//边数
+    Matrix matrix;
 };

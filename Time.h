@@ -23,9 +23,9 @@ private:
 
     int parseTime(const std::string& s);//解析2h30min字符串表示的时间
 
-    static int legal(int h, int m);//一系列检测合法的函数
-    static int legalHour(int hour);
-    static int legalMin(int min);
+    static int legal(int h, int m) noexcept;//一系列检测合法的函数
+    static int legalHour(int hour) noexcept;
+    static int legalMin(int min) noexcept;
 
     int hour;
     int minute;

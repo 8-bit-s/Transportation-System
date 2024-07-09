@@ -1,18 +1,30 @@
 #include "TripTable.h"
+#include <iostream>
 
 //每个城市对应一个编号，方便邻接表使用
 
 City::City() = default;
 City::City(const string& name):name(name) {sign = -1;}
-City::operator int() {
+City::operator int() const{
     return sign;
 }
+
+std::ostream& City::operator<<(std::ostream& os) const{
+    os << name;
+
+    return os;
+}
+
+TripNode::TripNode() = default;
 
 TripNode::TripNode(const Trip& t, TripNode* next): t(t), next(next) { }
 TripNode::operator Trip() {
     return t;
 }
 
+Trip& TripNode::operator*() {
+    return t;
+}
 
 Menu::Menu(): div(NULL), end(NULL), table(NULL) {
     cities = new City[MAXCITY];
@@ -26,6 +38,9 @@ int Menu::addTrip(const Trip& t) noexcept{//添加行程，不会抛出异常
     TripNode* n = new TripNode(Trip(t), NULL);
     if (table == NULL) {
         table = n;
+        end = n;
+        if (n->t.type == RAIL)
+            div = n;
         return 0;
     }
     if (t.type == AIR) {
@@ -34,9 +49,16 @@ int Menu::addTrip(const Trip& t) noexcept{//添加行程，不会抛出异常
         end = n;
     }
     else if (t.type == RAIL) {
-        n->next = div->next;
-        div->next = n;
-        div = n;
+        if (div != NULL) {
+            n->next = div->next;
+            div->next = n;
+            div = n;
+        }
+        else {
+            n->next = table;
+            table = n;
+            div = n;
+        }
     }
 
     return 0;
@@ -47,6 +69,10 @@ int Menu::addCity(const City& c) {
         menuErr e("Add city before initing menu");
         throw e;
     }
+
+    City cc(c);
+    cc.sign = getSign();
+    cities[cc.sign] = cc;
         
     return 0;
 }
@@ -54,6 +80,7 @@ int Menu::addCity(const City& c) {
 int Menu::delCity(const City& c) {
     int id = c.sign;
     pool[id] = 1;
+    return 0;
 }
 
 int Menu::initPool() {//初始化编号池
@@ -83,4 +110,20 @@ int Menu::getSign() {
             return i;
         }
     }
+
+    return -1;//control never reaches here
+}
+
+void Menu::disp() {//测试用函数
+    TripNode* it = table;
+    int i = 1;
+    while(it != NULL) {
+        auto tmp = it->t;
+        std::cout << tmp.stfCity.name << " -> " << tmp.arvCity.name << " with " << tmp.cost << "yuan\n";
+        it = it->next;
+    }
+}
+
+TripNode* Menu::getTable() {
+    return table;
 }

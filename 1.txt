@@ -1,0 +1,7 @@
+Wuhan Beijing Shenzhen LosAngeles
+Wuhan->Beijing: AIR 101.5km 2h30min 3400yuan
+Shenzhen->LosAngeles: RAIL 202km 3h30min 3000yuan
+Wuhan->Beijing: AIR 103.5km 3h1min 3445yuan
+Wuhan->Beijing: RAIL 1.3km 30min 34yuan
+Beijing->Wuhan: AIR 101.6km 2h28min 3300yuan
+Wuhan->Beijing: RAIL 103.5km 2h30min 1234yuan

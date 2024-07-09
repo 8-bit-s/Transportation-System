@@ -6,7 +6,7 @@
 #include <regex>
 #include "Log.h"
 
-extern Log logger;
+Log logger;
 
 using namespace std;
 
@@ -22,24 +22,32 @@ Trip parseLine(const string& lne) {//存档格式：CityName->CityName: AIR 101.
             rdinErr e("format wrong", lne);
             throw e;
         }
-        t.stfCity = sm[0].str();
-        t.arvCity = sm[1].str();
-        if (sm[2].str() == "AIR") {
+        //******************************
+        /*
+        for (int i = 1; i <= 6; i++) {
+            auto str = sm[i].str();
+            cout << "Substring" << i << ": " << str << "\n";
+        }
+        cout << endl;
+        */
+        //*****************************
+        t.stfCity = sm[1].str();
+        t.arvCity = sm[2].str();
+        if (sm[3].str() == "AIR") {
             t.type = AIR;
         }
-        else if (sm[2].str() == "RAIL") {
+        else if (sm[3].str() == "RAIL") {
             t.type = RAIL;
         }
         else {//不存在的行程类型
             rdinErr e("type not exists", lne);
             throw e;
         }
-        t.dist = stod(sm[3].str());
+        t.dist = stod(sm[4].str());
         //t.stfTime = Time(sm[4].str());
         //t.arvTime = Time(sm[5].str());
-        t.time = Time(sm[4].str());
-        t.exp = stoi(sm[5].str());
-        t.next = NULL;
+        t.time = Time(sm[5].str());
+        t.cost = stoi(sm[6].str());
     }
     catch(rdinErr e) {//捕获错误，打印错误信息，并进一步抛出错误给主调函数，绕过无法执行的返回语句，由主调函数直接跳过错误行继续读取，增加程序健壮性
         cerr << e.wrg_line << ": " << e.what() << "\n";
@@ -47,13 +55,14 @@ Trip parseLine(const string& lne) {//存档格式：CityName->CityName: AIR 101.
     }
     catch(tmErr e) {//可能也方便写日志，最终都统归于滴入错误来记录
         cerr << e.wrg_time << ": " << e.what() << "\n";
-        rdinErr e("Time error", lne);
-        throw e;
+        rdinErr ee("Time error", lne);
+        throw ee;
     }
 
     return t;
 }
 
+//主要的读存档函数
 int readFile(const string& path, Menu& m) {//之后可以改成异常处理,写入异常流或错误日志等
     ifstream ifs(path);
     if (!ifs.is_open()) {
@@ -68,7 +77,9 @@ int readFile(const string& path, Menu& m) {//之后可以改成异常处理,写�
     string line;
     m.initPool();//正式准备读入，可以初始化
 
-    while (getline(ifs, line, ' ')) {//read cities
+    getline(ifs, line);
+    istringstream iss(line);
+    while (getline(iss, line, ' ')) {//read cities
         try{
             m.addCity(line);
         }
