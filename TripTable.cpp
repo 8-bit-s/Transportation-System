@@ -127,3 +127,155 @@ void Menu::disp() {//测试用函数
 TripNode* Menu::getTable() {
     return table;
 }
+
+int Menu::updCity(City& city, string name1) {
+	city.name = name1;
+	return 0;
+}
+
+int Menu::updTrip(TripNode* trip, City stfCity1, City arvCity1, int cost1, int dist1, int hour1, int minute1, Triptype type1) {
+	trip->t.arvCity = arvCity1;
+	trip->t.stfCity = stfCity1;
+	trip->t.cost = cost1;
+	trip->t.dist = dist1;
+	trip->t.time = Time(hour1, minute1);
+	trip->t.type = type1;
+	return 0;
+}
+
+int Menu::delTrip(TripNode* trip) {
+	if (trip == table) {
+		table = trip->next;
+		delete trip;
+	}
+	else if (trip == div) {
+		TripNode* head = table;
+		while (head->next != div)
+			head = head->next;
+		div = head;
+		div->next = trip->next;
+		delete trip;
+	}
+	else if (trip == end) {
+		TripNode* head = table;
+		while (head->next != end)
+			head = head->next;
+		end = head;
+		delete trip;
+	}
+	else {
+		TripNode* head = table;
+		while (head->next != trip)
+			head = head->next;
+		head->next = trip->next;
+		delete trip;
+	}
+	return 0;
+}
+
+void get_next(string s, int* next) {
+	next[0] = -1;
+	int j = -1, k = 0;
+	while (k < s.length() - 1) {
+		if (j == -1 || s[j] == s[k]) {
+			j++;
+			k++;
+			next[k] = j;
+		}
+		else {
+			j = next[j];
+		}
+	}
+}
+
+bool KMP(string s, string t) {
+	int next[10];
+	int m = s.length();
+	int n = t.length();
+	get_next(t, next);
+	int j = 0, k = 0;
+	while (j < m && k < n) {
+		if (k == -1 || s[j] == t[k]) {
+			j++;
+			k++;
+		}
+		else {
+			k = next[k];
+		}
+	}
+	if (k == n) {
+		return 1;
+	}
+	else
+		return 0;
+}
+
+vector<TripNode*> Menu::searchTrip(const Menu menu, string stfCity, string arvCity, Triptype type) {
+	vector<TripNode*>res;
+	TripNode* head = menu.table;
+	while (head != NULL) {
+		res.push_back(head);
+		head = head->next;
+	}
+	if (stfCity[0] != NULL) {
+		res = searchTripByStf(res, stfCity);
+	}
+	if (arvCity[0] != NULL) {
+		res = searchTripByArv(res, arvCity);
+	}
+	res = searchTripByType(res, type);
+	return res;
+}
+
+vector<TripNode*> Menu::searchTripByStf(vector<TripNode*>list, string stf) {
+	vector<TripNode*> tripList;
+	vector<TripNode*>::iterator head = list.begin();
+	while (head != list.end()) {
+		if (KMP((*head)->t.stfCity.name, stf)) {
+			tripList.push_back(*head);
+		}
+		head++;
+	}
+	return tripList;
+}
+
+vector<TripNode*> Menu::searchTripByArv(vector<TripNode*>list, string arv) {
+	vector<TripNode*> tripList;
+	vector<TripNode*>::iterator head = list.begin();
+	while (head != list.end()) {
+		if (KMP((*head)->t.stfCity.name, arv)) {
+			tripList.push_back(*head);
+		}
+		head++;
+	}
+	return tripList;
+}
+
+vector<TripNode*> Menu::searchTripByType(vector<TripNode*>list, Triptype type1) {
+	vector<TripNode*> tripList;
+	vector<TripNode*>::iterator head = list.begin();
+	while (head != list.end()) {
+		if ((*head)->t.type == type1) {
+			tripList.push_back(*head);
+		}
+		head++;
+	}
+	return tripList;
+}
+
+vector<TripNode*> Menu::page(vector<TripNode*>tripList) {
+	vector<TripNode*> onePage;
+	static int sumCount = 0;
+	int count = 0;
+	int num = tripList.size();
+	while (sumCount < num && count < 5) {
+		onePage.push_back(tripList[sumCount]);
+		sumCount++;
+		count++;
+	}
+	while (count < 5) {
+		onePage.push_back(NULL);
+		count++;
+	}
+	return onePage;
+}
