@@ -3,6 +3,85 @@
 #include<vector>
 #include"Graph.h"
 
+using namespace std;
+
+#define V MAXCITY
+const int INF = INT_MAX;
+
+void Node::choose(int tripType, int method)
+{
+    int sw = tripType * 10 + method;
+    TripNode* p = Sdata;
+    data = INF;
+    switch (sw)
+    {
+    case 0:
+        while (p != NULL)
+        {
+            if (p->t.type == AIR)
+            {
+                if (p->t.time.minutes() < data)
+                {
+                    data = p->t.time.minutes();
+                }
+            }
+            p = p->next;
+        }
+        break;
+    case 10:
+        while (p != NULL)
+        {
+            if (p->t.type == RAIL)
+            {
+                if (p->t.time.minutes() < data)
+                {
+                    data = p->t.time.minutes();
+                }
+            }
+            p = p->next;
+        }
+        break;
+    case 1:
+        while (p != NULL)
+        {
+            if (p->t.type == AIR)
+            {
+                if (p->t.cost < data)
+                {
+                    data = p->t.cost;
+                }
+            }
+            p = p->next;
+        }
+        break;
+    case 11:
+        while (p != NULL)
+        {
+            if (p->t.type == RAIL)
+            {
+                if (p->t.cost < data)
+                {
+                    data = p->t.cost;
+                }
+            }
+            p = p->next;
+        }
+        break;
+    default:
+        break;
+    }
+};
+
+int Node::operator+(int n)
+{
+    return this->data + n;
+}
+
+bool Node::operator<(Node& n)
+{
+    return this->data < n.data;
+}
+
 void Graph::Dijkstra(Node** g, int src, int dest, int tripType, int method)
 {
     //第一部分，将图等效为int图
