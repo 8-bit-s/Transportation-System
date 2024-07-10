@@ -1,5 +1,5 @@
 #pragma once
-#include "TripTable.h"
+#include "oldTripTable.h"
 
 class Node
 {
@@ -12,21 +12,23 @@ public:
     bool operator<(Node& n);
 };
 
-typedef Node (*Matrix)[MAXCITY];//ä¸€è¡Œ
+typedef Node(*Matrix)[MAXCITY];//Ò»ÐÐ
 
-class Graph {//ç”¨äºŽç®—æ³•çš„å›¾
+class Graph {//ÓÃÓÚËã·¨µÄÍ¼
 public:
+    Matrix matrix;
+    
     Graph();
 
     //~Graph();
 
-    int init(Menu& m);
+    int init(Menu m);
 
     void Dijkstra(Matrix, int, int, int, int);
 
-    void printTrips(const City& stf, const City& arv);//æµ‹è¯•ç”¨å‡½æ•°
+    void printTrips(const City& stf, const City& arv);//²âÊÔÓÃº¯Êý
 private:
-    int numV;//é¡¶ç‚¹æ•°ï¼Œå³åŸŽå¸‚æ•°
-    int numE;//è¾¹æ•°
-    Matrix matrix;
+    int numV;//¶¥µãÊý£¬¼´³ÇÊÐÊý
+    int numE;//±ßÊý
+    
 };
