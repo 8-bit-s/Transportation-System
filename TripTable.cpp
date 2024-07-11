@@ -263,19 +263,18 @@ vector<TripNode*> Menu::searchTripByType(vector<TripNode*>list, Triptype type1) 
 	return tripList;
 }
 
-vector<TripNode*> Menu::page(vector<TripNode*>tripList) {
+vector<TripNode*> Menu::page(vector<TripNode*>tripList,int& count) {
 	vector<TripNode*> onePage;
-	static int sumCount = 0;
-	int count = 0;
-	int num = tripList.size();
-	while (sumCount < num && count < 5) {
-		onePage.push_back(tripList[sumCount]);
-		sumCount++;
-		count++;
-	}
-	while (count < 5) {
+	if(count>0) {
+		int i = 0;
+		for (; i < 5 && count>0; i++) {
+			onePage.push_back(tripList[i]);;
+			count--;
+		}
+		while (i < 5) {
 		onePage.push_back(NULL);
-		count++;
+		i++;
+	}
 	}
 	return onePage;
 }

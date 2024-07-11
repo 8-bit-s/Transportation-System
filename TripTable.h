@@ -100,8 +100,8 @@ public:
     //
     //vector<TripNode*> sortTripByTime(Time time);
 
-    //前后端交互函数，为前端提供翻页功能
-    vector<TripNode*> page(vector<TripNode*>tripList);
+    //前后端交互函数，为前端提供翻页功能(无需测试)
+    vector<TripNode*> page(vector<TripNode*>tripList, int& count);
 
     //测试用函数
     void disp();
