@@ -2,7 +2,31 @@
 #include"Time.h"
 #include"Graph.h"
 #include"exceptions.h"
+#include"oldTripTable.h"
 using namespace std;
+
+bool isCity(string name1) {
+	int len = name1.length();
+	if (name1[0] > 'Z' || name1[0] < 'A') {
+		cinErr e("Invalid City name!");
+		throw e;
+	}
+	for (int i = 1; i < len; i++) {
+		if (name1[i] > 'z' || name1[i] < 'a') {
+			cinErr e("Invalid City name!");
+			throw e;
+		}
+	}
+	return 1;
+}
+
+void Admin::listInit(Menu menu, vector<TripNode*>& list) {
+	TripNode* head = menu.getTable();
+	while (head != NULL) {
+		list.push_back(head);
+		head = head->next;
+	}
+}
 
 bool Admin::logIn(string key1) {
 	if (key1 == KEY) {
@@ -18,12 +42,16 @@ void Admin::logOut() {
 }
 
 void Admin::AddCity(Menu& menu, string name1) {
-	City city(name1);
-	menu.addCity(city);
+	if (isCity(name1)) {
+		City city(name1);
+		menu.addCity(city);
+	}
+	
 }
 
 void Admin::UpdateCity(Menu& menu, City tarCity, string name1) {
-	tarCity.name = name1;
+	if(isCity(name1))
+		tarCity.name = name1;
 }
 
 void Admin::DeleteCity(Menu& menu, City tarCity) {
@@ -98,6 +126,7 @@ int isMinute(string minute1) {
 	return res;
 }
 
+
 void Admin::AddTrip(Menu& menu, City stfCity1, City arvCity1, string cost1, string dist1, string hour1,string minute1, Triptype type1) {
 	Trip trip;
 	trip.arvCity = stfCity1;
@@ -131,5 +160,5 @@ string User::bestRoute(Menu& menu, const City& src, const City& arv, int tripTyp
 	g.init(menu);
 	int stfSign = src.sign;
 	int arvSign = arv.sign;
-	g.Dijkstra(g.matrix,stfSign, arvSign, tripType, method);
+	g.Dijkstra(stfSign, arvSign, tripType, method);
 }
