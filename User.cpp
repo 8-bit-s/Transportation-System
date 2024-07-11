@@ -2,7 +2,7 @@
 #include"Time.h"
 #include"Graph.h"
 #include"exceptions.h"
-#include"oldTripTable.h"
+#include"TripTable.h"
 using namespace std;
 
 bool isCity(string name1) {
