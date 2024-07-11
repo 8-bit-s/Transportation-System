@@ -16,7 +16,6 @@ typedef Node(*Matrix)[MAXCITY];//一行
 
 class Graph {//用于算法的图
 public:
-    Matrix matrix;
     
     Graph();
 
@@ -30,5 +29,5 @@ public:
 private:
     int numV;//顶点数，即城市数
     int numE;//边数
-    
+    Matrix matrix;
 };
