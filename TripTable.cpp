@@ -31,7 +31,14 @@ Menu::Menu(): div(NULL), end(NULL), table(NULL) {
     pool = NULL;
 }
 Menu::~Menu() {
-    //********************************待完成********************************/
+	TripNode* pre = table;
+	TripNode* head = pre->next;
+	while (head != NULL) {
+		delete pre;
+		pre = head;
+		head = head->next;
+	}
+	delete pre;
 }
 
 int Menu::addTrip(const Trip& t) noexcept{//添加行程，不会抛出异常

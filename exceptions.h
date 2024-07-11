@@ -26,3 +26,8 @@ class menuErr: public std::logic_error {
 public:
     explicit menuErr(const std::string& msg): std::logic_error(msg) {}
 };
+
+class cinErr :public std::logic_error {//invalid input error
+public:
+    explicit cinErr(const std::string& msg) : std::logic_error(msg) {}
+};
