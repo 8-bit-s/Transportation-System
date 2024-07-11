@@ -54,6 +54,8 @@ class Menu {
 public:
     Menu();
 
+    ~Menu();
+
     //添加行程，不会抛出异常
     int addTrip(const Trip& t);
 
