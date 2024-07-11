@@ -22,7 +22,7 @@ public:
 
     int init(Menu& m);
 
-    void Dijkstra(Matrix, int, int, int, int);
+    void Dijkstra(int, int, int, int);
 
     void printTrips(const City& stf, const City& arv);//测试用函数
 private:
