@@ -6,6 +6,7 @@
 using namespace std;
 
 #define V MAXCITY
+#define g matrix
 const int INF = INT_MAX;
 
 void Node::choose(int tripType, int method)
@@ -82,7 +83,7 @@ bool Node::operator<(Node& n)
     return this->data < n.data;
 }
 
-void Graph::Dijkstra(Node** g, int src, int dest, int tripType, int method)
+void Graph::Dijkstra(int src, int dest, int tripType, int method)
 {
     //第一部分，将图等效为int图
     for (int i = 0; i < V; i++)
