@@ -57,10 +57,10 @@ public:
     ~Menu();
 
     //添加行程，不会抛出异常
-    int addTrip(const Trip& t);
+    int addTrip(const Trip& t) noexcept;
 
     //添加城市
-    int addCity(const City& c);
+    int addCity(const City& c) throw(menuErr);
 
     //修改城市信息 
     int updCity(City& city, string name);
