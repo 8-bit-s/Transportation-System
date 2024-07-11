@@ -2,7 +2,7 @@
 #include"Time.h"
 #include"Graph.h"
 #include"exceptions.h"
-#include"oldTripTable.h"
+#include"TripTable.h"
 using namespace std;
 
 bool isCity(string name1) {
@@ -46,7 +46,6 @@ void Admin::AddCity(Menu& menu, string name1) {
 		City city(name1);
 		menu.addCity(city);
 	}
-	
 }
 
 void Admin::UpdateCity(Menu& menu, City tarCity, string name1) {
@@ -161,4 +160,5 @@ string User::bestRoute(Menu& menu, const City& src, const City& arv, int tripTyp
 	int stfSign = src.sign;
 	int arvSign = arv.sign;
 	g.Dijkstra(stfSign, arvSign, tripType, method);
+	return " ";
 }
