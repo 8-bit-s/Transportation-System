@@ -1,14 +1,16 @@
 #pragma once
+#include <vector>
 #include <string>
 #include <iostream>
 #include "Time.h"
 using std::string;
+using std::vector;
 
 //使用枚举类型
 enum Triptype{AIR,RAIL};
 
 const int MEAN = 2;
-const int MAXCITY = 10;
+const int MAXCITY = 10;//最大城市数
 
 //每个城市对应一个编号，方便邻接表使用
 class City {
@@ -21,7 +23,8 @@ public:
     std::ostream& operator <<(std::ostream& os) const;
 };
 
-struct Trip {//行程表条目
+//行程表条目
+struct Trip {
     friend Trip parseLine(const string& lne);
     //Trip() {}
     //Trip(const Trip& t) {}
@@ -36,6 +39,7 @@ struct Trip {//行程表条目
     int cost;//expenses
 };
 
+//行程节点类，方便使用链表形式存储行程信息
 struct TripNode {
     TripNode();
     TripNode(const Trip& t, TripNode* next);
@@ -45,29 +49,64 @@ struct TripNode {
     Trip& operator*();//解引用返回内部Trip的引用，用于访问或更改
 };
 
-class Menu {//条目表，链表，在堆上维护
+//条目表，链表，在堆上维护
+class Menu {
 public:
     Menu();
 
     ~Menu();
 
-    int addTrip(const Trip& t) noexcept;//添加行程，不会抛出异常
+    //添加行程，不会抛出异常
+    int addTrip(const Trip& t) noexcept;
 
-    int addCity(const City& c);
+    //添加城市
+    int addCity(const City& c) throw(menuErr);
 
-    int delCity(const City& c);
+    //修改城市信息 
+    int updCity(City& city, string name);
 
-    int initPool();//初始化编号池
+    //修改行程信息
+    int updTrip(TripNode* trip, City stfCity1, City arvCity1, int cost1, int dist1, int hour1, int minute1, Triptype type1);
 
+    //删除城市信息
+    int delCity(const City& city);
+
+    //删除行程信息
+    int delTrip(TripNode* trip);
+
+    //初始化编号池
+    int initPool();
+
+    //清空编号池
     int clearPool();
 
-    string searchCity(int sign);
+    //查找函数，有始发站，终到站，旅行方式三种查询方式
+    vector<TripNode*> searchTrip(const Menu menu, string stfCity, string arvCity, Triptype type);
 
-    int searchCity(const string& name);
+    //三个子功能，供上面的查找函数调用
+    vector<TripNode*> searchTripByStf(vector<TripNode*>list, string stfCity);
 
-    void searTrip(City);
+    vector<TripNode*> searchTripByArv(vector<TripNode*>list, string arvCity);
 
-    void disp();//测试用函数
+    vector<TripNode*> searchTripByType(vector<TripNode*>list, Triptype type);
+
+    //bool cmpByCost(TripNode* t1, TripNode* t2);
+
+    //bool cmpByDist(TripNode* t1, TripNode* t2);
+
+    //bool cmpByTime(TripNode* t1, TripNode* t2);
+
+    //vector<TripNode*> sortTripByCost(int cost);
+
+    //vector<TripNode*> sortTripByDist(int dist);
+    //
+    //vector<TripNode*> sortTripByTime(Time time);
+
+    //前后端交互函数，为前端提供翻页功能(无需测试)
+    vector<TripNode*> page(vector<TripNode*>tripList, int& count);
+
+    //测试用函数
+    void disp();
 
     TripNode* getTable();
 
