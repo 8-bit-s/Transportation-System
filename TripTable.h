@@ -30,10 +30,10 @@ struct Trip {//行程表条目
     City arvCity;//终到站
     //Time stfTime;//出发时间setoffTime
     //Time arvTime;//到达时间arriveTime
-    int cost;//expenses
+    Triptype type;//旅行方式
     double dist;//distance
     Time time;//旅途时间
-    Triptype type;//旅行方式
+    int cost;//expenses
 };
 
 struct TripNode {

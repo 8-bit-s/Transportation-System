@@ -14,23 +14,25 @@
 #include "exceptions.h"
 #include "TripTable.h"
 #include "Graph.h"
+#include "httplib.h"
 
 using namespace std;
 
 int readFile(const string& path, Menu& m);
 
+
+
 int main() {
-    string f_name;
-    cin >> f_name;
-    Menu m;
-    readFile(f_name, m);
-    m.disp();
-    cout << "next comes the Graph: \n";
-    Graph g;
-    g.init(m);
-    string stf("Wuhan");
-    string arv("Beijing");
-    g.printTrips(stf, arv);
+    httplib::Client cli("127.0.0.1:3000");
+    httplib::Headers headers{
+        { "Content-Type", "application/json" }
+    };
+
+
+
+    string body1 = R"({"stf": "Beijing", "arv": "Shanghai", "trip_type": 0, "dist": 10.4, "time": "01:03:03", "cost": 300 })";
+    auto res1 = cli.Post("/", headers, body1, "application/json");
+    cout << res1->body << endl;
 
     return 0;
 }

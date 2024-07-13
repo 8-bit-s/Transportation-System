@@ -35,22 +35,31 @@ Time::Time(int hour, int minute) {
     }
 }
 
-int Time::minutes() {
+int Time::minutes() const{
     return 60*hour+minute;
 }
 
-int Time::getHour() {
+int Time::getHour() const{
     return hour;
 }
 
-int Time::getMinute() {
+int Time::getMinute() const{
     return minute;
 }
 
-std::string Time::str() {
+std::string Time::str() const{
     std::string str;
     str = std::to_string(hour) + "Hour " + std::to_string(minute) + "Minute";
     return str;
+}
+
+std::string Time::timeStr() const {
+    std::string ret;
+    if (hour < 10) ret.push_back('0');
+    ret += std::to_string(hour) + ":";
+    if (minute < 10) ret.push_back('0');
+    ret += std::to_string(minute);
+    return ret;
 }
 
 int Time::parseTiming(const std::string& s) {//解析hh:mm字符串表示的时间
