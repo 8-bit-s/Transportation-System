@@ -7,65 +7,62 @@ using namespace std;
 
 #define V MAXCITY
 #define g matrix
+
 const int INF = INT_MAX;
 
 void Node::choose(int tripType, int method)
 {
     int sw = tripType * 10 + method;
-    TripNode* p = Sdata;
+    int max = Sdata.size();
     data = INF;
     switch (sw)
     {
     case 0:
-        while (p != NULL)
-        {
-            if (p->t.type == AIR)
-            {
-                if (p->t.time.minutes() < data)
-                {
-                    data = p->t.time.minutes();
-                }
-            }
-            p = p->next;
-        }
+       for(int i=0;i<max;i++)
+       {
+           if (Sdata[i].type == AIR)
+           {
+               if (Sdata[i].time.minutes()< data)
+               {
+                   data = Sdata[i].time.minutes();
+               }
+           }
+       }
         break;
     case 10:
-        while (p != NULL)
+        for (int i = 0; i < max; i++)
         {
-            if (p->t.type == RAIL)
+            if (Sdata[i].type == RAIL)
             {
-                if (p->t.time.minutes() < data)
+                if (Sdata[i].time.minutes() < data)
                 {
-                    data = p->t.time.minutes();
+                    data = Sdata[i].time.minutes();
                 }
             }
-            p = p->next;
         }
         break;
     case 1:
-        while (p != NULL)
+        for (int i = 0; i < max; i++)
         {
-            if (p->t.type == AIR)
+            if (Sdata[i].type == AIR)
             {
-                if (p->t.cost < data)
+                if (Sdata[i].cost< data)
                 {
-                    data = p->t.cost;
+                    data = Sdata[i].cost;
                 }
             }
-            p = p->next;
         }
         break;
     case 11:
-        while (p != NULL)
+        for (int i = 0; i < max; i++)
         {
-            if (p->t.type == RAIL)
+            if (Sdata[i].type == RAIL)
             {
-                if (p->t.cost < data)
+                if (Sdata[i].cost < data)
                 {
-                    data = p->t.cost;
+                    data = Sdata[i].cost;
                 }
             }
-            p = p->next;
         }
         break;
     default:
@@ -90,7 +87,7 @@ void Graph::Dijkstra(int src, int dest, int tripType, int method)
     {
         for (int j = 0; j < V; j++)
         {
-            if (g[i][j].Sdata != NULL)
+            if (!g[i][j].Sdata.empty())
             {
                 g[i][j].choose(tripType, method);//¸³ÓèÈ¨Öµ
             }
