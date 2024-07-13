@@ -33,10 +33,10 @@ struct Trip {
     City arvCity;//终到站
     //Time stfTime;//出发时间setoffTime
     //Time arvTime;//到达时间arriveTime
-    int cost;//expenses
+    Triptype type;//旅行方式
     double dist;//distance
     Time time;//旅途时间
-    Triptype type;//旅行方式
+    int cost;//expenses
 };
 
 //行程节点类，方便使用链表形式存储行程信息

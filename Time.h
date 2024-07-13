@@ -10,13 +10,15 @@ public:
     Time(const std::string& s);
     Time(int hour, int minute);
 
-    int minutes();//返回所有的分钟数
+    int minutes()const;//返回所有的分钟数
 
-    int getHour();
+    int getHour()const;
 
-    int getMinute();
+    int getMinute()const;
 
-    std::string str();//返回打印形式字符串
+    std::string str()const;//返回打印形式字符串
+
+    std::string timeStr()const;//hh:mm格式
 private:
 
     int parseTiming(const std::string& s);//解析hh:mm字符串表示的时间
