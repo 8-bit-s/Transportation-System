@@ -1,4 +1,4 @@
-QMAKE_LICHECK_TIMESTAMP = "Tue Jul 9"
+QMAKE_LICHECK_TIMESTAMP = "Sat Jul 13"
 QMAKE_MAC_SDK.macosx.Path = /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk
 QMAKE_MAC_SDK.macosx.SDKVersion = 14.4
 QMAKE_MAC_SDK.macx-clang.macosx.QMAKE_CC = /Library/Developer/CommandLineTools/usr/bin/clang
@@ -44,5 +44,3 @@ QMAKE_CXX.LIBDIRS = \
 QMAKE_MAC_SDK.macosx.SDKVersion = 14.4
 QMAKE_MAC_SDK.macosx.Path = /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk
 QMAKE_XCODE_DEVELOPER_PATH = /Library/Developer/CommandLineTools
-QMAKE_LICHECK_TIMESTAMP = "Wed Jul 10"
-QMAKE_LICHECK_TIMESTAMP = "Thu Jul 11"

@@ -1,13 +1,13 @@
 /********************************************************************************
-** Form generated from reading UI file 'addwindow.ui'
+** Form generated from reading UI file 'childwindow1.ui'
 **
 ** Created by: Qt User Interface Compiler version 5.15.17
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
 ********************************************************************************/
 
-#ifndef UI_ADDWINDOW_H
-#define UI_ADDWINDOW_H
+#ifndef UI_CHILDWINDOW1_H
+#define UI_CHILDWINDOW1_H
 
 #include <QtCore/QVariant>
 #include <QtWidgets/QApplication>
@@ -75,7 +75,7 @@ public:
     {
         AddWindow->setWindowTitle(QCoreApplication::translate("AddWindow", "Form", nullptr));
         CityLable->setText(QCoreApplication::translate("AddWindow", "\345\237\216\345\270\202\345\220\215\357\274\232", nullptr));
-        addBtn->setText(QCoreApplication::translate("AddWindow", "\346\267\273\345\212\240", nullptr));
+        addBtn->setText(QCoreApplication::translate("AddWindow", "\347\241\256\345\256\232", nullptr));
     } // retranslateUi
 
 };
@@ -86,4 +86,4 @@ namespace Ui {
 
 QT_END_NAMESPACE
 
-#endif // UI_ADDWINDOW_H
+#endif // UI_CHILDWINDOW1_H

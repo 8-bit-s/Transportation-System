@@ -1,5 +1,5 @@
 /****************************************************************************
-** Meta object code from reading C++ file 'citybox.h'
+** Meta object code from reading C++ file 'childwindow1.h'
 **
 ** Created by: The Qt Meta Object Compiler version 67 (Qt 5.15.17)
 **
@@ -7,11 +7,11 @@
 *****************************************************************************/
 
 #include <memory>
-#include "../../citybox.h"
+#include "../../childwindow1.h"
 #include <QtCore/qbytearray.h>
 #include <QtCore/qmetatype.h>
 #if !defined(Q_MOC_OUTPUT_REVISION)
-#error "The header file 'citybox.h' doesn't include <QObject>."
+#error "The header file 'childwindow1.h' doesn't include <QObject>."
 #elif Q_MOC_OUTPUT_REVISION != 67
 #error "This file was generated using the moc from 5.15.17. It"
 #error "cannot be used with the include files from this version of Qt."
@@ -21,28 +21,29 @@
 QT_BEGIN_MOC_NAMESPACE
 QT_WARNING_PUSH
 QT_WARNING_DISABLE_DEPRECATED
-struct qt_meta_stringdata_CityBox_t {
-    QByteArrayData data[4];
-    char stringdata0[39];
+struct qt_meta_stringdata_ChildWindow_t {
+    QByteArrayData data[5];
+    char stringdata0[41];
 };
 #define QT_MOC_LITERAL(idx, ofs, len) \
     Q_STATIC_BYTE_ARRAY_DATA_HEADER_INITIALIZER_WITH_OFFSET(len, \
-    qptrdiff(offsetof(qt_meta_stringdata_CityBox_t, stringdata0) + ofs \
+    qptrdiff(offsetof(qt_meta_stringdata_ChildWindow_t, stringdata0) + ofs \
         - idx * sizeof(QByteArrayData)) \
     )
-static const qt_meta_stringdata_CityBox_t qt_meta_stringdata_CityBox = {
+static const qt_meta_stringdata_ChildWindow_t qt_meta_stringdata_ChildWindow = {
     {
-QT_MOC_LITERAL(0, 0, 7), // "CityBox"
-QT_MOC_LITERAL(1, 8, 10), // "changeable"
-QT_MOC_LITERAL(2, 19, 0), // ""
-QT_MOC_LITERAL(3, 20, 18) // "on_cityBtn_clicked"
+QT_MOC_LITERAL(0, 0, 11), // "ChildWindow"
+QT_MOC_LITERAL(1, 12, 3), // "add"
+QT_MOC_LITERAL(2, 16, 0), // ""
+QT_MOC_LITERAL(3, 17, 4), // "city"
+QT_MOC_LITERAL(4, 22, 18) // "on_sureBtn_clicked"
 
     },
-    "CityBox\0changeable\0\0on_cityBtn_clicked"
+    "ChildWindow\0add\0\0city\0on_sureBtn_clicked"
 };
 #undef QT_MOC_LITERAL
 
-static const uint qt_meta_data_CityBox[] = {
+static const uint qt_meta_data_ChildWindow[] = {
 
  // content:
        8,       // revision
@@ -56,13 +57,13 @@ static const uint qt_meta_data_CityBox[] = {
        1,       // signalCount
 
  // signals: name, argc, parameters, tag, flags
-       1,    0,   24,    2, 0x06 /* Public */,
+       1,    1,   24,    2, 0x06 /* Public */,
 
  // slots: name, argc, parameters, tag, flags
-       3,    0,   25,    2, 0x08 /* Private */,
+       4,    0,   27,    2, 0x08 /* Private */,
 
  // signals: parameters
-    QMetaType::Void,
+    QMetaType::Void, QMetaType::QString,    3,
 
  // slots: parameters
     QMetaType::Void,
@@ -70,53 +71,52 @@ static const uint qt_meta_data_CityBox[] = {
        0        // eod
 };
 
-void CityBox::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, void **_a)
+void ChildWindow::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, void **_a)
 {
     if (_c == QMetaObject::InvokeMetaMethod) {
-        auto *_t = static_cast<CityBox *>(_o);
+        auto *_t = static_cast<ChildWindow *>(_o);
         (void)_t;
         switch (_id) {
-        case 0: _t->changeable(); break;
-        case 1: _t->on_cityBtn_clicked(); break;
+        case 0: _t->add((*reinterpret_cast< QString(*)>(_a[1]))); break;
+        case 1: _t->on_sureBtn_clicked(); break;
         default: ;
         }
     } else if (_c == QMetaObject::IndexOfMethod) {
         int *result = reinterpret_cast<int *>(_a[0]);
         {
-            using _t = void (CityBox::*)();
-            if (*reinterpret_cast<_t *>(_a[1]) == static_cast<_t>(&CityBox::changeable)) {
+            using _t = void (ChildWindow::*)(QString );
+            if (*reinterpret_cast<_t *>(_a[1]) == static_cast<_t>(&ChildWindow::add)) {
                 *result = 0;
                 return;
             }
         }
     }
-    (void)_a;
 }
 
-QT_INIT_METAOBJECT const QMetaObject CityBox::staticMetaObject = { {
+QT_INIT_METAOBJECT const QMetaObject ChildWindow::staticMetaObject = { {
     QMetaObject::SuperData::link<QWidget::staticMetaObject>(),
-    qt_meta_stringdata_CityBox.data,
-    qt_meta_data_CityBox,
+    qt_meta_stringdata_ChildWindow.data,
+    qt_meta_data_ChildWindow,
     qt_static_metacall,
     nullptr,
     nullptr
 } };
 
 
-const QMetaObject *CityBox::metaObject() const
+const QMetaObject *ChildWindow::metaObject() const
 {
     return QObject::d_ptr->metaObject ? QObject::d_ptr->dynamicMetaObject() : &staticMetaObject;
 }
 
-void *CityBox::qt_metacast(const char *_clname)
+void *ChildWindow::qt_metacast(const char *_clname)
 {
     if (!_clname) return nullptr;
-    if (!strcmp(_clname, qt_meta_stringdata_CityBox.stringdata0))
+    if (!strcmp(_clname, qt_meta_stringdata_ChildWindow.stringdata0))
         return static_cast<void*>(this);
     return QWidget::qt_metacast(_clname);
 }
 
-int CityBox::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
+int ChildWindow::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
 {
     _id = QWidget::qt_metacall(_c, _id, _a);
     if (_id < 0)
@@ -134,9 +134,10 @@ int CityBox::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
 }
 
 // SIGNAL 0
-void CityBox::changeable()
+void ChildWindow::add(QString _t1)
 {
-    QMetaObject::activate(this, &staticMetaObject, 0, nullptr);
+    void *_a[] = { nullptr, const_cast<void*>(reinterpret_cast<const void*>(std::addressof(_t1))) };
+    QMetaObject::activate(this, &staticMetaObject, 0, _a);
 }
 QT_WARNING_POP
 QT_END_MOC_NAMESPACE

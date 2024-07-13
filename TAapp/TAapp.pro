@@ -11,43 +11,37 @@ CONFIG += c++17
 SOURCES += \
     accountinfowindow.cpp \
     accountmanagewindow.cpp \
-    addwindow.cpp \
-    citybox.cpp \
+    childwindow.cpp \
     citymanagewindow.cpp \
     homewindow.cpp \
     loginwindow.cpp \
     main.cpp \
     mainwindow.cpp \
     mapwindow.cpp \
-    searchwindow.cpp \
     tripmanagewindow.cpp \
     tripunit.cpp
 
 HEADERS += \
     accountinfowindow.h \
     accountmanagewindow.h \
-    addwindow.h \
-    citybox.h \
+    childwindow.h \
     citymanagewindow.h \
     homewindow.h \
     loginwindow.h \
     mainwindow.h \
     mapwindow.h \
-    searchwindow.h \
     tripmanagewindow.h \
     tripunit.h
 
 FORMS += \
     accountinfowindow.ui \
     accountmanagewindow.ui \
-    addwindow.ui \
-    citybox.ui \
+    childwindow.ui \
     citymanagewindow.ui \
     homewindow.ui \
     loginwindow.ui \
     mainwindow.ui \
     mapwindow.ui \
-    searchwindow.ui \
     tripmanagewindow.ui \
     tripunit.ui
 

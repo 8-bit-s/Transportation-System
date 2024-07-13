@@ -54,53 +54,45 @@ OBJECTS_DIR   = ./
 
 SOURCES       = ../../accountinfowindow.cpp \
 		../../accountmanagewindow.cpp \
-		../../addwindow.cpp \
-		../../citybox.cpp \
+		../../childwindow.cpp \
 		../../citymanagewindow.cpp \
 		../../homewindow.cpp \
 		../../loginwindow.cpp \
 		../../main.cpp \
 		../../mainwindow.cpp \
 		../../mapwindow.cpp \
-		../../searchwindow.cpp \
 		../../tripmanagewindow.cpp \
 		../../tripunit.cpp qrc_res.cpp \
 		moc_accountinfowindow.cpp \
 		moc_accountmanagewindow.cpp \
-		moc_addwindow.cpp \
-		moc_citybox.cpp \
+		moc_childwindow.cpp \
 		moc_citymanagewindow.cpp \
 		moc_homewindow.cpp \
 		moc_loginwindow.cpp \
 		moc_mainwindow.cpp \
 		moc_mapwindow.cpp \
-		moc_searchwindow.cpp \
 		moc_tripmanagewindow.cpp \
 		moc_tripunit.cpp
 OBJECTS       = accountinfowindow.o \
 		accountmanagewindow.o \
-		addwindow.o \
-		citybox.o \
+		childwindow.o \
 		citymanagewindow.o \
 		homewindow.o \
 		loginwindow.o \
 		main.o \
 		mainwindow.o \
 		mapwindow.o \
-		searchwindow.o \
 		tripmanagewindow.o \
 		tripunit.o \
 		qrc_res.o \
 		moc_accountinfowindow.o \
 		moc_accountmanagewindow.o \
-		moc_addwindow.o \
-		moc_citybox.o \
+		moc_childwindow.o \
 		moc_citymanagewindow.o \
 		moc_homewindow.o \
 		moc_loginwindow.o \
 		moc_mainwindow.o \
 		moc_mapwindow.o \
-		moc_searchwindow.o \
 		moc_tripmanagewindow.o \
 		moc_tripunit.o
 DIST          = /Qt/5.15.17/macos/mkspecs/features/spec_pre.prf \
@@ -290,7 +282,7 @@ DIST          = /Qt/5.15.17/macos/mkspecs/features/spec_pre.prf \
 		/Qt/5.15.17/macos/mkspecs/features/qt_config.prf \
 		/Qt/5.15.17/macos/mkspecs/macx-clang/qmake.conf \
 		/Qt/5.15.17/macos/mkspecs/features/spec_post.prf \
-		../../.qmake.stash \
+		../../../../.qmake.stash \
 		/Qt/5.15.17/macos/mkspecs/features/exclusive_builds.prf \
 		/Qt/5.15.17/macos/mkspecs/features/mac/sdk.prf \
 		/Qt/5.15.17/macos/mkspecs/features/toolchain.prf \
@@ -321,26 +313,22 @@ DIST          = /Qt/5.15.17/macos/mkspecs/features/spec_pre.prf \
 		/Qt/5.15.17/macos/mkspecs/features/lex.prf \
 		../../../../TAapp.pro ../../accountinfowindow.h \
 		../../accountmanagewindow.h \
-		../../addwindow.h \
-		../../citybox.h \
+		../../childwindow.h \
 		../../citymanagewindow.h \
 		../../homewindow.h \
 		../../loginwindow.h \
 		../../mainwindow.h \
 		../../mapwindow.h \
-		../../searchwindow.h \
 		../../tripmanagewindow.h \
 		../../tripunit.h ../../accountinfowindow.cpp \
 		../../accountmanagewindow.cpp \
-		../../addwindow.cpp \
-		../../citybox.cpp \
+		../../childwindow.cpp \
 		../../citymanagewindow.cpp \
 		../../homewindow.cpp \
 		../../loginwindow.cpp \
 		../../main.cpp \
 		../../mainwindow.cpp \
 		../../mapwindow.cpp \
-		../../searchwindow.cpp \
 		../../tripmanagewindow.cpp \
 		../../tripunit.cpp
 QMAKE_TARGET  = TAapp
@@ -351,7 +339,7 @@ TARGET        = TAapp.app/Contents/MacOS/TAapp
 EXPORT_QMAKE_MAC_SDK = macosx
 EXPORT_QMAKE_MAC_SDK_VERSION = 14.4
 EXPORT_QMAKE_XCODE_DEVELOPER_PATH = /Library/Developer/CommandLineTools
-EXPORT__QMAKE_STASH_ = /Users/zhangjunbo/Downloads/TAapp/build/Desktop_Qt_5_15_17_for_macOS_Universal-Debug/.qmake.stash
+EXPORT__QMAKE_STASH_ = /Users/zhangjunbo/Downloads/TAapp/.qmake.stash
 EXPORT_VALID_ARCHS = x86_64 arm64
 EXPORT_DEFAULT_ARCHS = arm64
 EXPORT_ARCHS = $(filter $(EXPORT_VALID_ARCHS), $(if $(ARCHS), $(ARCHS), $(if $(EXPORT_DEFAULT_ARCHS), $(EXPORT_DEFAULT_ARCHS), $(EXPORT_VALID_ARCHS))))
@@ -363,7 +351,7 @@ include /Users/zhangjunbo/Qt/5.15.17/macos/mkspecs/features/mac/sdk.mk
 first: all
 ####### Build rules
 
-TAapp.app/Contents/MacOS/TAapp: ui_accountinfowindow.h ui_accountmanagewindow.h ui_addwindow.h ui_citybox.h ui_citymanagewindow.h ui_homewindow.h ui_loginwindow.h ui_mainwindow.h ui_mapwindow.h ui_searchwindow.h ui_tripmanagewindow.h ui_tripunit.h $(OBJECTS)  
+TAapp.app/Contents/MacOS/TAapp: ui_accountinfowindow.h ui_accountmanagewindow.h ui_childwindow.h ui_citymanagewindow.h ui_homewindow.h ui_loginwindow.h ui_mainwindow.h ui_mapwindow.h ui_tripmanagewindow.h ui_tripunit.h $(OBJECTS)  
 	@test -d TAapp.app/Contents/MacOS/ || mkdir -p TAapp.app/Contents/MacOS/
 	$(LINK) $(LFLAGS) -o $(TARGET) $(OBJECTS) $(OBJCOMP) $(LIBS)
 
@@ -554,7 +542,7 @@ Makefile: ../../TAapp.pro ../../../../Qt/5.15.17/macos/mkspecs/features/spec_pre
 		../../../../Qt/5.15.17/macos/mkspecs/features/qt_config.prf \
 		../../../../Qt/5.15.17/macos/mkspecs/macx-clang/qmake.conf \
 		../../../../Qt/5.15.17/macos/mkspecs/features/spec_post.prf \
-		.qmake.stash \
+		../../.qmake.stash \
 		../../../../Qt/5.15.17/macos/mkspecs/features/exclusive_builds.prf \
 		../../../../Qt/5.15.17/macos/mkspecs/features/mac/sdk.prf \
 		../../../../Qt/5.15.17/macos/mkspecs/features/toolchain.prf \
@@ -776,7 +764,7 @@ Makefile: ../../TAapp.pro ../../../../Qt/5.15.17/macos/mkspecs/features/spec_pre
 ../../../../Qt/5.15.17/macos/mkspecs/features/qt_config.prf:
 ../../../../Qt/5.15.17/macos/mkspecs/macx-clang/qmake.conf:
 ../../../../Qt/5.15.17/macos/mkspecs/features/spec_post.prf:
-.qmake.stash:
+../../.qmake.stash:
 ../../../../Qt/5.15.17/macos/mkspecs/features/exclusive_builds.prf:
 ../../../../Qt/5.15.17/macos/mkspecs/features/mac/sdk.prf:
 ../../../../Qt/5.15.17/macos/mkspecs/features/toolchain.prf:
@@ -840,9 +828,9 @@ distdir: FORCE
 	@test -d $(DISTDIR) || mkdir -p $(DISTDIR)
 	$(COPY_FILE) --parents $(DIST) $(DISTDIR)/
 	$(COPY_FILE) --parents ../../resource/res.qrc $(DISTDIR)/
-	$(COPY_FILE) --parents ../../accountinfowindow.h ../../accountmanagewindow.h ../../addwindow.h ../../citybox.h ../../citymanagewindow.h ../../homewindow.h ../../loginwindow.h ../../mainwindow.h ../../mapwindow.h ../../searchwindow.h ../../tripmanagewindow.h ../../tripunit.h $(DISTDIR)/
-	$(COPY_FILE) --parents ../../accountinfowindow.cpp ../../accountmanagewindow.cpp ../../addwindow.cpp ../../citybox.cpp ../../citymanagewindow.cpp ../../homewindow.cpp ../../loginwindow.cpp ../../main.cpp ../../mainwindow.cpp ../../mapwindow.cpp ../../searchwindow.cpp ../../tripmanagewindow.cpp ../../tripunit.cpp $(DISTDIR)/
-	$(COPY_FILE) --parents ../../accountinfowindow.ui ../../accountmanagewindow.ui ../../addwindow.ui ../../citybox.ui ../../citymanagewindow.ui ../../homewindow.ui ../../loginwindow.ui ../../mainwindow.ui ../../mapwindow.ui ../../searchwindow.ui ../../tripmanagewindow.ui ../../tripunit.ui $(DISTDIR)/
+	$(COPY_FILE) --parents ../../accountinfowindow.h ../../accountmanagewindow.h ../../childwindow.h ../../citymanagewindow.h ../../homewindow.h ../../loginwindow.h ../../mainwindow.h ../../mapwindow.h ../../tripmanagewindow.h ../../tripunit.h $(DISTDIR)/
+	$(COPY_FILE) --parents ../../accountinfowindow.cpp ../../accountmanagewindow.cpp ../../childwindow.cpp ../../citymanagewindow.cpp ../../homewindow.cpp ../../loginwindow.cpp ../../main.cpp ../../mainwindow.cpp ../../mapwindow.cpp ../../tripmanagewindow.cpp ../../tripunit.cpp $(DISTDIR)/
+	$(COPY_FILE) --parents ../../accountinfowindow.ui ../../accountmanagewindow.ui ../../childwindow.ui ../../citymanagewindow.ui ../../homewindow.ui ../../loginwindow.ui ../../mainwindow.ui ../../mapwindow.ui ../../tripmanagewindow.ui ../../tripunit.ui $(DISTDIR)/
 
 
 clean: compiler_clean 
@@ -852,7 +840,6 @@ clean: compiler_clean
 
 distclean: clean 
 	-$(DEL_FILE) -r TAapp.app
-	-$(DEL_FILE) .qmake.stash
 	-$(DEL_FILE) Makefile
 
 
@@ -874,27 +861,29 @@ compiler_rcc_clean:
 	-$(DEL_FILE) qrc_res.cpp
 qrc_res.cpp: ../../resource/res.qrc \
 		../../../../Qt/5.15.17/macos/bin/rcc \
-		../../resource/trippic.png \
-		../../resource/home.png \
-		../../resource/change.png \
-		../../resource/add.png \
 		../../resource/railtype.png \
-		../../resource/search.png \
+		../../resource/airtype.png \
+		../../resource/trippic.png \
+		../../resource/close.png \
+		../../resource/delete.png \
+		../../resource/train.png \
+		../../resource/add.png \
+		../../resource/change.png \
+		../../resource/userpic.png \
 		../../resource/apppic.png \
-		../../resource/cancel.png \
-		../../resource/back.png \
 		../../resource/user.png \
 		../../resource/citypic.png \
 		../../resource/plane.png \
-		../../resource/delete.png \
-		../../resource/airtype.png \
-		../../resource/userpic.png \
-		../../resource/train.png
+		../../resource/edit.png \
+		../../resource/search.png \
+		../../resource/cancel.png \
+		../../resource/back.png \
+		../../resource/home.png
 	/Users/zhangjunbo/Qt/5.15.17/macos/bin/rcc -name res ../../resource/res.qrc -o qrc_res.cpp
 
-compiler_moc_header_make_all: moc_accountinfowindow.cpp moc_accountmanagewindow.cpp moc_addwindow.cpp moc_citybox.cpp moc_citymanagewindow.cpp moc_homewindow.cpp moc_loginwindow.cpp moc_mainwindow.cpp moc_mapwindow.cpp moc_searchwindow.cpp moc_tripmanagewindow.cpp moc_tripunit.cpp
+compiler_moc_header_make_all: moc_accountinfowindow.cpp moc_accountmanagewindow.cpp moc_childwindow.cpp moc_citymanagewindow.cpp moc_homewindow.cpp moc_loginwindow.cpp moc_mainwindow.cpp moc_mapwindow.cpp moc_tripmanagewindow.cpp moc_tripunit.cpp
 compiler_moc_header_clean:
-	-$(DEL_FILE) moc_accountinfowindow.cpp moc_accountmanagewindow.cpp moc_addwindow.cpp moc_citybox.cpp moc_citymanagewindow.cpp moc_homewindow.cpp moc_loginwindow.cpp moc_mainwindow.cpp moc_mapwindow.cpp moc_searchwindow.cpp moc_tripmanagewindow.cpp moc_tripunit.cpp
+	-$(DEL_FILE) moc_accountinfowindow.cpp moc_accountmanagewindow.cpp moc_childwindow.cpp moc_citymanagewindow.cpp moc_homewindow.cpp moc_loginwindow.cpp moc_mainwindow.cpp moc_mapwindow.cpp moc_tripmanagewindow.cpp moc_tripunit.cpp
 moc_accountinfowindow.cpp: ../../accountinfowindow.h \
 		../../../../Qt/5.15.17/macos/lib/QtWidgets.framework/Headers/QWidget \
 		../../../../Qt/5.15.17/macos/lib/QtWidgets.framework/Headers/qwidget.h \
@@ -907,26 +896,21 @@ moc_accountmanagewindow.cpp: ../../accountmanagewindow.h \
 		../../../../Qt/5.15.17/macos/bin/moc
 	/Users/zhangjunbo/Qt/5.15.17/macos/bin/moc $(DEFINES) -D__APPLE__ -D__GNUC__=4 -D__APPLE_CC__ -D__cplusplus=199711L -D__APPLE_CC__=6000 -D__clang__ -D__clang_major__=15 -D__clang_minor__=0 -D__clang_patchlevel__=0 -D__GNUC__=4 -D__GNUC_MINOR__=2 -D__GNUC_PATCHLEVEL__=1 -I/Users/zhangjunbo/Qt/5.15.17/macos/mkspecs/macx-clang -I/Users/zhangjunbo/Downloads/TAapp -I/Users/zhangjunbo/Qt/5.15.17/macos/lib/QtWidgets.framework/Headers -I/Users/zhangjunbo/Qt/5.15.17/macos/lib/QtGui.framework/Headers -I/Users/zhangjunbo/Qt/5.15.17/macos/lib/QtCore.framework/Headers -I. -I/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1 -I/Library/Developer/CommandLineTools/usr/lib/clang/15.0.0/include -I/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include -I/Library/Developer/CommandLineTools/usr/include -F/Users/zhangjunbo/Qt/5.15.17/macos/lib ../../accountmanagewindow.h -o moc_accountmanagewindow.cpp
 
-moc_addwindow.cpp: ../../addwindow.h \
+moc_childwindow.cpp: ../../childwindow.h \
 		../../../../Qt/5.15.17/macos/lib/QtWidgets.framework/Headers/QWidget \
 		../../../../Qt/5.15.17/macos/lib/QtWidgets.framework/Headers/qwidget.h \
 		../../../../Qt/5.15.17/macos/bin/moc
-	/Users/zhangjunbo/Qt/5.15.17/macos/bin/moc $(DEFINES) -D__APPLE__ -D__GNUC__=4 -D__APPLE_CC__ -D__cplusplus=199711L -D__APPLE_CC__=6000 -D__clang__ -D__clang_major__=15 -D__clang_minor__=0 -D__clang_patchlevel__=0 -D__GNUC__=4 -D__GNUC_MINOR__=2 -D__GNUC_PATCHLEVEL__=1 -I/Users/zhangjunbo/Qt/5.15.17/macos/mkspecs/macx-clang -I/Users/zhangjunbo/Downloads/TAapp -I/Users/zhangjunbo/Qt/5.15.17/macos/lib/QtWidgets.framework/Headers -I/Users/zhangjunbo/Qt/5.15.17/macos/lib/QtGui.framework/Headers -I/Users/zhangjunbo/Qt/5.15.17/macos/lib/QtCore.framework/Headers -I. -I/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1 -I/Library/Developer/CommandLineTools/usr/lib/clang/15.0.0/include -I/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include -I/Library/Developer/CommandLineTools/usr/include -F/Users/zhangjunbo/Qt/5.15.17/macos/lib ../../addwindow.h -o moc_addwindow.cpp
-
-moc_citybox.cpp: ../../citybox.h \
-		../../../../Qt/5.15.17/macos/lib/QtWidgets.framework/Headers/QWidget \
-		../../../../Qt/5.15.17/macos/lib/QtWidgets.framework/Headers/qwidget.h \
-		../../../../Qt/5.15.17/macos/bin/moc
-	/Users/zhangjunbo/Qt/5.15.17/macos/bin/moc $(DEFINES) -D__APPLE__ -D__GNUC__=4 -D__APPLE_CC__ -D__cplusplus=199711L -D__APPLE_CC__=6000 -D__clang__ -D__clang_major__=15 -D__clang_minor__=0 -D__clang_patchlevel__=0 -D__GNUC__=4 -D__GNUC_MINOR__=2 -D__GNUC_PATCHLEVEL__=1 -I/Users/zhangjunbo/Qt/5.15.17/macos/mkspecs/macx-clang -I/Users/zhangjunbo/Downloads/TAapp -I/Users/zhangjunbo/Qt/5.15.17/macos/lib/QtWidgets.framework/Headers -I/Users/zhangjunbo/Qt/5.15.17/macos/lib/QtGui.framework/Headers -I/Users/zhangjunbo/Qt/5.15.17/macos/lib/QtCore.framework/Headers -I. -I/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1 -I/Library/Developer/CommandLineTools/usr/lib/clang/15.0.0/include -I/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include -I/Library/Developer/CommandLineTools/usr/include -F/Users/zhangjunbo/Qt/5.15.17/macos/lib ../../citybox.h -o moc_citybox.cpp
+	/Users/zhangjunbo/Qt/5.15.17/macos/bin/moc $(DEFINES) -D__APPLE__ -D__GNUC__=4 -D__APPLE_CC__ -D__cplusplus=199711L -D__APPLE_CC__=6000 -D__clang__ -D__clang_major__=15 -D__clang_minor__=0 -D__clang_patchlevel__=0 -D__GNUC__=4 -D__GNUC_MINOR__=2 -D__GNUC_PATCHLEVEL__=1 -I/Users/zhangjunbo/Qt/5.15.17/macos/mkspecs/macx-clang -I/Users/zhangjunbo/Downloads/TAapp -I/Users/zhangjunbo/Qt/5.15.17/macos/lib/QtWidgets.framework/Headers -I/Users/zhangjunbo/Qt/5.15.17/macos/lib/QtGui.framework/Headers -I/Users/zhangjunbo/Qt/5.15.17/macos/lib/QtCore.framework/Headers -I. -I/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1 -I/Library/Developer/CommandLineTools/usr/lib/clang/15.0.0/include -I/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include -I/Library/Developer/CommandLineTools/usr/include -F/Users/zhangjunbo/Qt/5.15.17/macos/lib ../../childwindow.h -o moc_childwindow.cpp
 
 moc_citymanagewindow.cpp: ../../citymanagewindow.h \
 		../../../../Qt/5.15.17/macos/lib/QtWidgets.framework/Headers/QWidget \
 		../../../../Qt/5.15.17/macos/lib/QtWidgets.framework/Headers/qwidget.h \
 		../../../../Qt/5.15.17/macos/lib/QtCore.framework/Headers/QString \
 		../../../../Qt/5.15.17/macos/lib/QtCore.framework/Headers/qstring.h \
-		../../citybox.h \
-		../../searchwindow.h \
-		../../addwindow.h \
+		../../../../Qt/5.15.17/macos/lib/QtCore.framework/Headers/QList \
+		../../../../Qt/5.15.17/macos/lib/QtCore.framework/Headers/qlist.h \
+		../../../../Qt/5.15.17/macos/lib/QtWidgets.framework/Headers/QButtonGroup \
+		../../../../Qt/5.15.17/macos/lib/QtWidgets.framework/Headers/qbuttongroup.h \
 		../../../../Qt/5.15.17/macos/bin/moc
 	/Users/zhangjunbo/Qt/5.15.17/macos/bin/moc $(DEFINES) -D__APPLE__ -D__GNUC__=4 -D__APPLE_CC__ -D__cplusplus=199711L -D__APPLE_CC__=6000 -D__clang__ -D__clang_major__=15 -D__clang_minor__=0 -D__clang_patchlevel__=0 -D__GNUC__=4 -D__GNUC_MINOR__=2 -D__GNUC_PATCHLEVEL__=1 -I/Users/zhangjunbo/Qt/5.15.17/macos/mkspecs/macx-clang -I/Users/zhangjunbo/Downloads/TAapp -I/Users/zhangjunbo/Qt/5.15.17/macos/lib/QtWidgets.framework/Headers -I/Users/zhangjunbo/Qt/5.15.17/macos/lib/QtGui.framework/Headers -I/Users/zhangjunbo/Qt/5.15.17/macos/lib/QtCore.framework/Headers -I. -I/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1 -I/Library/Developer/CommandLineTools/usr/lib/clang/15.0.0/include -I/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include -I/Library/Developer/CommandLineTools/usr/include -F/Users/zhangjunbo/Qt/5.15.17/macos/lib ../../citymanagewindow.h -o moc_citymanagewindow.cpp
 
@@ -954,9 +938,10 @@ moc_mainwindow.cpp: ../../mainwindow.h \
 		../../citymanagewindow.h \
 		../../../../Qt/5.15.17/macos/lib/QtCore.framework/Headers/QString \
 		../../../../Qt/5.15.17/macos/lib/QtCore.framework/Headers/qstring.h \
-		../../citybox.h \
-		../../searchwindow.h \
-		../../addwindow.h \
+		../../../../Qt/5.15.17/macos/lib/QtCore.framework/Headers/QList \
+		../../../../Qt/5.15.17/macos/lib/QtCore.framework/Headers/qlist.h \
+		../../../../Qt/5.15.17/macos/lib/QtWidgets.framework/Headers/QButtonGroup \
+		../../../../Qt/5.15.17/macos/lib/QtWidgets.framework/Headers/qbuttongroup.h \
 		../../accountmanagewindow.h \
 		../../../../Qt/5.15.17/macos/bin/moc
 	/Users/zhangjunbo/Qt/5.15.17/macos/bin/moc $(DEFINES) -D__APPLE__ -D__GNUC__=4 -D__APPLE_CC__ -D__cplusplus=199711L -D__APPLE_CC__=6000 -D__clang__ -D__clang_major__=15 -D__clang_minor__=0 -D__clang_patchlevel__=0 -D__GNUC__=4 -D__GNUC_MINOR__=2 -D__GNUC_PATCHLEVEL__=1 -I/Users/zhangjunbo/Qt/5.15.17/macos/mkspecs/macx-clang -I/Users/zhangjunbo/Downloads/TAapp -I/Users/zhangjunbo/Qt/5.15.17/macos/lib/QtWidgets.framework/Headers -I/Users/zhangjunbo/Qt/5.15.17/macos/lib/QtGui.framework/Headers -I/Users/zhangjunbo/Qt/5.15.17/macos/lib/QtCore.framework/Headers -I. -I/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1 -I/Library/Developer/CommandLineTools/usr/lib/clang/15.0.0/include -I/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include -I/Library/Developer/CommandLineTools/usr/include -F/Users/zhangjunbo/Qt/5.15.17/macos/lib ../../mainwindow.h -o moc_mainwindow.cpp
@@ -966,12 +951,6 @@ moc_mapwindow.cpp: ../../mapwindow.h \
 		../../../../Qt/5.15.17/macos/lib/QtWidgets.framework/Headers/qwidget.h \
 		../../../../Qt/5.15.17/macos/bin/moc
 	/Users/zhangjunbo/Qt/5.15.17/macos/bin/moc $(DEFINES) -D__APPLE__ -D__GNUC__=4 -D__APPLE_CC__ -D__cplusplus=199711L -D__APPLE_CC__=6000 -D__clang__ -D__clang_major__=15 -D__clang_minor__=0 -D__clang_patchlevel__=0 -D__GNUC__=4 -D__GNUC_MINOR__=2 -D__GNUC_PATCHLEVEL__=1 -I/Users/zhangjunbo/Qt/5.15.17/macos/mkspecs/macx-clang -I/Users/zhangjunbo/Downloads/TAapp -I/Users/zhangjunbo/Qt/5.15.17/macos/lib/QtWidgets.framework/Headers -I/Users/zhangjunbo/Qt/5.15.17/macos/lib/QtGui.framework/Headers -I/Users/zhangjunbo/Qt/5.15.17/macos/lib/QtCore.framework/Headers -I. -I/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1 -I/Library/Developer/CommandLineTools/usr/lib/clang/15.0.0/include -I/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include -I/Library/Developer/CommandLineTools/usr/include -F/Users/zhangjunbo/Qt/5.15.17/macos/lib ../../mapwindow.h -o moc_mapwindow.cpp
-
-moc_searchwindow.cpp: ../../searchwindow.h \
-		../../../../Qt/5.15.17/macos/lib/QtWidgets.framework/Headers/QWidget \
-		../../../../Qt/5.15.17/macos/lib/QtWidgets.framework/Headers/qwidget.h \
-		../../../../Qt/5.15.17/macos/bin/moc
-	/Users/zhangjunbo/Qt/5.15.17/macos/bin/moc $(DEFINES) -D__APPLE__ -D__GNUC__=4 -D__APPLE_CC__ -D__cplusplus=199711L -D__APPLE_CC__=6000 -D__clang__ -D__clang_major__=15 -D__clang_minor__=0 -D__clang_patchlevel__=0 -D__GNUC__=4 -D__GNUC_MINOR__=2 -D__GNUC_PATCHLEVEL__=1 -I/Users/zhangjunbo/Qt/5.15.17/macos/mkspecs/macx-clang -I/Users/zhangjunbo/Downloads/TAapp -I/Users/zhangjunbo/Qt/5.15.17/macos/lib/QtWidgets.framework/Headers -I/Users/zhangjunbo/Qt/5.15.17/macos/lib/QtGui.framework/Headers -I/Users/zhangjunbo/Qt/5.15.17/macos/lib/QtCore.framework/Headers -I. -I/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1 -I/Library/Developer/CommandLineTools/usr/lib/clang/15.0.0/include -I/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include -I/Library/Developer/CommandLineTools/usr/include -F/Users/zhangjunbo/Qt/5.15.17/macos/lib ../../searchwindow.h -o moc_searchwindow.cpp
 
 moc_tripmanagewindow.cpp: ../../tripmanagewindow.h \
 		../../../../Qt/5.15.17/macos/lib/QtWidgets.framework/Headers/QWidget \
@@ -989,9 +968,9 @@ compiler_moc_objc_header_make_all:
 compiler_moc_objc_header_clean:
 compiler_moc_source_make_all:
 compiler_moc_source_clean:
-compiler_uic_make_all: ui_accountinfowindow.h ui_accountmanagewindow.h ui_addwindow.h ui_citybox.h ui_citymanagewindow.h ui_homewindow.h ui_loginwindow.h ui_mainwindow.h ui_mapwindow.h ui_searchwindow.h ui_tripmanagewindow.h ui_tripunit.h
+compiler_uic_make_all: ui_accountinfowindow.h ui_accountmanagewindow.h ui_childwindow.h ui_citymanagewindow.h ui_homewindow.h ui_loginwindow.h ui_mainwindow.h ui_mapwindow.h ui_tripmanagewindow.h ui_tripunit.h
 compiler_uic_clean:
-	-$(DEL_FILE) ui_accountinfowindow.h ui_accountmanagewindow.h ui_addwindow.h ui_citybox.h ui_citymanagewindow.h ui_homewindow.h ui_loginwindow.h ui_mainwindow.h ui_mapwindow.h ui_searchwindow.h ui_tripmanagewindow.h ui_tripunit.h
+	-$(DEL_FILE) ui_accountinfowindow.h ui_accountmanagewindow.h ui_childwindow.h ui_citymanagewindow.h ui_homewindow.h ui_loginwindow.h ui_mainwindow.h ui_mapwindow.h ui_tripmanagewindow.h ui_tripunit.h
 ui_accountinfowindow.h: ../../accountinfowindow.ui \
 		../../../../Qt/5.15.17/macos/bin/uic
 	/Users/zhangjunbo/Qt/5.15.17/macos/bin/uic ../../accountinfowindow.ui -o ui_accountinfowindow.h
@@ -1000,13 +979,9 @@ ui_accountmanagewindow.h: ../../accountmanagewindow.ui \
 		../../../../Qt/5.15.17/macos/bin/uic
 	/Users/zhangjunbo/Qt/5.15.17/macos/bin/uic ../../accountmanagewindow.ui -o ui_accountmanagewindow.h
 
-ui_addwindow.h: ../../addwindow.ui \
+ui_childwindow.h: ../../childwindow.ui \
 		../../../../Qt/5.15.17/macos/bin/uic
-	/Users/zhangjunbo/Qt/5.15.17/macos/bin/uic ../../addwindow.ui -o ui_addwindow.h
-
-ui_citybox.h: ../../citybox.ui \
-		../../../../Qt/5.15.17/macos/bin/uic
-	/Users/zhangjunbo/Qt/5.15.17/macos/bin/uic ../../citybox.ui -o ui_citybox.h
+	/Users/zhangjunbo/Qt/5.15.17/macos/bin/uic ../../childwindow.ui -o ui_childwindow.h
 
 ui_citymanagewindow.h: ../../citymanagewindow.ui \
 		../../../../Qt/5.15.17/macos/bin/uic
@@ -1027,10 +1002,6 @@ ui_mainwindow.h: ../../mainwindow.ui \
 ui_mapwindow.h: ../../mapwindow.ui \
 		../../../../Qt/5.15.17/macos/bin/uic
 	/Users/zhangjunbo/Qt/5.15.17/macos/bin/uic ../../mapwindow.ui -o ui_mapwindow.h
-
-ui_searchwindow.h: ../../searchwindow.ui \
-		../../../../Qt/5.15.17/macos/bin/uic
-	/Users/zhangjunbo/Qt/5.15.17/macos/bin/uic ../../searchwindow.ui -o ui_searchwindow.h
 
 ui_tripmanagewindow.h: ../../tripmanagewindow.ui \
 		../../../../Qt/5.15.17/macos/bin/uic
@@ -1064,34 +1035,27 @@ accountmanagewindow.o: ../../accountmanagewindow.cpp ../../accountmanagewindow.h
 		ui_accountmanagewindow.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o accountmanagewindow.o ../../accountmanagewindow.cpp
 
-addwindow.o: ../../addwindow.cpp ../../addwindow.h \
+childwindow.o: ../../childwindow.cpp ../../childwindow.h \
 		../../../../Qt/5.15.17/macos/lib/QtWidgets.framework/Headers/QWidget \
 		../../../../Qt/5.15.17/macos/lib/QtWidgets.framework/Headers/qwidget.h \
-		ui_addwindow.h
-	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o addwindow.o ../../addwindow.cpp
-
-citybox.o: ../../citybox.cpp ../../citybox.h \
-		../../../../Qt/5.15.17/macos/lib/QtWidgets.framework/Headers/QWidget \
-		../../../../Qt/5.15.17/macos/lib/QtWidgets.framework/Headers/qwidget.h \
-		ui_citybox.h
-	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o citybox.o ../../citybox.cpp
+		ui_childwindow.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o childwindow.o ../../childwindow.cpp
 
 citymanagewindow.o: ../../citymanagewindow.cpp ../../citymanagewindow.h \
 		../../../../Qt/5.15.17/macos/lib/QtWidgets.framework/Headers/QWidget \
 		../../../../Qt/5.15.17/macos/lib/QtWidgets.framework/Headers/qwidget.h \
 		../../../../Qt/5.15.17/macos/lib/QtCore.framework/Headers/QString \
 		../../../../Qt/5.15.17/macos/lib/QtCore.framework/Headers/qstring.h \
-		../../citybox.h \
-		../../searchwindow.h \
-		../../addwindow.h \
+		../../../../Qt/5.15.17/macos/lib/QtCore.framework/Headers/QList \
+		../../../../Qt/5.15.17/macos/lib/QtCore.framework/Headers/qlist.h \
+		../../../../Qt/5.15.17/macos/lib/QtWidgets.framework/Headers/QButtonGroup \
+		../../../../Qt/5.15.17/macos/lib/QtWidgets.framework/Headers/qbuttongroup.h \
 		ui_citymanagewindow.h \
-		ui_citybox.h \
-		ui_searchwindow.h \
-		ui_addwindow.h \
+		ui_childwindow1.h \
 		../../../../Qt/5.15.17/macos/lib/QtGui.framework/Headers/QPixmap \
 		../../../../Qt/5.15.17/macos/lib/QtGui.framework/Headers/qpixmap.h \
-		../../../../Qt/5.15.17/macos/lib/QtWidgets.framework/Headers/QCheckBox \
-		../../../../Qt/5.15.17/macos/lib/QtWidgets.framework/Headers/qcheckbox.h
+		../../../../Qt/5.15.17/macos/lib/QtGui.framework/Headers/QIcon \
+		../../../../Qt/5.15.17/macos/lib/QtGui.framework/Headers/qicon.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o citymanagewindow.o ../../citymanagewindow.cpp
 
 homewindow.o: ../../homewindow.cpp ../../homewindow.h \
@@ -1118,9 +1082,10 @@ main.o: ../../main.cpp ../../mainwindow.h \
 		../../citymanagewindow.h \
 		../../../../Qt/5.15.17/macos/lib/QtCore.framework/Headers/QString \
 		../../../../Qt/5.15.17/macos/lib/QtCore.framework/Headers/qstring.h \
-		../../citybox.h \
-		../../searchwindow.h \
-		../../addwindow.h \
+		../../../../Qt/5.15.17/macos/lib/QtCore.framework/Headers/QList \
+		../../../../Qt/5.15.17/macos/lib/QtCore.framework/Headers/qlist.h \
+		../../../../Qt/5.15.17/macos/lib/QtWidgets.framework/Headers/QButtonGroup \
+		../../../../Qt/5.15.17/macos/lib/QtWidgets.framework/Headers/qbuttongroup.h \
 		../../accountmanagewindow.h \
 		../../../../Qt/5.15.17/macos/lib/QtWidgets.framework/Headers/QApplication \
 		../../../../Qt/5.15.17/macos/lib/QtWidgets.framework/Headers/qapplication.h
@@ -1138,9 +1103,10 @@ mainwindow.o: ../../mainwindow.cpp ../../mainwindow.h \
 		../../citymanagewindow.h \
 		../../../../Qt/5.15.17/macos/lib/QtCore.framework/Headers/QString \
 		../../../../Qt/5.15.17/macos/lib/QtCore.framework/Headers/qstring.h \
-		../../citybox.h \
-		../../searchwindow.h \
-		../../addwindow.h \
+		../../../../Qt/5.15.17/macos/lib/QtCore.framework/Headers/QList \
+		../../../../Qt/5.15.17/macos/lib/QtCore.framework/Headers/qlist.h \
+		../../../../Qt/5.15.17/macos/lib/QtWidgets.framework/Headers/QButtonGroup \
+		../../../../Qt/5.15.17/macos/lib/QtWidgets.framework/Headers/qbuttongroup.h \
 		../../accountmanagewindow.h \
 		ui_mainwindow.h \
 		../../../../Qt/5.15.17/macos/lib/QtCore.framework/Headers/QSize \
@@ -1160,7 +1126,6 @@ mainwindow.o: ../../mainwindow.cpp ../../mainwindow.h \
 		../../../../Qt/5.15.17/macos/lib/QtWidgets.framework/Headers/qactiongroup.h \
 		../../../../Qt/5.15.17/macos/lib/QtWidgets.framework/Headers/qapplication.h \
 		../../../../Qt/5.15.17/macos/lib/QtWidgets.framework/Headers/qboxlayout.h \
-		../../../../Qt/5.15.17/macos/lib/QtWidgets.framework/Headers/qbuttongroup.h \
 		../../../../Qt/5.15.17/macos/lib/QtWidgets.framework/Headers/qcalendarwidget.h \
 		../../../../Qt/5.15.17/macos/lib/QtWidgets.framework/Headers/qcheckbox.h \
 		../../../../Qt/5.15.17/macos/lib/QtWidgets.framework/Headers/qcolordialog.h \
@@ -1282,12 +1247,6 @@ mapwindow.o: ../../mapwindow.cpp ../../mapwindow.h \
 		ui_mapwindow.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o mapwindow.o ../../mapwindow.cpp
 
-searchwindow.o: ../../searchwindow.cpp ../../searchwindow.h \
-		../../../../Qt/5.15.17/macos/lib/QtWidgets.framework/Headers/QWidget \
-		../../../../Qt/5.15.17/macos/lib/QtWidgets.framework/Headers/qwidget.h \
-		ui_searchwindow.h
-	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o searchwindow.o ../../searchwindow.cpp
-
 tripmanagewindow.o: ../../tripmanagewindow.cpp ../../tripmanagewindow.h \
 		../../../../Qt/5.15.17/macos/lib/QtWidgets.framework/Headers/QWidget \
 		../../../../Qt/5.15.17/macos/lib/QtWidgets.framework/Headers/qwidget.h \
@@ -1309,11 +1268,8 @@ moc_accountinfowindow.o: moc_accountinfowindow.cpp
 moc_accountmanagewindow.o: moc_accountmanagewindow.cpp 
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_accountmanagewindow.o moc_accountmanagewindow.cpp
 
-moc_addwindow.o: moc_addwindow.cpp 
-	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_addwindow.o moc_addwindow.cpp
-
-moc_citybox.o: moc_citybox.cpp 
-	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_citybox.o moc_citybox.cpp
+moc_childwindow.o: moc_childwindow.cpp 
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_childwindow.o moc_childwindow.cpp
 
 moc_citymanagewindow.o: moc_citymanagewindow.cpp 
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_citymanagewindow.o moc_citymanagewindow.cpp
@@ -1329,9 +1285,6 @@ moc_mainwindow.o: moc_mainwindow.cpp
 
 moc_mapwindow.o: moc_mapwindow.cpp 
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_mapwindow.o moc_mapwindow.cpp
-
-moc_searchwindow.o: moc_searchwindow.cpp 
-	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_searchwindow.o moc_searchwindow.cpp
 
 moc_tripmanagewindow.o: moc_tripmanagewindow.cpp 
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_tripmanagewindow.o moc_tripmanagewindow.cpp
