@@ -5,14 +5,16 @@
 #include <iostream>
 #include <vector>
 
-//{"stf": "Beijing", "arv": "Shanghai", "trip_type": 0, "dist": 10.4, "time": "01:03:03", "cost": 300 }
+//{"stf": "Beijing", "arv": "Shanghai", "type": 0, "dist": 10.4, "time": "01:03:03", "cost": 300 }
 
 using json = nlohmann::json;
 using std::to_string;
 
 struct Trip_ {
     std::string stfCity;
+    int stf_id;
     std::string arvCity;
+    int arv_id;
     int type;
     double dist;
     std::string time;//03:04:00
@@ -26,6 +28,8 @@ struct Trip_ {
         dist = t.dist;
         time = t.time.timeStr() + ":00";
         cost = t.cost;
+        stf_id = t.stfCity.sign;
+        arv_id = t.arvCity.sign;
     }
     operator Trip() {
         Trip t;
@@ -34,8 +38,10 @@ struct Trip_ {
         if (type == 1) t.type = RAIL;
         else t.type = AIR;
         t.dist = dist;
-        t.time = Time(std::stoi(time.substr(0, 2)), std::stoi(time.substr(3, 5)));
+        t.time = Time(std::stoi(time.substr(0, 2)), std::stoi(time.substr(3, 2)));
         t.cost = cost;
+        t.stfCity.sign = stf_id;
+        t.arvCity.sign = arv_id;
 
         return t;
     }
@@ -47,17 +53,34 @@ json tripsToJson(const std::vector<Trip>& ts) {
 
     for (const auto& trip : trips) {
         json tripJson;
-        tripJson["stfCity"] = trip.stfCity;
-        tripJson["arvCity"] = trip.arvCity;
+        tripJson["stf"] = trip.stfCity;
+        tripJson["arv"] = trip.arvCity;
         tripJson["cost"] = trip.cost;
         tripJson["dist"] = trip.dist;
         tripJson["time"] = trip.time;
         tripJson["trip_type"] = trip.type;
+        tripJson["stf_id"] = trip.stf_id;
+        tripJson["arv_id"] = trip.arv_id;
 
         j.push_back(tripJson);
     }
 
     return j;
+}
+
+json tripsToJson(const Trip& t_) {
+    Trip_ t(t_);
+    json tripJson;
+    tripJson["stf"] = t.stfCity;
+    tripJson["arv"] = t.arvCity;
+    tripJson["cost"] = t.cost;
+    tripJson["dist"] = t.dist;
+    tripJson["time"] = t.time;
+    tripJson["trip_type"] = t.type;
+    tripJson["stf_id"] = t.stf_id;
+    tripJson["arv_id"] = t.arv_id;
+
+    return tripJson;
 }
 
 std::vector<Trip> jsonToTrips(const json& j) {
@@ -66,17 +89,53 @@ std::vector<Trip> jsonToTrips(const json& j) {
     // ���� JSON ����
     for (const auto& tripJson : j) {
         Trip_ trip;
-        trip.stfCity = tripJson.at("stfCity").get<std::string>();
-        trip.arvCity = tripJson.at("arvCity").get<std::string>();
+        trip.stfCity = tripJson.at("stf").get<std::string>();
+        trip.arvCity = tripJson.at("arv").get<std::string>();
         trip.cost = tripJson.at("cost").get<int>();
         trip.dist = tripJson.at("dist").get<double>();
         trip.time = tripJson.at("time").get<std::string>();
-        trip.type = tripJson.at("type").get<int>();
+        trip.type = tripJson.at("trip_type").get<int>();
+        trip.stf_id = tripJson.at("stf_id").get<int>();
+        trip.arv_id = tripJson.at("arv_id").get<int>();
 
         trips.push_back(trip);
     }
 
     return trips;
+}
+
+// 将单个 City 对象转换为 JSON
+json cityToJson(const City& c) {
+    json j;
+    j["name"] = c.name;
+    j["id"] = c.sign;
+    return j;
+}
+
+// 将 JSON 转换为 City 对象
+City jsonToCity(const json& j) {
+    City c;
+    c.name = j.at("name").get<string>();
+    c.sign = j.at("id").get<int>();
+    return c;
+}
+
+// 将 vector<City> 转换为 JSON 数组
+json citiesToJson(const vector<City>& cities) {
+    json j;
+    for (const auto& city : cities) {
+        j.push_back(cityToJson(city));
+    }
+    return j;
+}
+
+// 将 JSON 数组转换为 vector<City>
+vector<City> jsonToCities(const json& j) {
+    vector<City> cities;
+    for (const auto& element : j) {
+        cities.push_back(jsonToCity(element));
+    }
+    return cities;
 }
 
 /*
