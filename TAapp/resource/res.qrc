@@ -1,0 +1,22 @@
+<RCC>
+    <qresource prefix="/images">
+        <file>airtype.png</file>
+        <file>citypic.png</file>
+        <file>plane.png</file>
+        <file>railtype.png</file>
+        <file>train.png</file>
+        <file>trippic.png</file>
+        <file>userpic.png</file>
+        <file>apppic.png</file>
+        <file>back.png</file>
+        <file>user.png</file>
+        <file>home.png</file>
+        <file>change.png</file>
+        <file>search.png</file>
+        <file>add.png</file>
+        <file>cancel.png</file>
+        <file>delete.png</file>
+        <file>close.png</file>
+        <file>edit.png</file>
+    </qresource>
+</RCC>

@@ -1,0 +1,853 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>CityManageWindow</class>
+ <widget class="QWidget" name="CityManageWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>1006</width>
+    <height>778</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Form</string>
+  </property>
+  <property name="styleSheet">
+   <string notr="true">color: rgb(0, 0, 0);</string>
+  </property>
+  <widget class="QPushButton" name="searchBtn">
+   <property name="geometry">
+    <rect>
+     <x>190</x>
+     <y>200</y>
+     <width>120</width>
+     <height>36</height>
+    </rect>
+   </property>
+   <property name="sizePolicy">
+    <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+     <horstretch>0</horstretch>
+     <verstretch>0</verstretch>
+    </sizepolicy>
+   </property>
+   <property name="minimumSize">
+    <size>
+     <width>120</width>
+     <height>36</height>
+    </size>
+   </property>
+   <property name="maximumSize">
+    <size>
+     <width>120</width>
+     <height>36</height>
+    </size>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>20</pointsize>
+     <bold>true</bold>
+    </font>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QPushButton{   
+    border-top-left-radius: 15px;               /*圆角*/
+	border-bottom-left-radius: 15px;  
+	border-top-right-radius: 2px;  
+	border-bottom-right-radius: 2px;  
+	background-color: rgba(128, 128, 128, 20);
+}
+
+/* 鼠标悬停 */
+QPushButton:hover{
+	background-color: rgba(0, 0, 0,20);
+}
+
+QPushButton:pressed{
+	background-color: rgb(255, 180, 200);
+}</string>
+   </property>
+   <property name="text">
+    <string>查询</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="preBtn">
+   <property name="geometry">
+    <rect>
+     <x>82</x>
+     <y>621</y>
+     <width>120</width>
+     <height>36</height>
+    </rect>
+   </property>
+   <property name="sizePolicy">
+    <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+     <horstretch>0</horstretch>
+     <verstretch>0</verstretch>
+    </sizepolicy>
+   </property>
+   <property name="minimumSize">
+    <size>
+     <width>120</width>
+     <height>36</height>
+    </size>
+   </property>
+   <property name="maximumSize">
+    <size>
+     <width>120</width>
+     <height>36</height>
+    </size>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>20</pointsize>
+     <bold>true</bold>
+    </font>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QPushButton{   
+    border-top-left-radius: 15px;               /*圆角*/
+	border-bottom-left-radius: 15px;  
+	border-top-right-radius: 2px;  
+	border-bottom-right-radius: 2px;  
+	background-color: rgba(128, 128, 128, 20);
+}
+
+/* 鼠标悬停 */
+QPushButton:hover{
+	background-color: rgba(0, 0, 0,20);
+}
+
+QPushButton:pressed{
+	background-color: rgb(255, 180, 200);
+}</string>
+   </property>
+   <property name="text">
+    <string>上一页</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="nextBtn">
+   <property name="geometry">
+    <rect>
+     <x>202</x>
+     <y>621</y>
+     <width>120</width>
+     <height>36</height>
+    </rect>
+   </property>
+   <property name="sizePolicy">
+    <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+     <horstretch>0</horstretch>
+     <verstretch>0</verstretch>
+    </sizepolicy>
+   </property>
+   <property name="minimumSize">
+    <size>
+     <width>120</width>
+     <height>36</height>
+    </size>
+   </property>
+   <property name="maximumSize">
+    <size>
+     <width>120</width>
+     <height>36</height>
+    </size>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>20</pointsize>
+     <bold>true</bold>
+    </font>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QPushButton{   
+    border-top-left-radius: 2px;               /*圆角*/
+	border-bottom-left-radius: 2px;  
+	border-top-right-radius: 2px;  
+	border-bottom-right-radius: 2px;  
+	background-color: rgba(128, 128, 128, 20);
+}
+
+/* 鼠标悬停 */
+QPushButton:hover{
+	background-color: rgba(0, 0, 0,20);
+}
+
+QPushButton:pressed{
+	background-color: rgb(255, 180, 200);
+}</string>
+   </property>
+   <property name="text">
+    <string>下一页</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="firstBtn">
+   <property name="geometry">
+    <rect>
+     <x>322</x>
+     <y>621</y>
+     <width>120</width>
+     <height>36</height>
+    </rect>
+   </property>
+   <property name="sizePolicy">
+    <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+     <horstretch>0</horstretch>
+     <verstretch>0</verstretch>
+    </sizepolicy>
+   </property>
+   <property name="minimumSize">
+    <size>
+     <width>120</width>
+     <height>36</height>
+    </size>
+   </property>
+   <property name="maximumSize">
+    <size>
+     <width>120</width>
+     <height>36</height>
+    </size>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>20</pointsize>
+     <bold>true</bold>
+    </font>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QPushButton{   
+    border-top-left-radius: 2px;               /*圆角*/
+	border-bottom-left-radius: 2px;  
+	border-top-right-radius: 2px;  
+	border-bottom-right-radius: 2px;  
+	background-color: rgba(128, 128, 128, 20);
+}
+
+/* 鼠标悬停 */
+QPushButton:hover{
+	background-color: rgba(0, 0, 0,20);
+}
+
+QPushButton:pressed{
+	background-color: rgb(255, 180, 200);
+}</string>
+   </property>
+   <property name="text">
+    <string>首页</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="lastBtn">
+   <property name="geometry">
+    <rect>
+     <x>442</x>
+     <y>621</y>
+     <width>120</width>
+     <height>36</height>
+    </rect>
+   </property>
+   <property name="sizePolicy">
+    <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+     <horstretch>0</horstretch>
+     <verstretch>0</verstretch>
+    </sizepolicy>
+   </property>
+   <property name="minimumSize">
+    <size>
+     <width>120</width>
+     <height>36</height>
+    </size>
+   </property>
+   <property name="maximumSize">
+    <size>
+     <width>120</width>
+     <height>36</height>
+    </size>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>20</pointsize>
+     <bold>true</bold>
+    </font>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QPushButton{   
+    border-top-left-radius: 2px;               /*圆角*/
+	border-bottom-left-radius: 2px;  
+	border-top-right-radius: 15px;  
+	border-bottom-right-radius: 15px;  
+	background-color: rgba(128, 128, 128, 20);
+}
+
+/* 鼠标悬停 */
+QPushButton:hover{
+	background-color: rgba(0, 0, 0,20);
+}
+
+QPushButton:pressed{
+	background-color: rgb(255, 180, 200);
+}</string>
+   </property>
+   <property name="text">
+    <string>尾页</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="addBtn">
+   <property name="geometry">
+    <rect>
+     <x>400</x>
+     <y>190</y>
+     <width>120</width>
+     <height>36</height>
+    </rect>
+   </property>
+   <property name="sizePolicy">
+    <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+     <horstretch>0</horstretch>
+     <verstretch>0</verstretch>
+    </sizepolicy>
+   </property>
+   <property name="minimumSize">
+    <size>
+     <width>120</width>
+     <height>36</height>
+    </size>
+   </property>
+   <property name="maximumSize">
+    <size>
+     <width>120</width>
+     <height>36</height>
+    </size>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>20</pointsize>
+     <bold>true</bold>
+    </font>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QPushButton{   
+    border-top-left-radius: 2px;               /*圆角*/
+	border-top-right-radius: 2px;  
+	border-bottom-right-radius: 2px;  
+	border-bottom-left-radius: 2px;  
+	background-color: rgba(128, 128, 128, 20);
+}
+/* 鼠标悬停 */
+QPushButton:hover{
+	background-color: rgba(0, 0, 0,20);
+}
+
+QPushButton:pressed{	
+	background-color: rgb(255, 180, 200);
+}
+</string>
+   </property>
+   <property name="text">
+    <string>增加</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="changeBtn">
+   <property name="geometry">
+    <rect>
+     <x>440</x>
+     <y>260</y>
+     <width>120</width>
+     <height>36</height>
+    </rect>
+   </property>
+   <property name="sizePolicy">
+    <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+     <horstretch>0</horstretch>
+     <verstretch>0</verstretch>
+    </sizepolicy>
+   </property>
+   <property name="minimumSize">
+    <size>
+     <width>120</width>
+     <height>36</height>
+    </size>
+   </property>
+   <property name="maximumSize">
+    <size>
+     <width>120</width>
+     <height>36</height>
+    </size>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>20</pointsize>
+     <bold>true</bold>
+    </font>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QPushButton{   
+     border-bottom-right-radius: 15px;  
+	border-bottom-left-radius: 2px;  
+	border-top-right-radius: 15px;  
+	border-top-left-radius: 2px;  
+	background-color: rgba(128, 128, 128, 20);
+}
+
+/* 鼠标悬停 */
+QPushButton:hover{
+	background-color: rgba(0, 0, 0,20);
+}
+
+QPushButton:pressed,QPushButton:checked{
+	background-color: rgb(255, 180, 200);
+	border-bottom-right-radius: 2px;  
+	border-bottom-left-radius: 2px;  
+	border-top-right-radius: 2px;  
+	border-top-left-radius: 2px;  
+}</string>
+   </property>
+   <property name="text">
+    <string>编辑</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="backBtn">
+   <property name="geometry">
+    <rect>
+     <x>560</x>
+     <y>370</y>
+     <width>120</width>
+     <height>36</height>
+    </rect>
+   </property>
+   <property name="sizePolicy">
+    <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+     <horstretch>0</horstretch>
+     <verstretch>0</verstretch>
+    </sizepolicy>
+   </property>
+   <property name="minimumSize">
+    <size>
+     <width>120</width>
+     <height>36</height>
+    </size>
+   </property>
+   <property name="maximumSize">
+    <size>
+     <width>120</width>
+     <height>36</height>
+    </size>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>20</pointsize>
+     <bold>true</bold>
+    </font>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QPushButton{   
+    border-top-left-radius: 2px;               /*圆角*/
+	border-bottom-left-radius: 2px;  
+	border-top-right-radius: 15px;  
+	border-bottom-right-radius: 15px;  
+	background-color: rgba(128, 128, 128, 20);
+}
+
+/* 鼠标悬停 */
+QPushButton:hover{
+	background-color: rgba(0, 0, 0,20);
+}
+
+QPushButton:pressed{
+	background-color: rgb(255, 180, 200);
+}</string>
+   </property>
+   <property name="text">
+    <string>取消</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="backtoBtn">
+   <property name="geometry">
+    <rect>
+     <x>82</x>
+     <y>621</y>
+     <width>120</width>
+     <height>36</height>
+    </rect>
+   </property>
+   <property name="sizePolicy">
+    <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+     <horstretch>0</horstretch>
+     <verstretch>0</verstretch>
+    </sizepolicy>
+   </property>
+   <property name="minimumSize">
+    <size>
+     <width>120</width>
+     <height>36</height>
+    </size>
+   </property>
+   <property name="maximumSize">
+    <size>
+     <width>120</width>
+     <height>36</height>
+    </size>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>20</pointsize>
+     <bold>true</bold>
+    </font>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QPushButton{   
+     border-bottom-right-radius: 15px;  
+	border-bottom-left-radius: 15px;  
+	border-top-right-radius: 15px;  
+	border-top-left-radius: 15px;  
+	background-color: rgba(128, 128, 128, 20);
+}
+
+/* 鼠标悬停 */
+QPushButton:hover{
+	background-color: rgba(0, 0, 0,20);
+}
+
+QPushButton:pressed,QPushButton:checked{
+	background-color: rgb(255, 180, 200);
+	border-bottom-right-radius: 2px;  
+	border-bottom-left-radius: 2px;  
+	border-top-right-radius: 2px;  
+	border-top-left-radius: 2px;  
+}</string>
+   </property>
+   <property name="text">
+    <string>返回</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="deleteBtn">
+   <property name="geometry">
+    <rect>
+     <x>580</x>
+     <y>200</y>
+     <width>120</width>
+     <height>36</height>
+    </rect>
+   </property>
+   <property name="sizePolicy">
+    <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+     <horstretch>0</horstretch>
+     <verstretch>0</verstretch>
+    </sizepolicy>
+   </property>
+   <property name="minimumSize">
+    <size>
+     <width>120</width>
+     <height>36</height>
+    </size>
+   </property>
+   <property name="maximumSize">
+    <size>
+     <width>120</width>
+     <height>36</height>
+    </size>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>20</pointsize>
+     <bold>true</bold>
+    </font>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QPushButton{   
+    border-bottom-right-radius: 2px;  
+	border-bottom-left-radius: 2px;  
+	border-top-right-radius: 2px;  
+	border-top-left-radius: 2px;  
+	background-color: rgba(128, 128, 128, 20);
+}
+
+/* 鼠标悬停 */
+QPushButton:hover{
+	background-color: rgba(0, 0, 0,20);
+}
+
+QPushButton:pressed{
+	
+	background-color: rgb(255, 180, 200);
+}</string>
+   </property>
+   <property name="text">
+    <string>删除</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="searchPic">
+   <property name="geometry">
+    <rect>
+     <x>110</x>
+     <y>450</y>
+     <width>20</width>
+     <height>20</height>
+    </rect>
+   </property>
+   <property name="sizePolicy">
+    <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+     <horstretch>0</horstretch>
+     <verstretch>0</verstretch>
+    </sizepolicy>
+   </property>
+   <property name="text">
+    <string>TextLabel</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="addPic">
+   <property name="geometry">
+    <rect>
+     <x>230</x>
+     <y>480</y>
+     <width>20</width>
+     <height>20</height>
+    </rect>
+   </property>
+   <property name="sizePolicy">
+    <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+     <horstretch>0</horstretch>
+     <verstretch>0</verstretch>
+    </sizepolicy>
+   </property>
+   <property name="text">
+    <string>TextLabel</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="deletePic">
+   <property name="geometry">
+    <rect>
+     <x>430</x>
+     <y>530</y>
+     <width>20</width>
+     <height>20</height>
+    </rect>
+   </property>
+   <property name="sizePolicy">
+    <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+     <horstretch>0</horstretch>
+     <verstretch>0</verstretch>
+    </sizepolicy>
+   </property>
+   <property name="text">
+    <string>TextLabel</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="cancelPic">
+   <property name="geometry">
+    <rect>
+     <x>390</x>
+     <y>500</y>
+     <width>20</width>
+     <height>20</height>
+    </rect>
+   </property>
+   <property name="sizePolicy">
+    <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+     <horstretch>0</horstretch>
+     <verstretch>0</verstretch>
+    </sizepolicy>
+   </property>
+   <property name="text">
+    <string>TextLabel</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="changePic">
+   <property name="geometry">
+    <rect>
+     <x>370</x>
+     <y>450</y>
+     <width>20</width>
+     <height>20</height>
+    </rect>
+   </property>
+   <property name="sizePolicy">
+    <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+     <horstretch>0</horstretch>
+     <verstretch>0</verstretch>
+    </sizepolicy>
+   </property>
+   <property name="text">
+    <string>TextLabel</string>
+   </property>
+  </widget>
+  <widget class="QWidget" name="tipWidget" native="true">
+   <property name="geometry">
+    <rect>
+     <x>140</x>
+     <y>210</y>
+     <width>600</width>
+     <height>175</height>
+    </rect>
+   </property>
+   <property name="sizePolicy">
+    <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+     <horstretch>0</horstretch>
+     <verstretch>0</verstretch>
+    </sizepolicy>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">color: rgb(0, 0, 0);
+background-color: rgb(202, 204, 204);</string>
+   </property>
+   <widget class="QLabel" name="label">
+    <property name="geometry">
+     <rect>
+      <x>0</x>
+      <y>40</y>
+      <width>600</width>
+      <height>135</height>
+     </rect>
+    </property>
+    <property name="sizePolicy">
+     <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+      <horstretch>0</horstretch>
+      <verstretch>0</verstretch>
+     </sizepolicy>
+    </property>
+    <property name="minimumSize">
+     <size>
+      <width>600</width>
+      <height>135</height>
+     </size>
+    </property>
+    <property name="maximumSize">
+     <size>
+      <width>150</width>
+      <height>135</height>
+     </size>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>40</pointsize>
+      <bold>true</bold>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: rgb(221, 223, 223);</string>
+    </property>
+    <property name="text">
+     <string>                   该城市已经存在</string>
+    </property>
+   </widget>
+   <widget class="QToolButton" name="closeBtn">
+    <property name="geometry">
+     <rect>
+      <x>570</x>
+      <y>10</y>
+      <width>25</width>
+      <height>25</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QToolButton{
+ border-top: 3px outset transparent;          /*边框全透明*/
+	border-bottom: 3px outset transparent;
+	border-right: 3px outset transparent;
+	border-left: 3px outset transparent;  
+    min-width: 0px;                            /* 控件最小宽度 */
+    min-height: 0px;
+    border-radius: 50px;               /*圆角*/
+	background-color: rgb(202, 204, 204);
+}</string>
+    </property>
+    <property name="text">
+     <string>...</string>
+    </property>
+   </widget>
+  </widget>
+  <widget class="QPushButton" name="editBtn">
+   <property name="geometry">
+    <rect>
+     <x>320</x>
+     <y>70</y>
+     <width>120</width>
+     <height>36</height>
+    </rect>
+   </property>
+   <property name="sizePolicy">
+    <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+     <horstretch>0</horstretch>
+     <verstretch>0</verstretch>
+    </sizepolicy>
+   </property>
+   <property name="minimumSize">
+    <size>
+     <width>120</width>
+     <height>36</height>
+    </size>
+   </property>
+   <property name="maximumSize">
+    <size>
+     <width>120</width>
+     <height>36</height>
+    </size>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>20</pointsize>
+     <bold>true</bold>
+    </font>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QPushButton{   
+    border-top-left-radius: 2px;               /*圆角*/
+	border-top-right-radius: 2px;  
+	border-bottom-right-radius: 2px;  
+	border-bottom-left-radius: 2px;  
+	background-color: rgba(128, 128, 128, 20);
+}
+/* 鼠标悬停 */
+QPushButton:hover{
+	background-color: rgba(0, 0, 0,20);
+}
+
+QPushButton:pressed{	
+	background-color: rgb(255, 180, 200);
+}
+</string>
+   </property>
+   <property name="text">
+    <string>修改</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="editPic">
+   <property name="geometry">
+    <rect>
+     <x>160</x>
+     <y>130</y>
+     <width>20</width>
+     <height>20</height>
+    </rect>
+   </property>
+   <property name="sizePolicy">
+    <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+     <horstretch>0</horstretch>
+     <verstretch>0</verstretch>
+    </sizepolicy>
+   </property>
+   <property name="text">
+    <string>TextLabel</string>
+   </property>
+  </widget>
+  <zorder>searchBtn</zorder>
+  <zorder>preBtn</zorder>
+  <zorder>nextBtn</zorder>
+  <zorder>firstBtn</zorder>
+  <zorder>lastBtn</zorder>
+  <zorder>changeBtn</zorder>
+  <zorder>backBtn</zorder>
+  <zorder>backtoBtn</zorder>
+  <zorder>deleteBtn</zorder>
+  <zorder>searchPic</zorder>
+  <zorder>addPic</zorder>
+  <zorder>deletePic</zorder>
+  <zorder>cancelPic</zorder>
+  <zorder>changePic</zorder>
+  <zorder>tipWidget</zorder>
+  <zorder>addBtn</zorder>
+  <zorder>editBtn</zorder>
+  <zorder>editPic</zorder>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>
