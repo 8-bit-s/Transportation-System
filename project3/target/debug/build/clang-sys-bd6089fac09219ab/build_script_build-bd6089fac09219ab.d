@@ -1,9 +1,0 @@
-C:\Users\Zhao\Desktop\College Third Term\shujia\ruanjianxitongshijian\Transportation-System\project3\target\debug\build\clang-sys-bd6089fac09219ab\build_script_build-bd6089fac09219ab.exe: C:\Users\Zhao\.cargo\registry\src\index.crates.io-6f17d22bba15001f\clang-sys-1.8.1\build.rs C:\Users\Zhao\.cargo\registry\src\index.crates.io-6f17d22bba15001f\clang-sys-1.8.1\build\macros.rs C:\Users\Zhao\.cargo\registry\src\index.crates.io-6f17d22bba15001f\clang-sys-1.8.1\build\common.rs C:\Users\Zhao\.cargo\registry\src\index.crates.io-6f17d22bba15001f\clang-sys-1.8.1\build\dynamic.rs C:\Users\Zhao\.cargo\registry\src\index.crates.io-6f17d22bba15001f\clang-sys-1.8.1\build\static.rs
-
-C:\Users\Zhao\Desktop\College Third Term\shujia\ruanjianxitongshijian\Transportation-System\project3\target\debug\build\clang-sys-bd6089fac09219ab\build_script_build-bd6089fac09219ab.d: C:\Users\Zhao\.cargo\registry\src\index.crates.io-6f17d22bba15001f\clang-sys-1.8.1\build.rs C:\Users\Zhao\.cargo\registry\src\index.crates.io-6f17d22bba15001f\clang-sys-1.8.1\build\macros.rs C:\Users\Zhao\.cargo\registry\src\index.crates.io-6f17d22bba15001f\clang-sys-1.8.1\build\common.rs C:\Users\Zhao\.cargo\registry\src\index.crates.io-6f17d22bba15001f\clang-sys-1.8.1\build\dynamic.rs C:\Users\Zhao\.cargo\registry\src\index.crates.io-6f17d22bba15001f\clang-sys-1.8.1\build\static.rs
-
-C:\Users\Zhao\.cargo\registry\src\index.crates.io-6f17d22bba15001f\clang-sys-1.8.1\build.rs:
-C:\Users\Zhao\.cargo\registry\src\index.crates.io-6f17d22bba15001f\clang-sys-1.8.1\build\macros.rs:
-C:\Users\Zhao\.cargo\registry\src\index.crates.io-6f17d22bba15001f\clang-sys-1.8.1\build\common.rs:
-C:\Users\Zhao\.cargo\registry\src\index.crates.io-6f17d22bba15001f\clang-sys-1.8.1\build\dynamic.rs:
-C:\Users\Zhao\.cargo\registry\src\index.crates.io-6f17d22bba15001f\clang-sys-1.8.1\build\static.rs:
