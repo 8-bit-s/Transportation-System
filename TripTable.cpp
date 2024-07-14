@@ -8,6 +8,7 @@ City::City(const string& name):name(name) {sign = -1;}
 City::operator int() const{
     return sign;
 }
+City::City(const string& name, int sign): name(name), sign(sign) {}
 
 std::ostream& City::operator<<(std::ostream& os) const{
     os << name;

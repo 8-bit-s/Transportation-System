@@ -13,7 +13,7 @@ pub async fn health_check_handler(
     *visit_count+=1;
     HttpResponse::Ok().json(&response)//Ok()?
 }
-//localhost:3000/index;stf=Shenzhen;arv=Wuhan;type=rail;dist=1.1;time=2-30;cost=3400
+//GET localhost:3000/index?stf=Shenzhen&arv=Wuhan&type=rail&dist=1.1&time=2-30&cost=3400
 pub async fn new_trip(
     new_trip: web::Json<Trip>,
     app_state: web::Data<AppState>
@@ -27,7 +27,7 @@ pub async fn search_trip(
     params: web::Query<HashMap<String, String>>,
     app_state: web::Data<AppState>
 ) -> HttpResponse {
-    let map = vec!["stf", "arv", "type", "dist", "time", "cost"];
+    let map = vec!["stfCity", "arvCity", "type", "dist", "time", "cost"];
     let mut args = HashMap::new();
     for s in map {
         args.insert(s, params.get(s));

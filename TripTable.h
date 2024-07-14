@@ -17,6 +17,7 @@ class City {
 public:
     City();
     City(const string& name);
+    City(const string& name, int sign);
     string name;
     int sign;
     operator int() const;
