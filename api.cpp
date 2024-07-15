@@ -6,10 +6,10 @@
 
 using namespace std;
 using httplib::Client;
+extern Client client;
 
-// ·¢ËÍHTTP POSTÇëÇó
+// ï¿½ï¿½ï¿½ï¿½HTTP POSTï¿½ï¿½ï¿½ï¿½
 std::string new_trip(const Trip& new_t) {
-    Client client("localhost", 3000);
 
     auto json_data = tripsToJson(new_t);
     httplib::Headers headers{
@@ -29,9 +29,8 @@ std::string new_trip(const Trip& new_t) {
     }
 }
 
-// ·¢ËÍHTTP DELETEÇëÇó
+// ï¿½ï¿½ï¿½ï¿½HTTP DELETEï¿½ï¿½ï¿½ï¿½
 std::string delete_trip(const Trip& target_t) {
-    Client client("localhost", 3000);
     vector<Trip> vec = { target_t };
 
     auto json_data = tripsToJson(vec);
@@ -46,9 +45,8 @@ std::string delete_trip(const Trip& target_t) {
     }
 }
 
-// ·¢ËÍHTTP PUTÇëÇó
+// ï¿½ï¿½ï¿½ï¿½HTTP PUTï¿½ï¿½ï¿½ï¿½
 std::string update_trip(const Trip& new_t) {
-    Client client("localhost", 3000);
     vector<Trip> vec = { new_t };
 
     auto json_data = tripsToJson(vec);
@@ -64,30 +62,36 @@ std::string update_trip(const Trip& new_t) {
 }
 
 vector<Trip> get_trip(vector<string> stfs, vector<string> arvs, vector<int> types) {
-    string stf = stfs[0];
-    string arv = arvs[0];
+    string stf;
+    string arv;
     int type = types[0];
-    Client client("localhost", 3000);
 
-    // ¹¹½¨query×Ö·û´®
+    // ï¿½ï¿½ï¿½ï¿½queryï¿½Ö·ï¿½ï¿½ï¿½
     std::string query;
     if (!stf.empty()) {
-        query += "stfCity=" + stf;
+        query += "stfCity=";
+        for (const auto& it : stfs) {
+            query += it + ",";
+        }
+        query.pop_back();
     }
     if (!arv.empty()) {
-        if (!query.empty()) query += "&";
-        query += "arvCity=" + arv;
+        query += "arvCity=";
+        for (const auto& it : arvs) {
+            query += it + ",";
+        }
+        query.pop_back();
     }
     if (type != -1) {
         if (!query.empty()) query += "&";
         query += "type=" + std::to_string(type);
     }
 
-    // ·¢ËÍGETÇëÇó
+    // ï¿½ï¿½ï¿½ï¿½GETï¿½ï¿½ï¿½ï¿½
     auto res = client.Get(("/trip/?" + query).c_str());
 
-    // ´¦ÀíÏìÓ¦
-    
+    // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ó¦
+
     std::vector<Trip> trips;
     /*
     if(res && res->status == 200) {
@@ -107,7 +111,7 @@ vector<Trip> get_trip(vector<string> stfs, vector<string> arvs, vector<int> type
     else {
         std::cerr << "Error: " << (res ? res->status : -1) << std::endl;
     }
-    
+
     return trips;
 }
 
@@ -115,11 +119,10 @@ vector<Trip> get_trip(vector<string> stfs, vector<string> arvs, vector<int> type
 
 //**************************************************************************************
 
-// ·¢ËÍ HTTP POST ÇëÇó´´½¨ÐÂµÄ³ÇÊÐ
+// ï¿½ï¿½ï¿½ï¿½ HTTP POST ï¿½ï¿½ï¿½ó´´½ï¿½ï¿½ÂµÄ³ï¿½ï¿½ï¿½
 string new_city(const City& new_t) {
-    httplib::Client cli("localhost", 3000);
     nlohmann::json j = cityToJson(new_t);
-    auto res = cli.Post("/city/", j.dump(), "application/json");
+    auto res = client.Post("/city/", j.dump(), "application/json");
     if (res && res->status == 200) {
         return res->body;
     }
@@ -128,11 +131,10 @@ string new_city(const City& new_t) {
     }
 }
 
-// ·¢ËÍ HTTP DELETE ÇëÇóÉ¾³ýÖ¸¶¨µÄ³ÇÊÐ
+// ï¿½ï¿½ï¿½ï¿½ HTTP DELETE ï¿½ï¿½ï¿½ï¿½É¾ï¿½ï¿½Ö¸ï¿½ï¿½ï¿½Ä³ï¿½ï¿½ï¿½
 string delete_city(const City& target_t) {
-    httplib::Client cli("localhost", 3000);
     nlohmann::json j = cityToJson(target_t);
-    auto res = cli.Delete("/city/", j.dump(), "application/json");
+    auto res = client.Delete("/city/", j.dump(), "application/json");
     if (res && res->status == 200) {
         return res->body;
     }
@@ -141,10 +143,9 @@ string delete_city(const City& target_t) {
     }
 }
 
-// ·¢ËÍ HTTP GET ÇëÇó»ñÈ¡ËùÓÐ³ÇÊÐÁÐ±í
+// ï¿½ï¿½ï¿½ï¿½ HTTP GET ï¿½ï¿½ï¿½ï¿½ï¿½È¡ï¿½ï¿½ï¿½Ð³ï¿½ï¿½ï¿½ï¿½Ð±ï¿½
 vector<City> get_city() {
-    httplib::Client cli("localhost", 3000);
-    auto res = cli.Get("/city/");
+    auto res = client.Get("/city/");
     vector<City> cities;
     if (res && res->status == 200) {
         nlohmann::json j = nlohmann::json::parse(res->body);
@@ -155,11 +156,10 @@ vector<City> get_city() {
     return cities;
 }
 
-// ·¢ËÍ HTTP PUT ÇëÇó¸üÐÂ³ÇÊÐÐÅÏ¢
+// ï¿½ï¿½ï¿½ï¿½ HTTP PUT ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Â³ï¿½ï¿½ï¿½ï¿½ï¿½Ï¢
 string update_city(const City& new_t) {
-    httplib::Client cli("localhost", 3000);
     nlohmann::json j = cityToJson(new_t);
-    auto res = cli.Put("/city/", j.dump(), "application/json");
+    auto res = client.Put("/city/", j.dump(), "application/json");
     if (res && res->status == 200) {
         return res->body;
     }
