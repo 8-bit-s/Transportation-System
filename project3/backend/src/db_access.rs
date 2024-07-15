@@ -3,14 +3,19 @@ use mysql::*;
 use mysql::prelude::*;
 use std::collections::HashMap;
 
-pub async fn search_trip_db(pool: &Pool, params: &HashMap<&str, Option<&String>>) -> Vec<Trip> {
+//stfCity=Wuhan,Shanghai&arvCity=Shenzhen,Beijing&
+//WHERE ( stfCity = 'Wuhan' or stfCity = 'Shanghai' ) and () and ()
+pub async fn search_trip_db(pool: &Pool, params: &HashMap<&str, Option<&String>>) -> Vec<Trip> {//may have bugs, newly edited
     let mut con = pool.get_conn().unwrap();
     let mut qry = String::from("SELECT * FROM trip_test WHERE ");
     for i in params {
         if i.1.is_some() {
-            let qry_sent = format!("{}='{}' AND ", i.0, i.1.unwrap());
-
-
+            let mut qry_sent = format!("{} IN (", i.0);
+            let values: Vec<&str> = i.1.unwrap().split(",").collect();
+            for j in values {
+                qry_sent += &format!("'{}',", j);
+            }
+            qry_sent.pop();qry_sent+=") AND ";
             //println!("{qry_sent}");//?????? format string must be a string literal --if you use like println!(&qry_sent) and so on
 
 
@@ -65,6 +70,7 @@ pub async fn delete_trip_db(pool: &Pool, nt: Trip) {
     con.exec_drop(stmt, params! {
         "id" => nt.id
     }).unwrap();
+    let _ = reset_trip_id(pool).await;
 }
 
 pub async fn update_trip_db(pool: &Pool, nt: Trip) {
@@ -83,6 +89,20 @@ pub async fn update_trip_db(pool: &Pool, nt: Trip) {
             "m" => nt.stf_id,
             "n" => nt.arv_id,
         }).unwrap();
+}
+
+pub async fn reset_trip_id(pool: &Pool) -> Result<()>{
+    let mut con = pool.get_conn().unwrap();
+    con.query_drop(
+        r"SET @auto_id = -1;"
+    )?;
+    con.query_drop(
+        r"UPDATE trip_test SET id = (@auto_id := @auto_id+1);"
+    )?;
+    con.query_drop(
+        r"ALTER TABLE trip_test AUTO_INCREMENT = 1;"
+    )?;
+    Ok(())
 }
 
 /*****************************************************8 */
@@ -117,6 +137,7 @@ pub async fn delete_city_db(pool: &Pool, nt: City) {
     con.exec_drop(stmt, params! {
         "id" => nt.id
     }).unwrap();
+    let _ = reset_city_id(pool).await;
 }
 
 pub async fn update_city_db(pool: &Pool, nt: City) {
@@ -128,4 +149,18 @@ pub async fn update_city_db(pool: &Pool, nt: City) {
             "a" => nt.name,
             "id" => nt.id,
         }).unwrap();
+}
+
+pub async fn reset_city_id(pool: &Pool) -> Result<()>{
+    let mut con = pool.get_conn().unwrap();
+    con.query_drop(
+        r"SET @auto_id = -1;"
+    )?;
+    con.query_drop(
+        r"UPDATE city_test SET id = (@auto_id := @auto_id+1);"
+    )?;
+    con.query_drop(
+        r"ALTER TABLE city_test AUTO_INCREMENT = 1;"
+    )?;
+    Ok(())
 }
