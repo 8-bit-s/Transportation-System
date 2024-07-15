@@ -6,9 +6,11 @@
 #include "Graph.h"
 #include "httplib.h"
 #include "api.h"
+#include <sstream>
 
 using namespace std;
 
+httplib::Client client("localhost", 3000);//"127.0.0.1:3000"
 int readFile(const string& path, Menu& m);
 
 vector<Trip> vecs;
@@ -41,12 +43,19 @@ void menu() {
         string timeStr;
         int type;
         cin >> choice;
+        vector<string> stfs;
+        stringstream sstm;
 
         switch (choice) {
         case 1:
             cout << "Enter starting city (or leave blank): ";
             cin.ignore(); // clear input buffer
             getline(cin, stf);
+            sstm = stringstream(stf);
+            while (getline(sstm, arv, ',')) {
+                //cout << arv << " " << endl;
+                stfs.push_back(arv);
+            }
 
             cout << "Enter arriving city (or leave blank): ";
             getline(cin, arv);
@@ -54,7 +63,7 @@ void menu() {
             cout << "Enter trip type: ";
             cin >> type;
 
-            vecs = get_trip(vector<string>{stf}, vector<string>{arv}, vector<int>{type});
+            vecs = get_trip(stfs, vector<string>{arv}, vector<int>{type});
             if (vecs.empty()) break;
             for (const auto& it : vecs) {
                 cout << it.stfCity.name << " -> " << it.arvCity.name << endl;
@@ -62,8 +71,6 @@ void menu() {
             break;
 
         case 2:
-        case 3:
-        case 4:
             cout << "Enter starting city: ";
             //cin.ignore(); // clear input buffer
             cin >> stf; cout << endl << stf << endl;
@@ -88,21 +95,14 @@ void menu() {
             cout << "Enter cost: ";
             cin >> t.cost;
 
-            // Now you can use t to perform operations based on choice
-            if (choice == 2) {
-                cout << new_trip(t) << endl;
-                // POST operation
-                // Perform POST action with Trip t
-            }
-            else if (choice == 3) {
-                // PUT operation
-                // Perform PUT action with Trip t
-            }
-            else {
-                // DELETE operation
-                // Perform DELETE action with Trip t
-            }
+            cout << new_trip(t) << endl;
             break;
+
+        case 3:
+            cout << "enter Trip id:";
+            cin >> temp;
+
+        case 4:
 
         case 5:
             cout << "Exiting..." << endl;
@@ -182,16 +182,11 @@ void menu2() {
 }
 
 int main() {
-    httplib::Client cli("localhost", 3000);//"127.0.0.1:3000"
+    
     httplib::Headers headers{
         { "Content-Type", "application/json" }
         //,{ "a", "b"}
     };
-
-    City a(string("Wuhan")); a.sign = 1;
-    City b(string("Beijing")); b.sign = 2;
-    cvec.push_back(a);
-    cvec.push_back(b);
 
     while (1) {
         cout << "choose:\n1 -- City\n2 -- Trip\n3 -- Exit\n";

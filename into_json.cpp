@@ -11,6 +11,7 @@ using json = nlohmann::json;
 using std::to_string;
 
 struct Trip_ {
+    int id;//primary key
     std::string stfCity;
     int stf_id;
     std::string arvCity;
@@ -30,9 +31,11 @@ struct Trip_ {
         cost = t.cost;
         stf_id = t.stfCity.sign;
         arv_id = t.arvCity.sign;
+        id = t.id;
     }
     operator Trip() {
         Trip t;
+        t.id = id;
         t.stfCity = stfCity;
         t.arvCity = arvCity;
         if (type == 1) t.type = RAIL;
@@ -61,6 +64,7 @@ json tripsToJson(const std::vector<Trip>& ts) {
         tripJson["trip_type"] = trip.type;
         tripJson["stf_id"] = trip.stf_id;
         tripJson["arv_id"] = trip.arv_id;
+        tripJson["id"] = trip.id;
 
         j.push_back(tripJson);
     }
@@ -79,6 +83,7 @@ json tripsToJson(const Trip& t_) {
     tripJson["trip_type"] = t.type;
     tripJson["stf_id"] = t.stf_id;
     tripJson["arv_id"] = t.arv_id;
+    tripJson["id"] = t.id;
 
     return tripJson;
 }
@@ -97,6 +102,7 @@ std::vector<Trip> jsonToTrips(const json& j) {
         trip.type = tripJson.at("trip_type").get<int>();
         trip.stf_id = tripJson.at("stf_id").get<int>();
         trip.arv_id = tripJson.at("arv_id").get<int>();
+        trip.id = tripJson.at("id").get<int>();
 
         trips.push_back(trip);
     }
