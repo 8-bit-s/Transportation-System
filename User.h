@@ -20,7 +20,7 @@ public:
 	* 输入：始发站(City),终到站(City),旅行方式(int)，决策依据(int)
 	* 返回值：最优路线信息
 	*/
-	string bestRoute(const City& src, const City& arv, int tripType, int method);
+	void bestRoute(vector<Trip> trips, const City& src, const City& arv, int tripType, int method);
 };
 
 

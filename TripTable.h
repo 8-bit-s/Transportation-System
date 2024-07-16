@@ -6,6 +6,9 @@
 using std::string;
 using std::vector;
 
+const int MAXCITY = 20;
+const int MEAN = 2;
+
 //使用枚举类型
 enum Triptype{AIR,RAIL};
 

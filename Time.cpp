@@ -98,7 +98,7 @@ int Time::legal(int h, int m) noexcept{//一系列检测合法的函数
     return legalHour(h) && legalMin(m);
 }
 int Time::legalHour(int hour) noexcept{
-    if (hour >= 24) return 0;
+    //if (hour >= 24) return 0;
     if (hour < 0) return 0;
     return 1;
 }

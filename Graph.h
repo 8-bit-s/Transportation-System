@@ -4,7 +4,7 @@
 class Node
 {
 public:
-    TripNode** Sdata;//SourceData
+    vector<Trip> Sdata;//SourceData
     int data;
     Node();
     void choose(int tripType, int method);
@@ -20,9 +20,9 @@ public:
 
     //~Graph();
 
-    int init(Menu& m);
+    int init(vector<Trip>& trips);
 
-    void Dijkstra(int, int, int, int);
+    vector<Trip> Dijkstra(vector<Trip>trips,int, int, int, int);
 
     void printTrips(const City& stf, const City& arv);//测试用函数
 private:
