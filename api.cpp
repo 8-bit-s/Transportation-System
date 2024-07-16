@@ -8,7 +8,7 @@ using namespace std;
 using httplib::Client;
 extern Client client;
 
-// ·¢ËÍHTTP POSTÇëÇó
+// ï¿½ï¿½ï¿½ï¿½HTTP POSTï¿½ï¿½ï¿½ï¿½
 std::string new_trip(const Trip& new_t) {
 
     auto json_data = tripsToJson(new_t);
@@ -29,7 +29,7 @@ std::string new_trip(const Trip& new_t) {
     }
 }
 
-// ·¢ËÍHTTP DELETEÇëÇó
+// ï¿½ï¿½ï¿½ï¿½HTTP DELETEï¿½ï¿½ï¿½ï¿½
 std::string delete_trip(const Trip& target_t) {
     vector<Trip> vec = { target_t };
 
@@ -45,7 +45,7 @@ std::string delete_trip(const Trip& target_t) {
     }
 }
 
-// ·¢ËÍHTTP PUTÇëÇó
+// ï¿½ï¿½ï¿½ï¿½HTTP PUTï¿½ï¿½ï¿½ï¿½
 std::string update_trip(const Trip& new_t) {
     vector<Trip> vec = { new_t };
 
@@ -62,9 +62,7 @@ std::string update_trip(const Trip& new_t) {
 }
 
 vector<Trip> get_trip(vector<string> stfs, vector<string> arvs, vector<int> types) {
-    int type = types[0];
-
-    // ¹¹½¨query×Ö·û´®
+    // ï¿½ï¿½ï¿½ï¿½queryï¿½Ö·ï¿½ï¿½ï¿½
     std::string query;
     if (!stfs.empty()) {
         if (!query.empty()) query += "&";
@@ -82,15 +80,19 @@ vector<Trip> get_trip(vector<string> stfs, vector<string> arvs, vector<int> type
         }
         query.pop_back();
     }
-    if (type != -1) {
+    if (!types.empty()) {
         if (!query.empty()) query += "&";
-        query += "type=" + std::to_string(type);
+        query += "type=";
+        for (const auto& it : types) {
+            query += to_string(it) + ",";
+        }
+        query.pop_back();
     }
     cout << endl << query << endl;
-    // ·¢ËÍGETÇëÇó
+    // ï¿½ï¿½ï¿½ï¿½GETï¿½ï¿½ï¿½ï¿½
     auto res = client.Get(("/trip/?" + query).c_str());
 
-    // ´¦ÀíÏìÓ¦
+    // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ó¦
 
     std::vector<Trip> trips;
     /*
@@ -119,7 +121,7 @@ vector<Trip> get_trip(vector<string> stfs, vector<string> arvs, vector<int> type
 
 //**************************************************************************************
 
-// ·¢ËÍ HTTP POST ÇëÇó´´½¨ÐÂµÄ³ÇÊÐ
+// ï¿½ï¿½ï¿½ï¿½ HTTP POST ï¿½ï¿½ï¿½ó´´½ï¿½ï¿½ÂµÄ³ï¿½ï¿½ï¿½
 string new_city(const City& new_t) {
     nlohmann::json j = cityToJson(new_t);
     auto res = client.Post("/city/", j.dump(), "application/json");
@@ -131,7 +133,7 @@ string new_city(const City& new_t) {
     }
 }
 
-// ·¢ËÍ HTTP DELETE ÇëÇóÉ¾³ýÖ¸¶¨µÄ³ÇÊÐ
+// ï¿½ï¿½ï¿½ï¿½ HTTP DELETE ï¿½ï¿½ï¿½ï¿½É¾ï¿½ï¿½Ö¸ï¿½ï¿½ï¿½Ä³ï¿½ï¿½ï¿½
 string delete_city(const City& target_t) {
     nlohmann::json j = cityToJson(target_t);
     auto res = client.Delete("/city/", j.dump(), "application/json");
@@ -143,7 +145,7 @@ string delete_city(const City& target_t) {
     }
 }
 
-// ·¢ËÍ HTTP GET ÇëÇó»ñÈ¡ËùÓÐ³ÇÊÐÁÐ±í
+// ï¿½ï¿½ï¿½ï¿½ HTTP GET ï¿½ï¿½ï¿½ï¿½ï¿½È¡ï¿½ï¿½ï¿½Ð³ï¿½ï¿½ï¿½ï¿½Ð±ï¿½
 vector<City> get_city() {
     auto res = client.Get("/city/");
     vector<City> cities;
@@ -156,7 +158,7 @@ vector<City> get_city() {
     return cities;
 }
 
-// ·¢ËÍ HTTP PUT ÇëÇó¸üÐÂ³ÇÊÐÐÅÏ¢
+// ï¿½ï¿½ï¿½ï¿½ HTTP PUT ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Â³ï¿½ï¿½ï¿½ï¿½ï¿½Ï¢
 string update_city(const City& new_t) {
     nlohmann::json j = cityToJson(new_t);
     auto res = client.Put("/city/", j.dump(), "application/json");
