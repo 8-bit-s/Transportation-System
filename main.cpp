@@ -3,7 +3,6 @@
 #include <string>
 #include "exceptions.h"
 #include "TripTable.h"
-#include "Graph.h"
 #include "httplib.h"
 #include "api.h"
 #include <sstream>
@@ -11,7 +10,6 @@
 using namespace std;
 
 httplib::Client client("localhost", 3000);//"127.0.0.1:3000"
-int readFile(const string& path, Menu& m);
 
 vector<Trip> vecs;
 vector<City> cvec;
@@ -43,7 +41,7 @@ void menu() {
         string timeStr;
         int type;
         cin >> choice;
-        vector<string> stfs;
+        vector<string> stfs, arvs;
         stringstream sstm;
 
         switch (choice) {
@@ -51,19 +49,27 @@ void menu() {
             cout << "Enter starting city (or leave blank): ";
             cin.ignore(); // clear input buffer
             getline(cin, stf);
-            sstm = stringstream(stf);
-            while (getline(sstm, arv, ',')) {
-                //cout << arv << " " << endl;
-                stfs.push_back(arv);
+            if (!stf.empty()) {
+                sstm = stringstream(stf);
+                while (getline(sstm, arv, ',')) {
+                    //cout << arv << " " << endl;
+                    stfs.push_back(arv);
+                }
             }
 
             cout << "Enter arriving city (or leave blank): ";
             getline(cin, arv);
+            if (!arv.empty()) {
+                sstm = stringstream(arv);
+                while (getline(sstm, stf, ',')) {
+                    stfs.push_back(stf);
+                }
+            }
 
             cout << "Enter trip type: ";
             cin >> type;
 
-            vecs = get_trip(stfs, vector<string>{arv}, vector<int>{type});
+            vecs = get_trip(stfs, arvs, vector<int>{type});
             if (vecs.empty()) break;
             for (const auto& it : vecs) {
                 cout << it.stfCity.name << " -> " << it.arvCity.name << endl;

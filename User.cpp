@@ -1,9 +1,8 @@
 #include"User.h"
 #include"Time.h"
 #include"Graph.h"
-#include"exceptions.h"
 #include"TripTable.h"
-using namespace std;
+using std::string;
 
 bool isCity(string name1) {
 	int len = name1.length();
@@ -64,4 +63,8 @@ bool isMinute(string minute1) {
 	return 0;
 }
 
-
+void User::bestRoute(vector<Trip> trips, const City& src, const City& arv, int tripType, int method) {
+	Graph g;
+	g.init(trips);
+	g.Dijkstra(src, arv, tripType, method);
+}
