@@ -1,7 +1,8 @@
 # ✈🛫 交通信息管理系统 🚄🚅
 *武汉大学-软件系统实践-弘毅班-第7小组仓库*  
 
-*✨技术栈✨  > Qt+Actix+MySQL<br>
+##
+*✨技术栈✨<br>> Qt+Actix+MySQL<br><br>
 *🍭语言🛠<br>
 > C++ & Rust & MySQL
 
