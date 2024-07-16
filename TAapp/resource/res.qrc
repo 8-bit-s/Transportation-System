@@ -1,0 +1,25 @@
+<RCC>
+    <qresource prefix="/images">
+        <file>airtype.png</file>
+        <file>citypic.png</file>
+        <file>plane.png</file>
+        <file>railtype.png</file>
+        <file>train.png</file>
+        <file>trippic.png</file>
+        <file>userpic.png</file>
+        <file>apppic.png</file>
+        <file>back.png</file>
+        <file>user.png</file>
+        <file>home.png</file>
+        <file>expand.png</file>
+        <file>expand_big.png</file>
+        <file>arrow.png</file>
+        <file>double_arrow.png</file>
+        <file>black_cross.png</file>
+        <file>red_cross.png</file>
+        <file>checked.png</file>
+        <file>unchecked.png</file>
+        <file>half_checked.png</file>
+        <file>long_arrow.png</file>
+    </qresource>
+</RCC>

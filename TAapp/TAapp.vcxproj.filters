@@ -1,0 +1,296 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Form Files">
+      <UniqueIdentifier>{99349809-55BA-4b9d-BF79-8FDBB0286EB3}</UniqueIdentifier>
+      <Extensions>ui</Extensions>
+      <ParseFiles>false</ParseFiles>
+    </Filter>
+    <Filter Include="Form Files">
+      <UniqueIdentifier>{99349809-55BA-4b9d-BF79-8FDBB0286EB3}</UniqueIdentifier>
+      <Extensions>ui</Extensions>
+      <ParseFiles>false</ParseFiles>
+    </Filter>
+    <Filter Include="Generated Files">
+      <UniqueIdentifier>{71ED8ED8-ACB9-4CE9-BBE1-E00B30144E11}</UniqueIdentifier>
+      <Extensions>cpp;c;cxx;moc;h;def;odl;idl;res;</Extensions>
+    </Filter>
+    <Filter Include="Generated Files">
+      <UniqueIdentifier>{71ED8ED8-ACB9-4CE9-BBE1-E00B30144E11}</UniqueIdentifier>
+      <Extensions>cpp;c;cxx;moc;h;def;odl;idl;res;</Extensions>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hpp;hxx;hm;inl;inc;xsd</Extensions>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hpp;hxx;hm;inl;inc;xsd</Extensions>
+    </Filter>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{D9D6E242-F8AF-46E4-B9FD-80ECBC20BA3E}</UniqueIdentifier>
+      <Extensions>qrc;*</Extensions>
+      <ParseFiles>false</ParseFiles>
+    </Filter>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{D9D6E242-F8AF-46E4-B9FD-80ECBC20BA3E}</UniqueIdentifier>
+      <Extensions>qrc;*</Extensions>
+      <ParseFiles>false</ParseFiles>
+    </Filter>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="Graph.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="TimeClass.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="TripTable.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="User.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="accountinfowindow.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="accountmanagewindow.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="addtripwindow.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="api.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="childwindow.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="citymanagewindow.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="homewindow.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="into_json.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="loginwindow.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="main.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="mainwindow.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="mapwindow.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="tag.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="tripmanagewindow.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="tripunit.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="tripwindow.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Graph.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="TimeClass.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="TripTable.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="User.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <QtMoc Include="accountinfowindow.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="accountmanagewindow.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="addtripwindow.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <ClInclude Include="api.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <QtMoc Include="childwindow.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="citymanagewindow.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <ClInclude Include="exceptions.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <QtMoc Include="homewindow.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <ClInclude Include="httplib.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="into_json.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="json.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <QtMoc Include="loginwindow.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="mainwindow.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="mapwindow.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="tag.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="tripmanagewindow.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="tripunit.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="tripwindow.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+  </ItemGroup>
+  <ItemGroup>
+    <CustomBuild Include="debug\moc_predefs.h.cbt">
+      <Filter>Generated Files</Filter>
+    </CustomBuild>
+    <CustomBuild Include="release\moc_predefs.h.cbt">
+      <Filter>Generated Files</Filter>
+    </CustomBuild>
+  </ItemGroup>
+  <ItemGroup>
+    <QtUic Include="accountinfowindow.ui">
+      <Filter>Form Files</Filter>
+    </QtUic>
+    <QtUic Include="accountmanagewindow.ui">
+      <Filter>Form Files</Filter>
+    </QtUic>
+    <QtUic Include="addtripwindow.ui">
+      <Filter>Form Files</Filter>
+    </QtUic>
+    <QtUic Include="childwindow.ui">
+      <Filter>Form Files</Filter>
+    </QtUic>
+    <QtUic Include="citymanagewindow.ui">
+      <Filter>Form Files</Filter>
+    </QtUic>
+    <QtUic Include="homewindow.ui">
+      <Filter>Form Files</Filter>
+    </QtUic>
+    <QtUic Include="loginwindow.ui">
+      <Filter>Form Files</Filter>
+    </QtUic>
+    <QtUic Include="mainwindow.ui">
+      <Filter>Form Files</Filter>
+    </QtUic>
+    <QtUic Include="mapwindow.ui">
+      <Filter>Form Files</Filter>
+    </QtUic>
+    <QtUic Include="tag.ui">
+      <Filter>Form Files</Filter>
+    </QtUic>
+    <QtUic Include="tripmanagewindow.ui">
+      <Filter>Form Files</Filter>
+    </QtUic>
+    <QtUic Include="tripunit.ui">
+      <Filter>Form Files</Filter>
+    </QtUic>
+    <QtUic Include="tripwindow.ui">
+      <Filter>Form Files</Filter>
+    </QtUic>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="resource\airtype.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="resource\apppic.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="resource\arrow.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="resource\back.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="resource\black_cross.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="resource\checked.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="resource\citypic.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="resource\double_arrow.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="resource\expand.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="resource\expand_big.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="resource\half_checked.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="resource\home.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="resource\long_arrow.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="resource\plane.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="resource\railtype.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="resource\red_cross.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <QtRcc Include="resource\res.qrc">
+      <Filter>Resource Files</Filter>
+    </QtRcc>
+    <None Include="resource\train.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="resource\trippic.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="resource\unchecked.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="resource\user.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="resource\userpic.png">
+      <Filter>Resource Files</Filter>
+    </None>
+  </ItemGroup>
+</Project>

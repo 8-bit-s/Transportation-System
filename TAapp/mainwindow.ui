@@ -1,0 +1,481 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MainWindow</class>
+ <widget class="QMainWindow" name="MainWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>1200</width>
+    <height>800</height>
+   </rect>
+  </property>
+  <property name="sizePolicy">
+   <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+    <horstretch>0</horstretch>
+    <verstretch>0</verstretch>
+   </sizepolicy>
+  </property>
+  <property name="maximumSize">
+   <size>
+    <width>1200</width>
+    <height>800</height>
+   </size>
+  </property>
+  <property name="windowTitle">
+   <string>MainWindow</string>
+  </property>
+  <property name="toolButtonStyle">
+   <enum>Qt::ToolButtonTextBesideIcon</enum>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <property name="sizePolicy">
+    <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+     <horstretch>0</horstretch>
+     <verstretch>0</verstretch>
+    </sizepolicy>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">#centralwidget {
+	 background: qlineargradient(x1:0, y1:0, x2:0, y2:1, stop:0 rgb(255,245,250), stop:1 rgb(255,255,255)); 
+}</string>
+   </property>
+   <widget class="QWidget" name="widget" native="true">
+    <property name="geometry">
+     <rect>
+      <x>0</x>
+      <y>0</y>
+      <width>170</width>
+      <height>800</height>
+     </rect>
+    </property>
+    <property name="sizePolicy">
+     <sizepolicy hsizetype="Preferred" vsizetype="Expanding">
+      <horstretch>0</horstretch>
+      <verstretch>0</verstretch>
+     </sizepolicy>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QWidget{
+	background-color: rgba(128, 128, 128, 20);
+}</string>
+    </property>
+    <widget class="QLabel" name="appPic">
+     <property name="geometry">
+      <rect>
+       <x>0</x>
+       <y>20</y>
+       <width>50</width>
+       <height>40</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">background-color:rgba(255,255,255,0)</string>
+     </property>
+     <property name="text">
+      <string>TextLabel</string>
+     </property>
+    </widget>
+    <widget class="QLabel" name="appName">
+     <property name="geometry">
+      <rect>
+       <x>40</x>
+       <y>50</y>
+       <width>120</width>
+       <height>40</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>幼圆</family>
+       <pointsize>15</pointsize>
+      </font>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">background-color:rgba(255,255,255,0)</string>
+     </property>
+     <property name="text">
+      <string>交通查询系统</string>
+     </property>
+    </widget>
+    <widget class="QToolButton" name="tripButton">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>180</y>
+       <width>150</width>
+       <height>60</height>
+      </rect>
+     </property>
+     <property name="sizePolicy">
+      <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+       <horstretch>0</horstretch>
+       <verstretch>0</verstretch>
+      </sizepolicy>
+     </property>
+     <property name="font">
+      <font>
+       <family>黑体</family>
+       <pointsize>13</pointsize>
+      </font>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">QToolButton{   
+    border-top: 3px outset transparent;          /*边框全透明*/
+	border-bottom: 3px outset transparent;
+	border-right: 3px outset transparent;
+	border-left: 3px outset transparent;  
+    min-width: 0px;                            /* 控件最小宽度 */
+    min-height: 0px;
+    border-radius: 15px;               /*圆角*/
+	background-color: rgba(0, 0, 0,0);
+}
+
+/* 鼠标悬停 */
+QToolButton:hover{
+	background-color: rgba(0, 0, 0,20);
+}
+
+QToolButton:pressed,QToolButton:checked{
+	
+	background-color: rgba(255, 180, 180,140);
+}
+</string>
+     </property>
+     <property name="text">
+      <string> trip管理</string>
+     </property>
+     <property name="icon">
+      <iconset resource="resource/res.qrc">
+       <normaloff>:/images/trippic.png</normaloff>:/images/trippic.png</iconset>
+     </property>
+     <property name="iconSize">
+      <size>
+       <width>40</width>
+       <height>40</height>
+      </size>
+     </property>
+     <property name="checkable">
+      <bool>true</bool>
+     </property>
+     <property name="autoExclusive">
+      <bool>true</bool>
+     </property>
+     <property name="toolButtonStyle">
+      <enum>Qt::ToolButtonTextBesideIcon</enum>
+     </property>
+    </widget>
+    <widget class="QToolButton" name="cityButton">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>250</y>
+       <width>150</width>
+       <height>60</height>
+      </rect>
+     </property>
+     <property name="sizePolicy">
+      <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+       <horstretch>0</horstretch>
+       <verstretch>0</verstretch>
+      </sizepolicy>
+     </property>
+     <property name="font">
+      <font>
+       <family>黑体</family>
+       <pointsize>13</pointsize>
+      </font>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">QToolButton{   
+    border-top: 3px outset transparent;          /*边框全透明*/
+	border-bottom: 3px outset transparent;
+	border-right: 3px outset transparent;
+	border-left: 3px outset transparent;  
+    min-width: 0px;                            /* 控件最小宽度 */
+    min-height: 0px;
+    border-radius: 15px;               /*圆角*/
+	background-color: rgba(0, 0, 0,0);
+}
+
+/* 鼠标悬停 */
+QToolButton:hover{
+	background-color: rgba(0, 0, 0,20);
+}
+
+QToolButton:pressed,QToolButton:checked{
+	
+	background-color: rgba(255, 180, 180,140);
+}
+</string>
+     </property>
+     <property name="text">
+      <string> city管理</string>
+     </property>
+     <property name="icon">
+      <iconset resource="resource/res.qrc">
+       <normaloff>:/images/citypic.png</normaloff>:/images/citypic.png</iconset>
+     </property>
+     <property name="iconSize">
+      <size>
+       <width>42</width>
+       <height>42</height>
+      </size>
+     </property>
+     <property name="checkable">
+      <bool>true</bool>
+     </property>
+     <property name="autoExclusive">
+      <bool>true</bool>
+     </property>
+     <property name="toolButtonStyle">
+      <enum>Qt::ToolButtonTextBesideIcon</enum>
+     </property>
+    </widget>
+    <widget class="QToolButton" name="accountButton">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>320</y>
+       <width>150</width>
+       <height>60</height>
+      </rect>
+     </property>
+     <property name="sizePolicy">
+      <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+       <horstretch>0</horstretch>
+       <verstretch>0</verstretch>
+      </sizepolicy>
+     </property>
+     <property name="font">
+      <font>
+       <family>黑体</family>
+       <pointsize>13</pointsize>
+      </font>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">QToolButton{   
+    border-top: 3px outset transparent;          /*边框全透明*/
+	border-bottom: 3px outset transparent;
+	border-right: 3px outset transparent;
+	border-left: 3px outset transparent;  
+    min-width: 0px;                            /* 控件最小宽度 */
+    min-height: 0px;
+    border-radius: 15px;               /*圆角*/
+	background-color: rgba(0, 0, 0,0);
+}
+
+/* 鼠标悬停 */
+QToolButton:hover{
+	background-color: rgba(0, 0, 0,20);
+}
+
+QToolButton:pressed,QToolButton:checked{
+	
+	background-color: rgba(255, 180, 180,140);
+}
+</string>
+     </property>
+     <property name="text">
+      <string> 账户管理</string>
+     </property>
+     <property name="icon">
+      <iconset resource="resource/res.qrc">
+       <normaloff>:/images/userpic.png</normaloff>:/images/userpic.png</iconset>
+     </property>
+     <property name="iconSize">
+      <size>
+       <width>40</width>
+       <height>40</height>
+      </size>
+     </property>
+     <property name="checkable">
+      <bool>true</bool>
+     </property>
+     <property name="autoExclusive">
+      <bool>true</bool>
+     </property>
+     <property name="toolButtonStyle">
+      <enum>Qt::ToolButtonTextBesideIcon</enum>
+     </property>
+    </widget>
+    <widget class="QToolButton" name="homeButton">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>110</y>
+       <width>150</width>
+       <height>60</height>
+      </rect>
+     </property>
+     <property name="sizePolicy">
+      <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+       <horstretch>0</horstretch>
+       <verstretch>0</verstretch>
+      </sizepolicy>
+     </property>
+     <property name="font">
+      <font>
+       <family>黑体</family>
+       <pointsize>13</pointsize>
+      </font>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">QToolButton{   
+    border-top: 3px outset transparent;          /*边框全透明*/
+	border-bottom: 3px outset transparent;
+	border-right: 3px outset transparent;
+	border-left: 3px outset transparent;  
+    min-width: 0px;                            /* 控件最小宽度 */
+    min-height: 0px;
+    border-radius: 15px;               /*圆角*/
+	background-color: rgba(0, 0, 0,0);
+}
+
+/* 鼠标悬停 */
+QToolButton:hover{
+	background-color: rgba(0, 0, 0,20);
+}
+
+QToolButton:pressed,QToolButton:checked{
+	
+	background-color: rgba(255, 180, 200,140);
+}
+</string>
+     </property>
+     <property name="text">
+      <string>   首页</string>
+     </property>
+     <property name="icon">
+      <iconset resource="resource/res.qrc">
+       <normaloff>:/images/home.png</normaloff>:/images/home.png</iconset>
+     </property>
+     <property name="iconSize">
+      <size>
+       <width>40</width>
+       <height>40</height>
+      </size>
+     </property>
+     <property name="checkable">
+      <bool>true</bool>
+     </property>
+     <property name="autoExclusive">
+      <bool>true</bool>
+     </property>
+     <property name="toolButtonStyle">
+      <enum>Qt::ToolButtonTextBesideIcon</enum>
+     </property>
+    </widget>
+   </widget>
+   <widget class="QWidget" name="widget_2" native="true">
+    <property name="geometry">
+     <rect>
+      <x>170</x>
+      <y>0</y>
+      <width>1030</width>
+      <height>70</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">
+QWidget { 
+	background-color: rgba(128,128,128,0)	;
+}
+</string>
+    </property>
+    <widget class="QPushButton" name="loginButton">
+     <property name="geometry">
+      <rect>
+       <x>660</x>
+       <y>20</y>
+       <width>211</width>
+       <height>40</height>
+      </rect>
+     </property>
+     <property name="sizePolicy">
+      <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
+       <horstretch>0</horstretch>
+       <verstretch>0</verstretch>
+      </sizepolicy>
+     </property>
+     <property name="font">
+      <font>
+       <family>黑体</family>
+       <pointsize>12</pointsize>
+       <bold>false</bold>
+      </font>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">QPushButton{
+	border-top: 3px outset transparent;          /*边框全透明*/
+	border-bottom: 3px outset transparent;
+	border-right: 3px outset transparent;
+	border-left: 3px outset transparent;  
+    border-radius: 10px;               /*圆角*/
+	background-color: rgba(255, 255, 255, 0);
+
+}
+
+QPushButton:hover {font-weight: bold;}
+</string>
+     </property>
+     <property name="text">
+      <string> 请登录</string>
+     </property>
+     <property name="icon">
+      <iconset resource="resource/res.qrc">
+       <normaloff>:/images/user.png</normaloff>:/images/user.png</iconset>
+     </property>
+     <property name="iconSize">
+      <size>
+       <width>30</width>
+       <height>30</height>
+      </size>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="backButton">
+     <property name="geometry">
+      <rect>
+       <x>40</x>
+       <y>20</y>
+       <width>40</width>
+       <height>40</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">QPushButton{   
+	border-top: 1px  solid rgb(200,200,200);
+	border-bottom: 1px solid rgb(200,200,200);
+	border-right: 1px solid rgb(200,200,200); 
+	border-left: 1px solid rgb(200,200,200);  
+    border-radius: 10px;               /*圆角*/
+	background-color: rgba(255, 255, 255,0);
+}
+
+/* 鼠标悬停 */
+QPushButton:hover{
+	background-color: rgba(0, 0, 0,20);
+}</string>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+     <property name="icon">
+      <iconset resource="resource/res.qrc">
+       <normaloff>:/images/back.png</normaloff>:/images/back.png</iconset>
+     </property>
+     <property name="iconSize">
+      <size>
+       <width>30</width>
+       <height>30</height>
+      </size>
+     </property>
+    </widget>
+   </widget>
+  </widget>
+ </widget>
+ <resources>
+  <include location="resource/res.qrc"/>
+ </resources>
+ <connections/>
+</ui>
