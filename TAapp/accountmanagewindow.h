@@ -3,9 +3,8 @@
 
 #include <QWidget>
 
-namespace Ui
-{
-    class AccountManageWindow;
+namespace Ui {
+class AccountManageWindow;
 }
 
 class AccountManageWindow : public QWidget

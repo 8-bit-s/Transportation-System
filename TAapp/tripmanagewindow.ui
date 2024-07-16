@@ -14,44 +14,416 @@
    <string>Form</string>
   </property>
   <property name="styleSheet">
-   <string notr="true">color: rgb(0, 0, 0);</string>
+   <string notr="true"/>
   </property>
-  <widget class="QLabel" name="label">
+  <widget class="QWidget" name="city_widget" native="true">
    <property name="geometry">
     <rect>
-     <x>290</x>
-     <y>190</y>
-     <width>391</width>
-     <height>251</height>
+     <x>60</x>
+     <y>70</y>
+     <width>320</width>
+     <height>300</height>
     </rect>
    </property>
-   <property name="font">
-    <font>
-     <pointsize>15</pointsize>
-    </font>
+   <property name="styleSheet">
+    <string notr="true">border-top: 1px  solid rgb(200,200,200);
+border-bottom: 1px solid rgb(200,200,200);
+border-right: 1px solid rgb(200,200,200); 
+border-left: 1px solid rgb(200,200,200); 
+border-radius:10px;
+background-color:rgb(250,250,250);
+</string>
    </property>
-   <property name="text">
-    <string>THIS IS TRIPMANAGEWINDOW</string>
-   </property>
+   <widget class="QLineEdit" name="start_edit">
+    <property name="geometry">
+     <rect>
+      <x>30</x>
+      <y>20</y>
+      <width>71</width>
+      <height>21</height>
+     </rect>
+    </property>
+   </widget>
+   <widget class="QLineEdit" name="end_edit">
+    <property name="geometry">
+     <rect>
+      <x>170</x>
+      <y>20</y>
+      <width>71</width>
+      <height>21</height>
+     </rect>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="add_city_tag">
+    <property name="geometry">
+     <rect>
+      <x>260</x>
+      <y>20</y>
+      <width>41</width>
+      <height>23</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>添加</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="arrow">
+    <property name="geometry">
+     <rect>
+      <x>110</x>
+      <y>20</y>
+      <width>51</width>
+      <height>21</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">border-top: 3px outset transparent;          /*边框全透明*/
+border-bottom: 3px outset transparent;
+border-right: 3px outset transparent;
+border-left: 3px outset transparent;  </string>
+    </property>
+    <property name="text">
+     <string>TextLabel</string>
+    </property>
+   </widget>
+   <widget class="QWidget" name="citytag_widget" native="true">
+    <property name="geometry">
+     <rect>
+      <x>0</x>
+      <y>70</y>
+      <width>320</width>
+      <height>230</height>
+     </rect>
+    </property>
+    <property name="sizePolicy">
+     <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+      <horstretch>0</horstretch>
+      <verstretch>0</verstretch>
+     </sizepolicy>
+    </property>
+   </widget>
   </widget>
-  <widget class="QWidget" name="WidgetSerch" native="true">
+  <widget class="QWidget" name="dis_widget" native="true">
    <property name="geometry">
     <rect>
-     <x>10</x>
-     <y>230</y>
-     <width>961</width>
-     <height>51</height>
+     <x>540</x>
+     <y>70</y>
+     <width>240</width>
+     <height>300</height>
+    </rect>
+   </property>
+   <property name="sizePolicy">
+    <sizepolicy hsizetype="Preferred" vsizetype="Expanding">
+     <horstretch>0</horstretch>
+     <verstretch>0</verstretch>
+    </sizepolicy>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">border-top: 1px  solid rgb(200,200,200);
+border-bottom: 1px solid rgb(200,200,200);
+border-right: 1px solid rgb(200,200,200); 
+border-left: 1px solid rgb(200,200,200); 
+border-radius:10px;
+background-color:rgb(250,250,250);</string>
+   </property>
+   <widget class="QLineEdit" name="dis_edit">
+    <property name="geometry">
+     <rect>
+      <x>80</x>
+      <y>20</y>
+      <width>71</width>
+      <height>21</height>
+     </rect>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="add_dis_tag">
+    <property name="geometry">
+     <rect>
+      <x>170</x>
+      <y>20</y>
+      <width>41</width>
+      <height>23</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>添加</string>
+    </property>
+   </widget>
+   <widget class="QWidget" name="distag_widget" native="true">
+    <property name="geometry">
+     <rect>
+      <x>0</x>
+      <y>70</y>
+      <width>240</width>
+      <height>230</height>
+     </rect>
+    </property>
+    <property name="sizePolicy">
+     <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+      <horstretch>0</horstretch>
+      <verstretch>0</verstretch>
+     </sizepolicy>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_2">
+    <property name="geometry">
+     <rect>
+      <x>20</x>
+      <y>10</y>
+      <width>41</width>
+      <height>41</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>12</pointsize>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">border-top: 3px outset transparent;          /*边框全透明*/
+border-bottom: 3px outset transparent;
+border-right: 3px outset transparent;
+border-left: 3px outset transparent;  </string>
+    </property>
+    <property name="text">
+     <string>距离</string>
+    </property>
+   </widget>
+  </widget>
+  <widget class="QWidget" name="widget_2" native="true">
+   <property name="geometry">
+    <rect>
+     <x>40</x>
+     <y>260</y>
+     <width>931</width>
+     <height>421</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QScrollArea" name="scrollArea">
+   <property name="geometry">
+    <rect>
+     <x>40</x>
+     <y>120</y>
+     <width>931</width>
+     <height>561</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QScrollArea{
+border: 0px solid;
+border-right-width: 0px;
+background-color: rgba(0, 0, 0, 0);
+}
+QScrollBar:vertical {
+border: none;
+background: #f5f5f7;
+width: 10px;
+margin: 0px 0 0px 0;
+}
+QScrollBar::handle:vertical {
+background: Gainsboro;
+min-height: 20px;
+border-radius: 5px;
+border: none;
+}
+QScrollBar::add-line:vertical {
+border: 0px solid grey;
+background: #32CC99;
+height: 0px;
+subcontrol-position: bottom;
+subcontrol-origin: margin;
+}
+QScrollBar::sub-line:vertical {
+border: 0px solid grey;
+background: #32CC99;
+height: 0px;
+subcontrol-position: top;
+subcontrol-origin: margin;
+}
+QScrollBar::add-page:vertical, QScrollBar::sub-page:vertical {
+background: none;
+width: 0px;
+height: 0px;
+}</string>
+   </property>
+   <property name="widgetResizable">
+    <bool>true</bool>
+   </property>
+   <widget class="QWidget" name="scrollAreaWidgetContents">
+    <property name="geometry">
+     <rect>
+      <x>0</x>
+      <y>0</y>
+      <width>931</width>
+      <height>561</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color:rgba(0,0,0,0);</string>
+    </property>
+   </widget>
+  </widget>
+  <widget class="QWidget" name="type_widget" native="true">
+   <property name="geometry">
+    <rect>
+     <x>300</x>
+     <y>70</y>
+     <width>240</width>
+     <height>50</height>
+    </rect>
+   </property>
+   <property name="sizePolicy">
+    <sizepolicy hsizetype="Preferred" vsizetype="Expanding">
+     <horstretch>0</horstretch>
+     <verstretch>0</verstretch>
+    </sizepolicy>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">border-top: 1px  solid rgb(200,200,200);
+border-bottom: 1px solid rgb(200,200,200);
+border-right: 1px solid rgb(200,200,200); 
+border-left: 1px solid rgb(200,200,200); 
+border-radius:10px;
+background-color:rgb(250,250,250);
+
+
+</string>
+   </property>
+   <widget class="QCheckBox" name="air_box">
+    <property name="geometry">
+     <rect>
+      <x>20</x>
+      <y>10</y>
+      <width>120</width>
+      <height>30</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>黑体</family>
+      <pointsize>12</pointsize>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">
+QCheckBox { 
+    border: 0px solid #FFFFFF; /*设置qcheckbox控件的边框为0px（无边框）*/
+    border-radius: 20px; 
+    padding: 4px; 
+    spacing: 15px; 
+} 
+/*设置qcheckbox控件中的勾选框的属性*/
+ QCheckBox::indicator{
+border: 0px solid #FFFFFF;  /*设置qcheckbox控件中勾选框的边框为0px（无边框）*/
+width: 20px;/*勾选框的大小*/
+height: 20px;
+ image: url(:/images/unchecked.png);
+}
+
+/*勾选框未选中时的图像*/
+QCheckBox::indicator:hover {
+   image: url(:/images/half_checked.png);
+}
+/*勾选框选中时的图像*/
+QCheckBox::indicator:checked {
+    image: url(:/images/checked.png);
+}
+
+
+
+</string>
+    </property>
+    <property name="text">
+     <string>航班</string>
+    </property>
+    <property name="tristate">
+     <bool>false</bool>
+    </property>
+   </widget>
+   <widget class="QCheckBox" name="rail_box">
+    <property name="geometry">
+     <rect>
+      <x>140</x>
+      <y>10</y>
+      <width>120</width>
+      <height>30</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>黑体</family>
+      <pointsize>12</pointsize>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QCheckBox { 
+    border: 0px solid #FFFFFF; /*设置qcheckbox控件的边框为0px（无边框）*/
+    border-radius: 20px; 
+    padding: 4px; 
+    spacing: 15px; 
+} 
+/*设置qcheckbox控件中的勾选框的属性*/
+ QCheckBox::indicator{
+border: 0px solid #FFFFFF;  /*设置qcheckbox控件中勾选框的边框为0px（无边框）*/
+width: 20px;/*勾选框的大小*/
+height: 20px;
+ image: url(:/images/unchecked.png);
+}
+
+/*勾选框未选中时的图像*/
+QCheckBox::indicator:hover {
+   image: url(:/images/half_checked.png);
+}
+/*勾选框选中时的图像*/
+QCheckBox::indicator:checked {
+    image: url(:/images/checked.png);
+}</string>
+    </property>
+    <property name="text">
+     <string>列车</string>
+    </property>
+   </widget>
+  </widget>
+  <widget class="QWidget" name="widget" native="true">
+   <property name="geometry">
+    <rect>
+     <x>60</x>
+     <y>30</y>
+     <width>701</width>
+     <height>40</height>
     </rect>
    </property>
    <property name="styleSheet">
     <string notr="true">QWidget{
-	background-color: rgba(128, 128, 128, 20);
-}</string>
+background-color:rgba(0,0,0,20);
+border-radius:10px;
+}
+
+QToolButton{
+	border-radius:0px;
+	background-color: rgba(0, 0, 0,0);
+	margin-left:0px;
+	margin-right:-40px;
+	padding-left:-60px;
+
+	background-image: url(:/images/expand.png);
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+QToolButton:hover{
+	background-color: rgba(255,200,200,50);
+	background-image:url(:/images/expand_big.png) center no-repeat ;
+}
+
+QToolButton:pressed,QToolButton:checked{
+	background-color: rgba(255,200,200,100);
+	background-image:url(:/images/expand_big.png) center no-repeat ;
+}
+</string>
    </property>
-   <layout class="QHBoxLayout" name="horizontalLayout_5">
-    <property name="spacing">
-     <number>0</number>
-    </property>
+   <layout class="QGridLayout" name="gridLayout">
     <property name="leftMargin">
      <number>0</number>
     </property>
@@ -64,361 +436,468 @@
     <property name="bottomMargin">
      <number>0</number>
     </property>
-    <item>
-     <widget class="QWidget" name="widget_2" native="true">
-      <layout class="QHBoxLayout" name="horizontalLayout_3">
-       <item>
-        <widget class="QLabel" name="label_2">
-         <property name="font">
-          <font>
-           <pointsize>22</pointsize>
-           <bold>true</bold>
-          </font>
-         </property>
-         <property name="styleSheet">
-          <string notr="true">QLabel{   
-    border-top: 3px outset transparent;          /*边框全透明*/
-	border-bottom: 3px outset transparent;
-	border-right: 3px outset transparent;
-	border-left: 3px outset transparent;  
-    min-width: 0px;                            /* 控件最小宽度 */
-    min-height: 0px;
-    border-radius: 15px;               /*圆角*/
-	background-color: rgba(0, 0, 0,0);
-	color: rgb(57, 58, 58);
-}</string>
-         </property>
-         <property name="text">
-          <string>起点：</string>
-         </property>
-        </widget>
-       </item>
-       <item>
-        <widget class="QLineEdit" name="lineEdit">
-         <property name="sizePolicy">
-          <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
-           <horstretch>0</horstretch>
-           <verstretch>0</verstretch>
-          </sizepolicy>
-         </property>
-         <property name="minimumSize">
-          <size>
-           <width>100</width>
-           <height>0</height>
-          </size>
-         </property>
-         <property name="maximumSize">
-          <size>
-           <width>125</width>
-           <height>16777215</height>
-          </size>
-         </property>
-         <property name="font">
-          <font>
-           <pointsize>22</pointsize>
-           <bold>false</bold>
-          </font>
-         </property>
-         <property name="styleSheet">
-          <string notr="true">background-color: rgb(255, 255, 255);
-color: rgb(0, 0, 0);</string>
-         </property>
-        </widget>
-       </item>
-       <item>
-        <spacer name="horizontalSpacer_3">
-         <property name="orientation">
-          <enum>Qt::Horizontal</enum>
-         </property>
-         <property name="sizeType">
-          <enum>QSizePolicy::Fixed</enum>
-         </property>
-         <property name="sizeHint" stdset="0">
-          <size>
-           <width>20</width>
-           <height>20</height>
-          </size>
-         </property>
-        </spacer>
-       </item>
-      </layout>
-     </widget>
-    </item>
-    <item>
-     <widget class="QWidget" name="widget_3" native="true">
-      <layout class="QHBoxLayout" name="horizontalLayout_4">
-       <property name="leftMargin">
-        <number>12</number>
-       </property>
-       <property name="topMargin">
-        <number>9</number>
-       </property>
-       <property name="bottomMargin">
-        <number>9</number>
-       </property>
-       <item>
-        <widget class="QLabel" name="label_3">
-         <property name="font">
-          <font>
-           <pointsize>22</pointsize>
-           <bold>true</bold>
-          </font>
-         </property>
-         <property name="styleSheet">
-          <string notr="true">QLabel{   
-    border-top: 3px outset transparent;          /*边框全透明*/
-	border-bottom: 3px outset transparent;
-	border-right: 3px outset transparent;
-	border-left: 3px outset transparent;  
-    min-width: 0px;                            /* 控件最小宽度 */
-    min-height: 0px;
-    border-radius: 15px;               /*圆角*/
-	background-color: rgba(0, 0, 0,0);
-	color: rgb(57, 58, 58);
-}</string>
-         </property>
-         <property name="text">
-          <string>终点：</string>
-         </property>
-        </widget>
-       </item>
-       <item>
-        <widget class="QLineEdit" name="lineEdit_2">
-         <property name="minimumSize">
-          <size>
-           <width>100</width>
-           <height>0</height>
-          </size>
-         </property>
-         <property name="maximumSize">
-          <size>
-           <width>125</width>
-           <height>16777215</height>
-          </size>
-         </property>
-         <property name="font">
-          <font>
-           <pointsize>22</pointsize>
-           <bold>false</bold>
-          </font>
-         </property>
-         <property name="styleSheet">
-          <string notr="true">background-color: rgb(255, 255, 255);
-color: rgb(3, 3, 3);</string>
-         </property>
-        </widget>
-       </item>
-      </layout>
-     </widget>
-    </item>
-    <item>
-     <widget class="QWidget" name="widget_5" native="true">
-      <property name="enabled">
+    <property name="spacing">
+     <number>0</number>
+    </property>
+    <item row="0" column="3">
+     <widget class="QToolButton" name="type_button">
+      <property name="minimumSize">
+       <size>
+        <width>120</width>
+        <height>40</height>
+       </size>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>12</pointsize>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true"/>
+      </property>
+      <property name="text">
+       <string>类型</string>
+      </property>
+      <property name="checkable">
        <bool>true</bool>
       </property>
-      <layout class="QHBoxLayout" name="horizontalLayout_6">
-       <property name="spacing">
-        <number>0</number>
-       </property>
-       <property name="leftMargin">
-        <number>0</number>
-       </property>
-       <property name="topMargin">
-        <number>0</number>
-       </property>
-       <property name="rightMargin">
-        <number>20</number>
-       </property>
-       <property name="bottomMargin">
-        <number>0</number>
-       </property>
-       <item>
-        <spacer name="horizontalSpacer_2">
-         <property name="orientation">
-          <enum>Qt::Horizontal</enum>
-         </property>
-         <property name="sizeType">
-          <enum>QSizePolicy::Fixed</enum>
-         </property>
-         <property name="sizeHint" stdset="0">
-          <size>
-           <width>30</width>
-           <height>20</height>
-          </size>
-         </property>
-        </spacer>
-       </item>
-       <item>
-        <widget class="QLabel" name="label_4">
-         <property name="font">
-          <font>
-           <pointsize>22</pointsize>
-           <bold>true</bold>
-          </font>
-         </property>
-         <property name="styleSheet">
-          <string notr="true">QLabel{   
-    border-top: 3px outset transparent;          /*边框全透明*/
-	border-bottom: 3px outset transparent;
-	border-right: 3px outset transparent;
-	border-left: 3px outset transparent;  
-    min-width: 0px;                            /* 控件最小宽度 */
-    min-height: 0px;
-    border-radius: 15px;               /*圆角*/
+      <property name="autoExclusive">
+       <bool>false</bool>
+      </property>
+     </widget>
+    </item>
+    <item row="0" column="0">
+     <widget class="QToolButton" name="city_button">
+      <property name="minimumSize">
+       <size>
+        <width>120</width>
+        <height>40</height>
+       </size>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>12</pointsize>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">
+
+
+
+</string>
+      </property>
+      <property name="text">
+       <string> 城市</string>
+      </property>
+      <property name="iconSize">
+       <size>
+        <width>10</width>
+        <height>10</height>
+       </size>
+      </property>
+      <property name="checkable">
+       <bool>true</bool>
+      </property>
+      <property name="checked">
+       <bool>false</bool>
+      </property>
+      <property name="autoExclusive">
+       <bool>false</bool>
+      </property>
+      <property name="toolButtonStyle">
+       <enum>Qt::ToolButtonTextBesideIcon</enum>
+      </property>
+     </widget>
+    </item>
+    <item row="0" column="4">
+     <widget class="QToolButton" name="time_button">
+      <property name="minimumSize">
+       <size>
+        <width>120</width>
+        <height>40</height>
+       </size>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>12</pointsize>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">
+</string>
+      </property>
+      <property name="text">
+       <string>时间</string>
+      </property>
+      <property name="checkable">
+       <bool>true</bool>
+      </property>
+      <property name="autoExclusive">
+       <bool>false</bool>
+      </property>
+     </widget>
+    </item>
+    <item row="0" column="5">
+     <widget class="QToolButton" name="dis_button">
+      <property name="minimumSize">
+       <size>
+        <width>120</width>
+        <height>40</height>
+       </size>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>12</pointsize>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">
+</string>
+      </property>
+      <property name="text">
+       <string>距离</string>
+      </property>
+      <property name="checkable">
+       <bool>true</bool>
+      </property>
+      <property name="autoExclusive">
+       <bool>false</bool>
+      </property>
+     </widget>
+    </item>
+    <item row="0" column="2">
+     <widget class="QToolButton" name="cost_button">
+      <property name="minimumSize">
+       <size>
+        <width>120</width>
+        <height>40</height>
+       </size>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>12</pointsize>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true"/>
+      </property>
+      <property name="text">
+       <string>花费</string>
+      </property>
+      <property name="checkable">
+       <bool>true</bool>
+      </property>
+      <property name="autoExclusive">
+       <bool>false</bool>
+      </property>
+     </widget>
+    </item>
+    <item row="0" column="6">
+     <widget class="QPushButton" name="search_button">
+      <property name="maximumSize">
+       <size>
+        <width>50</width>
+        <height>40</height>
+       </size>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QPushButton{
+	border-radius:0px;
 	background-color: rgba(0, 0, 0,0);
-	color: rgb(57, 58, 58);
-}</string>
-         </property>
-         <property name="lineWidth">
-          <number>0</number>
-         </property>
-         <property name="text">
-          <string>出行方式：</string>
-         </property>
-        </widget>
-       </item>
-       <item>
-        <spacer name="horizontalSpacer_5">
-         <property name="orientation">
-          <enum>Qt::Horizontal</enum>
-         </property>
-         <property name="sizeType">
-          <enum>QSizePolicy::Fixed</enum>
-         </property>
-         <property name="sizeHint" stdset="0">
-          <size>
-           <width>10</width>
-           <height>20</height>
-          </size>
-         </property>
-        </spacer>
-       </item>
-       <item>
-        <widget class="QRadioButton" name="radioButton">
-         <property name="font">
-          <font>
-           <pointsize>22</pointsize>
-           <bold>true</bold>
-          </font>
-         </property>
-         <property name="styleSheet">
-          <string notr="true">QRadioButton{   
-    border-top: 3px outset transparent;          /*边框全透明*/
-	border-bottom: 3px outset transparent;
-	border-right: 3px outset transparent;
-	border-left: 3px outset transparent;  
-    min-width: 0px;                            /* 控件最小宽度 */
-    min-height: 0px;
-    border-radius: 15px;               /*圆角*/
-	background-color: rgba(0, 0, 0,0);
-	color: rgb(57, 58, 58);
-}</string>
-         </property>
-         <property name="text">
-          <string>火车</string>
-         </property>
-        </widget>
-       </item>
-       <item>
-        <spacer name="horizontalSpacer_4">
-         <property name="orientation">
-          <enum>Qt::Horizontal</enum>
-         </property>
-         <property name="sizeType">
-          <enum>QSizePolicy::Fixed</enum>
-         </property>
-         <property name="sizeHint" stdset="0">
-          <size>
-           <width>15</width>
-           <height>20</height>
-          </size>
-         </property>
-        </spacer>
-       </item>
-       <item>
-        <widget class="QRadioButton" name="radioButton_2">
-         <property name="font">
-          <font>
-           <pointsize>22</pointsize>
-           <bold>true</bold>
-          </font>
-         </property>
-         <property name="styleSheet">
-          <string notr="true">QRadioButton{   
-    border-top: 3px outset transparent;          /*边框全透明*/
-	border-bottom: 3px outset transparent;
-	border-right: 3px outset transparent;
-	border-left: 3px outset transparent;  
-    min-width: 0px;                            /* 控件最小宽度 */
-    min-height: 0px;
-    border-radius: 15px;               /*圆角*/
-	background-color: rgba(0, 0, 0,0);
-	color: rgb(57, 58, 58);
-}</string>
-         </property>
-         <property name="text">
-          <string>飞机</string>
-         </property>
-        </widget>
-       </item>
-       <item>
-        <spacer name="horizontalSpacer">
-         <property name="orientation">
-          <enum>Qt::Horizontal</enum>
-         </property>
-         <property name="sizeType">
-          <enum>QSizePolicy::Fixed</enum>
-         </property>
-         <property name="sizeHint" stdset="0">
-          <size>
-           <width>50</width>
-           <height>20</height>
-          </size>
-         </property>
-        </spacer>
-       </item>
-       <item>
-        <widget class="QPushButton" name="pushButton">
-         <property name="font">
-          <font>
-           <pointsize>21</pointsize>
-           <bold>true</bold>
-          </font>
-         </property>
-         <property name="styleSheet">
-          <string notr="true">QPushButton{   
-	background-color: rgb(149, 150, 150);
-	color: rgb(57, 58, 58);
 }
 
-/* 鼠标悬停 */
 QPushButton:hover{
-	background-color: rgb(195, 197, 197);
+	background-color: rgba(255,200,200,80);
+}
+QPushButton:pressed,QPushButton:checked{
+	background-color: rgba(255,200,200,120);
 }</string>
-         </property>
-         <property name="text">
-          <string>搜索</string>
-         </property>
-        </widget>
-       </item>
-       <item>
-        <spacer name="horizontalSpacer_6">
-         <property name="orientation">
-          <enum>Qt::Horizontal</enum>
-         </property>
-         <property name="sizeHint" stdset="0">
-          <size>
-           <width>20</width>
-           <height>20</height>
-          </size>
-         </property>
-        </spacer>
-       </item>
-      </layout>
+      </property>
+      <property name="text">
+       <string>筛选</string>
+      </property>
+     </widget>
+    </item>
+    <item row="0" column="7">
+     <widget class="QPushButton" name="add_button">
+      <property name="maximumSize">
+       <size>
+        <width>50</width>
+        <height>40</height>
+       </size>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QPushButton{
+	border-radius:0px;
+	background-color: rgba(0, 0, 0,0);
+}
+
+QPushButton:hover{
+	background-color: rgba(255,200,200,80);
+}
+QPushButton:pressed,QPushButton:checked{
+	background-color: rgba(255,200,200,120);
+}</string>
+      </property>
+      <property name="text">
+       <string>添加</string>
+      </property>
      </widget>
     </item>
    </layout>
   </widget>
+  <widget class="QWidget" name="cost_widget" native="true">
+   <property name="geometry">
+    <rect>
+     <x>180</x>
+     <y>70</y>
+     <width>240</width>
+     <height>300</height>
+    </rect>
+   </property>
+   <property name="sizePolicy">
+    <sizepolicy hsizetype="Preferred" vsizetype="Expanding">
+     <horstretch>0</horstretch>
+     <verstretch>0</verstretch>
+    </sizepolicy>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">border-top: 1px  solid rgb(200,200,200);
+border-bottom: 1px solid rgb(200,200,200);
+border-right: 1px solid rgb(200,200,200); 
+border-left: 1px solid rgb(200,200,200); 
+border-radius:10px;
+background-color:rgb(250,250,250);</string>
+   </property>
+   <widget class="QLineEdit" name="cost_edit">
+    <property name="geometry">
+     <rect>
+      <x>80</x>
+      <y>20</y>
+      <width>71</width>
+      <height>21</height>
+     </rect>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="add_cost_tag">
+    <property name="geometry">
+     <rect>
+      <x>170</x>
+      <y>20</y>
+      <width>41</width>
+      <height>23</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>添加</string>
+    </property>
+   </widget>
+   <widget class="QWidget" name="costtag_widget" native="true">
+    <property name="geometry">
+     <rect>
+      <x>0</x>
+      <y>70</y>
+      <width>240</width>
+      <height>230</height>
+     </rect>
+    </property>
+    <property name="sizePolicy">
+     <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+      <horstretch>0</horstretch>
+      <verstretch>0</verstretch>
+     </sizepolicy>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label">
+    <property name="geometry">
+     <rect>
+      <x>20</x>
+      <y>10</y>
+      <width>41</width>
+      <height>41</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>12</pointsize>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">border-top: 3px outset transparent;          /*边框全透明*/
+border-bottom: 3px outset transparent;
+border-right: 3px outset transparent;
+border-left: 3px outset transparent;  </string>
+    </property>
+    <property name="text">
+     <string>花费</string>
+    </property>
+   </widget>
+  </widget>
+  <widget class="QWidget" name="time_widget" native="true">
+   <property name="geometry">
+    <rect>
+     <x>420</x>
+     <y>70</y>
+     <width>300</width>
+     <height>300</height>
+    </rect>
+   </property>
+   <property name="sizePolicy">
+    <sizepolicy hsizetype="Preferred" vsizetype="Expanding">
+     <horstretch>0</horstretch>
+     <verstretch>0</verstretch>
+    </sizepolicy>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">border-top: 1px  solid rgb(200,200,200);
+border-bottom: 1px solid rgb(200,200,200);
+border-right: 1px solid rgb(200,200,200); 
+border-left: 1px solid rgb(200,200,200); 
+border-radius:10px;
+background-color:rgb(250,250,250);</string>
+   </property>
+   <widget class="QLineEdit" name="hour_edit">
+    <property name="geometry">
+     <rect>
+      <x>20</x>
+      <y>20</y>
+      <width>51</width>
+      <height>21</height>
+     </rect>
+    </property>
+   </widget>
+   <widget class="QLineEdit" name="min_edit">
+    <property name="geometry">
+     <rect>
+      <x>120</x>
+      <y>20</y>
+      <width>51</width>
+      <height>21</height>
+     </rect>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="add_time_tag">
+    <property name="geometry">
+     <rect>
+      <x>220</x>
+      <y>20</y>
+      <width>41</width>
+      <height>23</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>添加</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_3">
+    <property name="geometry">
+     <rect>
+      <x>170</x>
+      <y>20</y>
+      <width>41</width>
+      <height>21</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">border-top: 3px outset transparent;          /*边框全透明*/
+border-bottom: 3px outset transparent;
+border-right: 3px outset transparent;
+border-left: 3px outset transparent;  </string>
+    </property>
+    <property name="text">
+     <string>分钟</string>
+    </property>
+   </widget>
+   <widget class="QWidget" name="timetag_widget" native="true">
+    <property name="geometry">
+     <rect>
+      <x>0</x>
+      <y>70</y>
+      <width>300</width>
+      <height>230</height>
+     </rect>
+    </property>
+    <property name="sizePolicy">
+     <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+      <horstretch>0</horstretch>
+      <verstretch>0</verstretch>
+     </sizepolicy>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_4">
+    <property name="geometry">
+     <rect>
+      <x>70</x>
+      <y>20</y>
+      <width>41</width>
+      <height>21</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">border-top: 3px outset transparent;          /*边框全透明*/
+border-bottom: 3px outset transparent;
+border-right: 3px outset transparent;
+border-left: 3px outset transparent;  </string>
+    </property>
+    <property name="text">
+     <string>小时</string>
+    </property>
+   </widget>
+  </widget>
+  <widget class="QWidget" name="widget_3" native="true">
+   <property name="geometry">
+    <rect>
+     <x>770</x>
+     <y>30</y>
+     <width>171</width>
+     <height>41</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QPushButton{
+	border-radius: 10px;
+	background-color: rgba(0, 0, 0,20);
+    max-width:60px;
+	height: 40px;
+}
+
+QPushButton:hover{
+	background-color: rgba(255,200,200,100);
+}
+
+QPushButton:pressed,QPushButton:checked{
+	background-color: rgba(255,180,180,120);
+}
+	</string>
+   </property>
+   <widget class="QWidget" name="horizontalLayoutWidget">
+    <property name="geometry">
+     <rect>
+      <x>0</x>
+      <y>0</y>
+      <width>171</width>
+      <height>42</height>
+     </rect>
+    </property>
+    <layout class="QHBoxLayout" name="select_layout" stretch="">
+     <property name="spacing">
+      <number>5</number>
+     </property>
+     <property name="sizeConstraint">
+      <enum>QLayout::SetNoConstraint</enum>
+     </property>
+    </layout>
+   </widget>
+  </widget>
+  <zorder>widget_2</zorder>
+  <zorder>scrollArea</zorder>
+  <zorder>widget</zorder>
+  <zorder>city_widget</zorder>
+  <zorder>cost_widget</zorder>
+  <zorder>type_widget</zorder>
+  <zorder>time_widget</zorder>
+  <zorder>dis_widget</zorder>
+  <zorder>widget_3</zorder>
  </widget>
  <resources/>
  <connections/>

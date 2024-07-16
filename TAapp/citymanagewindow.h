@@ -5,7 +5,6 @@
 #include <QString>
 #include <QVector>
 #include <QButtonGroup>
-#include <vector>
 #include "childwindow.h"
 
 namespace Ui {
@@ -35,23 +34,22 @@ private slots:
     void Search(QString city);
     void addCityBox(QString city);
     void updateCheckedButtons();
+    void initial_list(QString city);
 
 private:
     Ui::CityManageWindow *ui;
     QButtonGroup *BtnGroup;
-    QButtonGroup *ToolBtnGroup;
     QVector<QAbstractButton *> checkedButtons;
-    std::vector<int> id;// 记录城市的id编号（服务于 BtnGroup）
     int page;// 记录页数
     void Initial();
     void display(int n=0,int x=75,int y=121);
     void displayTarget(int n,int x=75,int y=121);
     void changePage();
+    void backtoBtnVisibleChange();
 
 signals:
     void SearchTarget(QString city);// 传递查询时输入的城市名
     void AddTarget(QString city);// 传递查询时输入的城市名
-    void eraseCityBox();
 };
 
 #endif // CITYMANAGEWINDOW_H

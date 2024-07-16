@@ -2,6 +2,7 @@
 #define HOMEWINDOW_H
 
 #include <QWidget>
+#include "tag.h"
 
 namespace Ui {
 class HomeWindow;

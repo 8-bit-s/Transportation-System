@@ -13,9 +13,6 @@
   <property name="windowTitle">
    <string>Form</string>
   </property>
-  <property name="styleSheet">
-   <string notr="true">color: rgb(0, 0, 0);</string>
-  </property>
   <widget class="QPushButton" name="pushButton_2">
    <property name="geometry">
     <rect>
@@ -113,12 +110,6 @@ QPushButton:pressed,QPushButton:checked{
       <height>41</height>
      </rect>
     </property>
-    <property name="font">
-     <font>
-      <pointsize>18</pointsize>
-      <bold>true</bold>
-     </font>
-    </property>
     <property name="text">
      <string>登录</string>
     </property>
@@ -132,14 +123,8 @@ QPushButton:pressed,QPushButton:checked{
       <height>40</height>
      </rect>
     </property>
-    <property name="font">
-     <font>
-      <pointsize>18</pointsize>
-      <bold>false</bold>
-     </font>
-    </property>
     <property name="styleSheet">
-     <string notr="true">background-color: rgb(239, 241, 241);</string>
+     <string notr="true">background-color :rgb(255,255,255)</string>
     </property>
    </widget>
    <widget class="QLineEdit" name="psswordEdit">
@@ -151,17 +136,8 @@ QPushButton:pressed,QPushButton:checked{
       <height>40</height>
      </rect>
     </property>
-    <property name="font">
-     <font>
-      <pointsize>18</pointsize>
-      <bold>false</bold>
-     </font>
-    </property>
     <property name="styleSheet">
-     <string notr="true">background-color: rgb(239, 241, 241);</string>
-    </property>
-    <property name="echoMode">
-     <enum>QLineEdit::Password</enum>
+     <string notr="true">background-color :rgb(255,255,255)</string>
     </property>
    </widget>
    <widget class="QLabel" name="userLable">
@@ -175,8 +151,7 @@ QPushButton:pressed,QPushButton:checked{
     </property>
     <property name="font">
      <font>
-      <pointsize>18</pointsize>
-      <bold>true</bold>
+      <pointsize>12</pointsize>
      </font>
     </property>
     <property name="text">
@@ -197,8 +172,7 @@ QPushButton:pressed,QPushButton:checked{
     </property>
     <property name="font">
      <font>
-      <pointsize>18</pointsize>
-      <bold>true</bold>
+      <pointsize>12</pointsize>
      </font>
     </property>
     <property name="text">

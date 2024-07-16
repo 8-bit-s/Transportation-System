@@ -11,12 +11,15 @@
         <file>back.png</file>
         <file>user.png</file>
         <file>home.png</file>
-        <file>change.png</file>
-        <file>search.png</file>
-        <file>add.png</file>
-        <file>cancel.png</file>
-        <file>delete.png</file>
-        <file>close.png</file>
-        <file>edit.png</file>
+        <file>expand.png</file>
+        <file>expand_big.png</file>
+        <file>arrow.png</file>
+        <file>double_arrow.png</file>
+        <file>black_cross.png</file>
+        <file>red_cross.png</file>
+        <file>checked.png</file>
+        <file>unchecked.png</file>
+        <file>half_checked.png</file>
+        <file>long_arrow.png</file>
     </qresource>
 </RCC>

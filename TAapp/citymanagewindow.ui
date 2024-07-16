@@ -10,17 +10,46 @@
     <height>778</height>
    </rect>
   </property>
+  <property name="font">
+   <font>
+    <family>黑体</family>
+   </font>
+  </property>
   <property name="windowTitle">
    <string>Form</string>
   </property>
   <property name="styleSheet">
-   <string notr="true">color: rgb(0, 0, 0);</string>
+   <string notr="true">QWidget{
+	color: rgb(0, 0, 0);
+}
+
+QPushButton{   
+    border-top-left-radius: 2px;               /*圆角*/
+	border-top-right-radius: 2px;  
+	border-bottom-right-radius: 2px;  
+	border-bottom-left-radius: 2px;  
+	background-color: rgba(128, 128, 128, 20);
+	font size: 20px;
+}
+/* 鼠标悬停 */
+QPushButton:hover{
+	background-color: rgba(0, 0, 0,20);
+}
+
+QPushButton:pressed{	
+	background-color: rgb(255, 180, 200);
+}
+
+
+
+
+</string>
   </property>
   <widget class="QPushButton" name="searchBtn">
    <property name="geometry">
     <rect>
-     <x>190</x>
-     <y>200</y>
+     <x>230</x>
+     <y>120</y>
      <width>120</width>
      <height>36</height>
     </rect>
@@ -50,22 +79,7 @@
     </font>
    </property>
    <property name="styleSheet">
-    <string notr="true">QPushButton{   
-    border-top-left-radius: 15px;               /*圆角*/
-	border-bottom-left-radius: 15px;  
-	border-top-right-radius: 2px;  
-	border-bottom-right-radius: 2px;  
-	background-color: rgba(128, 128, 128, 20);
-}
-
-/* 鼠标悬停 */
-QPushButton:hover{
-	background-color: rgba(0, 0, 0,20);
-}
-
-QPushButton:pressed{
-	background-color: rgb(255, 180, 200);
-}</string>
+    <string notr="true"/>
    </property>
    <property name="text">
     <string>查询</string>
@@ -294,8 +308,8 @@ QPushButton:pressed{
   <widget class="QPushButton" name="addBtn">
    <property name="geometry">
     <rect>
-     <x>400</x>
-     <y>190</y>
+     <x>430</x>
+     <y>80</y>
      <width>120</width>
      <height>36</height>
     </rect>
@@ -325,21 +339,7 @@ QPushButton:pressed{
     </font>
    </property>
    <property name="styleSheet">
-    <string notr="true">QPushButton{   
-    border-top-left-radius: 2px;               /*圆角*/
-	border-top-right-radius: 2px;  
-	border-bottom-right-radius: 2px;  
-	border-bottom-left-radius: 2px;  
-	background-color: rgba(128, 128, 128, 20);
-}
-/* 鼠标悬停 */
-QPushButton:hover{
-	background-color: rgba(0, 0, 0,20);
-}
-
-QPushButton:pressed{	
-	background-color: rgb(255, 180, 200);
-}
+    <string notr="true">
 </string>
    </property>
    <property name="text">
@@ -380,26 +380,7 @@ QPushButton:pressed{
     </font>
    </property>
    <property name="styleSheet">
-    <string notr="true">QPushButton{   
-     border-bottom-right-radius: 15px;  
-	border-bottom-left-radius: 2px;  
-	border-top-right-radius: 15px;  
-	border-top-left-radius: 2px;  
-	background-color: rgba(128, 128, 128, 20);
-}
-
-/* 鼠标悬停 */
-QPushButton:hover{
-	background-color: rgba(0, 0, 0,20);
-}
-
-QPushButton:pressed,QPushButton:checked{
-	background-color: rgb(255, 180, 200);
-	border-bottom-right-radius: 2px;  
-	border-bottom-left-radius: 2px;  
-	border-top-right-radius: 2px;  
-	border-top-left-radius: 2px;  
-}</string>
+    <string notr="true"/>
    </property>
    <property name="text">
     <string>编辑</string>
@@ -439,22 +420,7 @@ QPushButton:pressed,QPushButton:checked{
     </font>
    </property>
    <property name="styleSheet">
-    <string notr="true">QPushButton{   
-    border-top-left-radius: 2px;               /*圆角*/
-	border-bottom-left-radius: 2px;  
-	border-top-right-radius: 15px;  
-	border-bottom-right-radius: 15px;  
-	background-color: rgba(128, 128, 128, 20);
-}
-
-/* 鼠标悬停 */
-QPushButton:hover{
-	background-color: rgba(0, 0, 0,20);
-}
-
-QPushButton:pressed{
-	background-color: rgb(255, 180, 200);
-}</string>
+    <string notr="true"/>
    </property>
    <property name="text">
     <string>取消</string>
@@ -553,23 +519,7 @@ QPushButton:pressed,QPushButton:checked{
     </font>
    </property>
    <property name="styleSheet">
-    <string notr="true">QPushButton{   
-    border-bottom-right-radius: 2px;  
-	border-bottom-left-radius: 2px;  
-	border-top-right-radius: 2px;  
-	border-top-left-radius: 2px;  
-	background-color: rgba(128, 128, 128, 20);
-}
-
-/* 鼠标悬停 */
-QPushButton:hover{
-	background-color: rgba(0, 0, 0,20);
-}
-
-QPushButton:pressed{
-	
-	background-color: rgb(255, 180, 200);
-}</string>
+    <string notr="true"/>
    </property>
    <property name="text">
     <string>删除</string>
@@ -673,9 +623,9 @@ QPushButton:pressed{
   <widget class="QWidget" name="tipWidget" native="true">
    <property name="geometry">
     <rect>
-     <x>140</x>
-     <y>210</y>
-     <width>600</width>
+     <x>259</x>
+     <y>410</y>
+     <width>601</width>
      <height>175</height>
     </rect>
    </property>
@@ -689,11 +639,36 @@ QPushButton:pressed{
     <string notr="true">color: rgb(0, 0, 0);
 background-color: rgb(202, 204, 204);</string>
    </property>
+   <widget class="QToolButton" name="closeBtn">
+    <property name="geometry">
+     <rect>
+      <x>570</x>
+      <y>10</y>
+      <width>25</width>
+      <height>25</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QToolButton{
+ border-top: 3px outset transparent;          /*边框全透明*/
+	border-bottom: 3px outset transparent;
+	border-right: 3px outset transparent;
+	border-left: 3px outset transparent;  
+    min-width: 0px;                            /* 控件最小宽度 */
+    min-height: 0px;
+    border-radius: 50px;               /*圆角*/
+	background-color: rgb(202, 204, 204);
+}</string>
+    </property>
+    <property name="text">
+     <string>...</string>
+    </property>
+   </widget>
    <widget class="QLabel" name="label">
     <property name="geometry">
      <rect>
       <x>0</x>
-      <y>40</y>
+      <y>30</y>
       <width>600</width>
       <height>135</height>
      </rect>
@@ -726,32 +701,7 @@ background-color: rgb(202, 204, 204);</string>
      <string notr="true">background-color: rgb(221, 223, 223);</string>
     </property>
     <property name="text">
-     <string>                   该城市已经存在</string>
-    </property>
-   </widget>
-   <widget class="QToolButton" name="closeBtn">
-    <property name="geometry">
-     <rect>
-      <x>570</x>
-      <y>10</y>
-      <width>25</width>
-      <height>25</height>
-     </rect>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">QToolButton{
- border-top: 3px outset transparent;          /*边框全透明*/
-	border-bottom: 3px outset transparent;
-	border-right: 3px outset transparent;
-	border-left: 3px outset transparent;  
-    min-width: 0px;                            /* 控件最小宽度 */
-    min-height: 0px;
-    border-radius: 50px;               /*圆角*/
-	background-color: rgb(202, 204, 204);
-}</string>
-    </property>
-    <property name="text">
-     <string>...</string>
+     <string>        该城市已经存在</string>
     </property>
    </widget>
   </widget>
@@ -789,22 +739,7 @@ background-color: rgb(202, 204, 204);</string>
     </font>
    </property>
    <property name="styleSheet">
-    <string notr="true">QPushButton{   
-    border-top-left-radius: 2px;               /*圆角*/
-	border-top-right-radius: 2px;  
-	border-bottom-right-radius: 2px;  
-	border-bottom-left-radius: 2px;  
-	background-color: rgba(128, 128, 128, 20);
-}
-/* 鼠标悬停 */
-QPushButton:hover{
-	background-color: rgba(0, 0, 0,20);
-}
-
-QPushButton:pressed{	
-	background-color: rgb(255, 180, 200);
-}
-</string>
+    <string notr="true"/>
    </property>
    <property name="text">
     <string>修改</string>

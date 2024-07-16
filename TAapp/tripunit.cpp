@@ -1,90 +1,96 @@
 #include "tripunit.h"
 #include "ui_tripunit.h"
 
+#include <QLayout>
+
 tripUnit::tripUnit(QWidget *parent)
     : QWidget(parent)
     , ui(new Ui::tripUnit)
 {
     ui->setupUi(this);
+    setAttribute(Qt::WA_StyledBackground);
 
-    ui->city1->setText("");
-    ui->city2->setText("");
-    ui->name->setText("");
-    ui->time->setText("");
-    ui->cost->setText("");
-    ui->distance->setText("");
+    typepicLabel=new QLabel(this);
+    QPixmap pixmap1(":/images/airtype.png");
+
+
+    arrowpic=new QLabel(this);
+    QPixmap pixmap2(":/images/long_arrow.png");
+    arrowpic->setPixmap(pixmap2);
+    arrowpic->setScaledContents(true);
+
+    QFont font("SimHei",12);
+
+    city1 = new QLabel(this);
+    city1->setText("city1");
+    city1->setAlignment(Qt::AlignCenter | Qt::AlignVCenter);
+    city1->setFont(font);
+
+    city2 = new QLabel(this);
+    city2->setText("city2");
+    city2->setAlignment(Qt::AlignCenter | Qt::AlignVCenter);
+    city2->setFont(font);
+
+    cost = new QLabel(this);
+    cost->setText("cost");
+    cost->setAlignment(Qt::AlignCenter | Qt::AlignVCenter);
+    cost->setFont(font);
+
+    distance = new QLabel(this);
+    distance->setText("distance");
+    distance->setAlignment(Qt::AlignCenter | Qt::AlignVCenter);
+    distance->setFont(font);
+
+    time = new QLabel(this);
+    time->setText("time");
+    time->setAlignment(Qt::AlignCenter | Qt::AlignVCenter);
+    time->setFont(font);
+
+    QGridLayout *pGridLay = new QGridLayout(this);
+    pGridLay->addWidget(typepicLabel,0,0,3,1);
+    pGridLay->addWidget(arrowpic,0,2,3,2);
+    pGridLay->addWidget(city1,1,1,1,1,Qt::AlignRight);
+    pGridLay->addWidget(city2,1,4,1,1,Qt::AlignLeft);
+    pGridLay->addWidget(cost, 1,5,1,1);
+    pGridLay->addWidget(distance, 2,2,1,2);
+    pGridLay->addWidget(time,0,2,1,2);
 
 }
+
 
 tripUnit::~tripUnit()
 {
     delete ui;
 }
 
-void tripUnit::setTotal(const int type,const std::string b,const std::string e,const std::string n,const std::string t,const std::string c,const std::string d)    //int的类型（0air1rail），string的类型：起点，终点，名称，时间，费用）
+//修改显示内容的函数，传入Trip
+
+void tripUnit::setTrip(Trip &trip)
 {
-    //改变类型对应的图标
-    switch(type){
-    case -1:{
-        QPixmap typepic("");
-        ui->typepic->setPixmap(typepic);
+    switch(trip.type){
+    case AIR:{
+        QPixmap typepic(":/images/airtype.png");
+        typepicLabel->setPixmap(typepic);
+        typepicLabel->setFixedSize(40,40);
+        typepicLabel->setPixmap(typepic);
+        typepicLabel->setScaledContents(true);
+        break;
     }
-    case 0:{
-        QPixmap typepic(":/airtype.png");
-        ui->typepic->setPixmap(typepic);
-    }
-    case 1:{
-        QPixmap typepic(":/railtype.png");
-        ui->typepic->setPixmap(typepic);
+    case RAIL:{
+        QPixmap typepic(":/images/railtype.png");
+        typepicLabel->setPixmap(typepic);
+        typepicLabel->setFixedSize(40,40);
+        typepicLabel->setPixmap(typepic);
+        typepicLabel->setScaledContents(true);
+        break;
     }
     }
 
-    //依次设置data
-    ui->city1->setText(QString::fromStdString(b));
-    ui->city2->setText(QString::fromStdString(e));
-    ui->name->setText(QString::fromStdString(n));
-    ui->time->setText(QString::fromStdString(t));
-    ui->cost->setText(QString::fromStdString(b));
-    ui->distance->setText(QString::fromStdString(d));
+    city1->setText(QString::fromStdString(trip.stfCity.name));
+    city2->setText(QString::fromStdString(trip.arvCity.name));
+    time->setText(QString::fromStdString(trip.time.str()));
+    cost->setText(QString::fromStdString(std::to_string(trip.cost)));
+    distance->setText(QString::fromStdString(std::to_string(trip.dist)));
 }
 
-void tripUnit::setType(const int type){
-    switch(type){
-    case -1:{
-        QPixmap typepic("");
-        ui->typepic->setPixmap(typepic);
-    }
-    case 0:{
-        QPixmap typepic(":/airtype.png");
-        ui->typepic->setPixmap(typepic);
-    }
-    case 1:{
-        QPixmap typepic(":/railtype.png");
-        ui->typepic->setPixmap(typepic);
-    }
-    }
-}
 
-void tripUnit::setBegin(const std::string b){
-    ui->city1->setText(QString::fromStdString(b));
-}
-
-void tripUnit::setEnd(const std::string e){
-    ui->city2->setText(QString::fromStdString(e));
-}
-
-void tripUnit::setName(const std::string n){
-    ui->name->setText(QString::fromStdString(n));
-}
-
-void tripUnit::setTime(const std::string t){
-    ui->time->setText(QString::fromStdString(t));
-}
-
-void tripUnit::setCost(const std::string c){
-    ui->cost->setText(QString::fromStdString(c));
-}
-
-void tripUnit::setDistance(const std::string d){
-    ui->distance->setText(QString::fromStdString(d));
-}

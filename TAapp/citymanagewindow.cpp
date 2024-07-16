@@ -1,11 +1,16 @@
 #include "citymanagewindow.h"
 #include "ui_citymanagewindow.h"
 #include "ui_childwindow.h"
+#include "api.h"
+#include "TripTable.h"
 #include <QPixmap>
-#include <algorithm>
 #include <QString>
 #include <QIcon>
 #include <QDebug>
+
+const int BtnW=120;// 按键宽
+const int BtnY=50;// 按键y坐标
+const int PicY=58;// 图标y坐标
 
 CityManageWindow::CityManageWindow(QWidget *parent)
     : QWidget(parent)
@@ -17,11 +22,6 @@ CityManageWindow::CityManageWindow(QWidget *parent)
 
     BtnGroup=new QButtonGroup(this);     //使得城市可以多选
     BtnGroup->setExclusive(false);
-    // ToolBtnGroup=new QButtonGroup(this); //用来保证操作键只能单选
-    // ToolBtnGroup->setExclusive(true);
-    // ToolBtnGroup->addButton(ui->addBtn);
-    // ToolBtnGroup->addButton(ui->searchBtn);
-    // ToolBtnGroup->addButton(ui->changeBtn);
 
     //使图片自适应 Label 大小
     QPixmap *PixmapApp1 = new QPixmap(":/images/change.png");
@@ -68,18 +68,18 @@ CityManageWindow::CityManageWindow(QWidget *parent)
     ui->backtoBtn->hide();
 
     // 界面布置
-    ui->searchBtn->move(70,50);
-    ui->addBtn->move(190,50);
-    ui->changeBtn->move(310,50);
-    ui->deleteBtn->move(430,50);
-    ui->editBtn->move(550,50);
-    ui->backBtn->move(670,50);
-    ui->searchPic->move(157,58);
-    ui->addPic->move(277,58);
-    ui->changePic->move(397,58);
-    ui->deletePic->move(517,58);
-    ui->editPic->move(637,58);
-    ui->cancelPic->move(757,58);
+    ui->searchBtn->move(70,BtnY);
+    ui->addBtn->move(70+BtnW,BtnY);
+    ui->changeBtn->move(70+2*BtnW,BtnY);
+    ui->deleteBtn->move(70+3*BtnW,BtnY);
+    ui->editBtn->move(70+4*BtnW,BtnY);
+    ui->backBtn->move(70+5*BtnW,BtnY);
+    ui->searchPic->move(157,PicY);
+    ui->addPic->move(157+BtnW,PicY);
+    ui->changePic->move(157+2*BtnW,PicY);
+    ui->deletePic->move(157+3*BtnW,PicY);
+    ui->editPic->move(157+4*BtnW,PicY);
+    ui->cancelPic->move(157+5*BtnW,PicY);
 
     Initial();
 
@@ -100,7 +100,7 @@ void CityManageWindow::on_closeBtn_clicked()
 // 显示当前页面城市信息 一次最多展示6个
 void CityManageWindow::display(int n,int x,int y)
 {
-    int num,rid,i=0,j=0;
+    int num,i=0,j=0;
     num=6*n;
     while(num<BtnGroup->buttons().count()&&j<BtnGroup->buttons().count())
     {
@@ -108,7 +108,6 @@ void CityManageWindow::display(int n,int x,int y)
         {
             x=75;y=121;
             num=i+6*n;
-            rid=id[num];// 通过id数组获取按钮的id值
             if(num>=BtnGroup->buttons().count())
                 break;
             if(num/3==1)
@@ -117,8 +116,8 @@ void CityManageWindow::display(int n,int x,int y)
                 x+=285;
             else if(num%3==2)
                 x+=570;
-            BtnGroup->button(rid)->move(x,y);
-            BtnGroup->button(rid)->show();
+            BtnGroup->button(num)->move(x,y);
+            BtnGroup->button(num)->show();
             i++;
         }
         else
@@ -132,16 +131,48 @@ void CityManageWindow::display(int n,int x,int y)
 // 只展示目标城市
 void CityManageWindow::displayTarget(int n,int x,int y)
 {
-    BtnGroup->button(id[n])->move(x,y);
-    BtnGroup->button(id[n])->show();
+    BtnGroup->button(n)->move(x,y);
+    BtnGroup->button(n)->show();
 }
 
 // 初始化城市列表
 void CityManageWindow::Initial()
 {
-    // get_city();
-
+    // 与后端接口
+    std::vector<City> citys = get_city();
+    for(auto i=citys.begin();i!=citys.end();i++){
+        initial_list(QString::fromStdString((*i).name));
+    }
     display();
+    changePage();
+}
+
+
+void CityManageWindow::initial_list(QString city) {
+    QPushButton* p = new QPushButton(city, this);
+    p->setCheckable(true);
+    p->setFixedSize(240, 200);
+    p->setStyleSheet("QPushButton{"
+        "border-top-left-radius: 15px;/*圆角*/"
+        "border-bottom-left-radius: 15px;  "
+        "border-top-right-radius: 15px;"
+        "border-bottom-right-radius: 15px;  "
+        "background-color: rgba(128, 128, 128, 20);}"
+        "/* 鼠标悬停 */"
+        "QPushButton:hover{"
+        "background-color: rgba(0, 0, 0,20);}"
+        "QPushButton:checked{"
+        "background-color: rgb(255, 180, 200);"
+        "}");
+    p->setFont(QFont(".AppleSystemUIFont", 36, QFont::Bold));
+    p->setDisabled(true); // 此时不可按
+
+    BtnGroup->addButton(p, BtnGroup->buttons().count());
+
+    connect(p, &QPushButton::toggled, this, &CityManageWindow::updateCheckedButtons);
+    int n = (BtnGroup->buttons().count() - 1) / 6;
+    display(n);
+    page = n;
     changePage();
 }
 
@@ -156,7 +187,7 @@ void CityManageWindow::addCityBox(QString city) {
         {
             ui->tipWidget->show();
 
-            return;
+            return; // 若存在则不重复添加
         }
     }
     QPushButton* p=new QPushButton(city,this);
@@ -172,12 +203,12 @@ void CityManageWindow::addCityBox(QString city) {
                      "QPushButton:hover{"
                      "background-color: rgba(0, 0, 0,20);}"
                      "QPushButton:checked{"
-                     "background-color: rgb(255, 180, 200);}");
+                     "background-color: rgb(255, 180, 200);"
+                     "}");
     p->setFont(QFont(".AppleSystemUIFont",36,QFont::Bold));
     p->setDisabled(true); // 此时不可按
 
     BtnGroup->addButton(p,BtnGroup->buttons().count());
-    id.push_back(BtnGroup->buttons().count()-1);
 
     connect(p,&QPushButton::toggled,this,&CityManageWindow::updateCheckedButtons);
     int n=(BtnGroup->buttons().count()-1)/6;
@@ -186,14 +217,16 @@ void CityManageWindow::addCityBox(QString city) {
     changePage();
 
     // 与后段的接口
-    // City c(p->text());
-    // new_city(c);
+    City c(p->text().toStdString(),0);
+    new_city(c);
 }
 
 // 点击编辑按钮后才能选中城市 供删改操作
 void CityManageWindow::on_changeBtn_clicked()
 {
-    ui->changeBtn->setStyleSheet("QPushButton{background-color: rgb(255, 180, 200);}");
+    ui->changeBtn->setStyleSheet("QPushButton{"
+                                 "background-color: rgb(255, 180, 200);"
+                                 "}");
     ui->changeBtn->setDisabled(true);
 
     ui->deleteBtn->show();
@@ -210,7 +243,7 @@ void CityManageWindow::on_changeBtn_clicked()
     // 城市按钮解封
     for(int i=0;i<BtnGroup->buttons().count();i++)
     {
-        BtnGroup->button(id[i])->setEnabled(true);
+        BtnGroup->button(i)->setEnabled(true);
     }
 }
 
@@ -219,28 +252,27 @@ void CityManageWindow::on_deleteBtn_clicked()
 {
     for (QAbstractButton *button : checkedButtons) {
         // 与后段接口
-        // City c(button->text());
-        // delete_city(c);
+         City c(button->text().toStdString(),0);
+         delete_city(c);
 
-        id.erase(std::find(id.begin(),id.end(),BtnGroup->id(button)));
         BtnGroup->removeButton(button);
         delete button;
     }
+
+    // 更新id
+    int i=0;
+    for (QAbstractButton *button : BtnGroup->buttons())
+    {
+        BtnGroup->setId(button,i);
+        i++;
+    }
+
     checkedButtons.clear();
     ui->deleteBtn->setEnabled(false);
     ui->editBtn->setEnabled(false);
     if(ui->backtoBtn->isVisible())
     {
-        ui->changeBtn->setEnabled(true);
-        ui->addBtn->setEnabled(true);
-        ui->searchBtn->setEnabled(true);
-        ui->changeBtn->setStyleSheet("QPushButton{border-bottom-right-radius: 15px;  border-bottom-left-radius: 2px;  border-top-right-radius: 15px;  border-top-left-radius: 2px;  background-color: rgba(128, 128, 128, 20);}QPushButton:hover{background-color: rgba(0, 0, 0,20);}QPushButton:pressed,QToolButton:checked{background-color: rgb(255, 180, 200);}");
-        ui->backBtn->hide();
-        ui->deleteBtn->hide();
-        ui->deletePic->hide();
-        ui->cancelPic->hide();
-        ui->editBtn->hide();
-        ui->editPic->hide();
+        backtoBtnVisibleChange();
     }
     else
     {
@@ -249,14 +281,41 @@ void CityManageWindow::on_deleteBtn_clicked()
     }
 }
 
+// 返回键可见时的按键恢复（只对操作键进行调整）
+void CityManageWindow::backtoBtnVisibleChange()
+{
+    ui->changeBtn->setEnabled(true);
+    ui->addBtn->setEnabled(true);
+    ui->searchBtn->setEnabled(true);
+    ui->changeBtn->setStyleSheet("QPushButton{"
+                                 "border-bottom-right-radius: 15px;"
+                                 "border-bottom-left-radius: 2px;  "
+                                 "border-top-right-radius: 15px;  "
+                                 "border-top-left-radius: 2px;  "
+                                 "background-color: rgba(128, 128, 128, 20);"
+                                 "}"
+                                 "QPushButton:hover{"
+                                 "background-color: rgba(0, 0, 0,20);"
+                                 "}"
+                                 "QPushButton:pressed,QToolButton:checked{"
+                                 "background-color: rgb(255, 180, 200);"
+                                 "}");
+    ui->backBtn->hide();
+    ui->deleteBtn->hide();
+    ui->deletePic->hide();
+    ui->cancelPic->hide();
+    ui->editBtn->hide();
+    ui->editPic->hide();
+}
+
 // 只有在有城市被选中时才能按下删除键或修改键
 void CityManageWindow::updateCheckedButtons() {
     checkedButtons.clear();
     for (int i=0;i<BtnGroup->buttons().count();i++)
     {
-        if (BtnGroup->button(id[i])->isChecked())
+        if (BtnGroup->button(i)->isChecked())
         {
-            checkedButtons.push_back(BtnGroup->button(id[i]));
+            checkedButtons.push_back(BtnGroup->button(i));
         }
     }
     if(!checkedButtons.empty())
@@ -288,24 +347,16 @@ void CityManageWindow::on_editBtn_clicked()
             QString cityName=childwindow->ui->targetEdit->text();
             button->setText(cityName);
             // 后端接口
-            // City c(cityName.toStdString());
-            // update_city(c);
+             City c(cityName.toStdString(),0);
+             update_city(c);
         }
         childwindow->close();
+        delete childwindow;
         checkedButtons.clear();
 
         if(ui->backtoBtn->isVisible())
         {
-            ui->changeBtn->setEnabled(true);
-            ui->addBtn->setEnabled(true);
-            ui->searchBtn->setEnabled(true);
-            ui->changeBtn->setStyleSheet("QPushButton{border-bottom-right-radius: 15px;  border-bottom-left-radius: 2px;  border-top-right-radius: 15px;  border-top-left-radius: 2px;  background-color: rgba(128, 128, 128, 20);}QPushButton:hover{background-color: rgba(0, 0, 0,20);}QPushButton:pressed,QToolButton:checked{background-color: rgb(255, 180, 200);}");
-            ui->backBtn->hide();
-            ui->deleteBtn->hide();
-            ui->deletePic->hide();
-            ui->cancelPic->hide();
-            ui->editBtn->hide();
-            ui->editPic->hide();
+            backtoBtnVisibleChange();
         }
         else
         {
@@ -323,20 +374,12 @@ void CityManageWindow::on_editBtn_clicked()
 void CityManageWindow::on_backBtn_clicked()
 {
     checkedButtons.clear();
-    ui->changeBtn->setEnabled(true);
-    ui->addBtn->setEnabled(true);
-    ui->searchBtn->setEnabled(true);
-    ui->changeBtn->setStyleSheet("QPushButton{border-bottom-right-radius: 15px;  border-bottom-left-radius: 2px;  border-top-right-radius: 15px;  border-top-left-radius: 2px;  background-color: rgba(128, 128, 128, 20);}QPushButton:hover{background-color: rgba(0, 0, 0,20);}QPushButton:pressed,QToolButton:checked{background-color: rgb(255, 180, 200);}");
-    ui->backBtn->hide();
-    ui->deleteBtn->hide();
-    ui->deletePic->hide();
-    ui->editBtn->hide();
-    ui->editPic->hide();
-    ui->cancelPic->hide();
+    backtoBtnVisibleChange();
+    // 城市按键恢复原状
     for(int i=0;i<BtnGroup->buttons().count();i++)
     {
-        BtnGroup->button(id[i])->setDisabled(true);
-        BtnGroup->button(id[i])->setStyleSheet("QPushButton{"
+        BtnGroup->button(i)->setDisabled(true);
+        BtnGroup->button(i)->setStyleSheet("QPushButton{"
                                            "border-top-left-radius: 15px;/*圆角*/"
                                            "border-bottom-left-radius: 15px;  "
                                            "border-top-right-radius: 15px;"
@@ -347,7 +390,7 @@ void CityManageWindow::on_backBtn_clicked()
                                            "background-color: rgba(0, 0, 0,20);}"
                                            "QPushButton:checked{"
                                            "background-color: rgb(255, 180, 200);}");
-        BtnGroup->button(id[i])->setChecked(false);
+        BtnGroup->button(i)->setChecked(false);
     }
 }
 
@@ -359,6 +402,7 @@ void CityManageWindow::on_searchBtn_clicked()
     connect(childwindow->ui->sureBtn,&QPushButton::clicked,this,[=](){
         emit SearchTarget(childwindow->ui->targetEdit->text());
         childwindow->close();
+        delete childwindow;
     });
     childwindow->setWindowModality(Qt::ApplicationModal);
     childwindow->show();
@@ -369,8 +413,8 @@ void CityManageWindow::Search(QString city)
 {
     for(int i=0;i<BtnGroup->buttons().count();i++)
     {
-        if(city!=BtnGroup->button(id[i])->text())
-            BtnGroup->button(id[i])->hide();
+        if(city!=BtnGroup->button(i)->text())
+            BtnGroup->button(i)->hide();
         else
             displayTarget(i);
     }

@@ -9,6 +9,7 @@ AccountInfoWindow::AccountInfoWindow(QWidget *parent)
 
     //使其可成为子窗口
     setWindowFlags(Qt::CustomizeWindowHint|Qt::FramelessWindowHint);
+    setAttribute(Qt::WA_StyledBackground);
     hide();
 }
 
