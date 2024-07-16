@@ -12,7 +12,6 @@ MainWindow::MainWindow(QWidget *parent)
 
 
     //先析构不用的组件
-    ui->backButton->hide();
     ui->accountButton->hide();
     ui->cityButton->hide();
     ui->tripButton->hide();
@@ -71,6 +70,8 @@ void MainWindow::adminLogin(){
     //同时创建对应的子窗口
     tripmanagewindow=new TripManageWindow(this);
     tripmanagewindow->move(170,70);
+    //将back按钮的指针传入
+    tripmanagewindow->back_button=ui->backButton;
 
     citymanagewindow=new CityManageWindow(this);
     citymanagewindow->move(170,70);
@@ -122,5 +123,11 @@ void MainWindow::on_accountButton_clicked()
         citymanagewindow->hide();
         accountmanagewindow->show();
     }
+}
+
+
+void MainWindow::on_backButton_clicked()
+{
+    emit goback();
 }
 

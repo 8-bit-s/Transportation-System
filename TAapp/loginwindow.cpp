@@ -14,7 +14,7 @@ LoginWindow::~LoginWindow()
     delete ui;
 }
 
-void LoginWindow::on_pushButton_clicked()
+void LoginWindow::on_loginButton_clicked()
 {
     //这里判断是否身份合法
     //int usertype=usertype();

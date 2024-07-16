@@ -9,66 +9,65 @@ CONFIG += c++17
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 SOURCES += \
+    Graph.cpp \
+    TimeClass.cpp \
+    TripTable.cpp \
+    User.cpp \
     accountinfowindow.cpp \
     accountmanagewindow.cpp \
+    addtripwindow.cpp \
+    api.cpp \
+    childwindow.cpp \
     citymanagewindow.cpp \
     homewindow.cpp \
+    into_json.cpp \
     loginwindow.cpp \
     main.cpp \
     mainwindow.cpp \
     mapwindow.cpp \
-    accountinfowindow.cpp \
-    accountmanagewindow.cpp \
-    citymanagewindow.cpp \
-    homewindow.cpp \
-    loginwindow.cpp \
-    main.cpp \
-    mainwindow.cpp \
-    mapwindow.cpp \
+    tag.cpp \
     tripmanagewindow.cpp \
     tripunit.cpp \
-    tripmanagewindow.cpp \
-    tripunit.cpp
+    tripwindow.cpp
 
 HEADERS += \
+    Graph.h \
+    TimeClass.h \
+    TripTable.h \
+    User.h \
     accountinfowindow.h \
     accountmanagewindow.h \
+    addtripwindow.h \
+    api.h \
+    childwindow.h \
     citymanagewindow.h \
-    accountinfowindow.h \
-    accountmanagewindow.h \
-    citymanagewindow.h \
+    exceptions.h \
     homewindow.h \
+    httplib.h \
+    into_json.h \
+    json.hpp \
     loginwindow.h \
     mainwindow.h \
     mapwindow.h \
+    tag.h \
     tripmanagewindow.h \
     tripunit.h \
-    homewindow.h \
-    loginwindow.h \
-    mainwindow.h \
-    mapwindow.h \
-    tripmanagewindow.h \
-    tripunit.h
+    tripwindow.h
 
 FORMS += \
     accountinfowindow.ui \
     accountmanagewindow.ui \
+    addtripwindow.ui \
+    childwindow.ui \
     citymanagewindow.ui \
     homewindow.ui \
     loginwindow.ui \
     mainwindow.ui \
     mapwindow.ui \
+    tag.ui \
     tripmanagewindow.ui \
     tripunit.ui \
-    accountinfowindow.ui \
-    accountmanagewindow.ui \
-    citymanagewindow.ui \
-    homewindow.ui \
-    loginwindow.ui \
-    mainwindow.ui \
-    mapwindow.ui \
-    tripmanagewindow.ui \
-    tripunit.ui
+    tripwindow.ui
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin

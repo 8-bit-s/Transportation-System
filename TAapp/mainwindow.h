@@ -9,6 +9,8 @@
 #include "citymanagewindow.h"
 #include "accountmanagewindow.h"
 
+#include <stack>
+
 QT_BEGIN_NAMESPACE
 namespace Ui {
 class MainWindow;
@@ -23,6 +25,10 @@ public:
     MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
 
+signals:
+    void goback();
+
+
 private slots:
     void on_loginButton_clicked();
     void adminLogin();
@@ -35,11 +41,15 @@ private slots:
 
     void on_accountButton_clicked();
 
+    void on_backButton_clicked();
+
 private:
     Ui::MainWindow *ui;
     TripManageWindow *tripmanagewindow;
     CityManageWindow *citymanagewindow;
     HomeWindow *homewindow;
     AccountManageWindow *accountmanagewindow;
+
+
 };
 #endif // MAINWINDOW_H

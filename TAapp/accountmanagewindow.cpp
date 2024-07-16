@@ -7,6 +7,7 @@ AccountManageWindow::AccountManageWindow(QWidget *parent)
 {
     ui->setupUi(this);
     setWindowFlags(Qt::CustomizeWindowHint|Qt::FramelessWindowHint);
+    setAttribute(Qt::WA_StyledBackground);
     hide();
 }
 
