@@ -10,8 +10,8 @@ using namespace std;
 //Node g[V][V];
 
 const int INF = INT_MAX;
-const int weight1=0.5;
-const int weight2=0.05;
+const float weight1=0.5;
+const float weight2=0.05;
 
 void Node::choose(int tripType, int method)
 {
@@ -28,6 +28,7 @@ void Node::choose(int tripType, int method)
                if (Sdata[i].time.minutes()< data)
                {
                    data = Sdata[i].time.minutes();
+                   id = Sdata[i].id;
                }
            }
        }
@@ -40,6 +41,7 @@ void Node::choose(int tripType, int method)
                 if (Sdata[i].time.minutes() < data)
                 {
                     data = Sdata[i].time.minutes();
+                    id = Sdata[i].id;
                 }
             }
         }
@@ -52,6 +54,7 @@ void Node::choose(int tripType, int method)
                 if (Sdata[i].cost< data)
                 {
                     data = Sdata[i].cost;
+                    id = Sdata[i].id;
                 }
             }
         }
@@ -64,6 +67,7 @@ void Node::choose(int tripType, int method)
                 if (Sdata[i].cost < data)
                 {
                     data = Sdata[i].cost;
+                    id = Sdata[i].id;
                 }
             }
         }
@@ -74,6 +78,7 @@ void Node::choose(int tripType, int method)
             if (Sdata[i].cost < data)
             {
                 data = Sdata[i].cost;
+                id = Sdata[i].id;
             }
         }
         break;
@@ -83,6 +88,7 @@ void Node::choose(int tripType, int method)
             if (Sdata[i].time.minutes() < data)
             {
                 data = Sdata[i].time.minutes();
+                id = Sdata[i].id;
             }
         }
         break;
@@ -94,6 +100,7 @@ void Node::choose(int tripType, int method)
                 if ((Sdata[i].time.minutes()*weight1+ Sdata[i].cost*weight2)< data)
                 {
                     data = Sdata[i].time.minutes() * weight1 + Sdata[i].cost * weight2;
+                    id = Sdata[i].id;
                 }
             }
         }
@@ -106,6 +113,7 @@ void Node::choose(int tripType, int method)
                 if ((Sdata[i].time.minutes() * weight1 + Sdata[i].cost * weight2) < data)
                 {
                     data = Sdata[i].time.minutes() * weight1 + Sdata[i].cost * weight2;
+                    id = Sdata[i].id;
                 }
             }
         }
@@ -116,6 +124,7 @@ void Node::choose(int tripType, int method)
             if ((Sdata[i].time.minutes() * weight1 + Sdata[i].cost * weight2) < data)
             {
               data = Sdata[i].time.minutes() * weight1 + Sdata[i].cost * weight2;
+              id = Sdata[i].id;
             }
         }
     default:
@@ -135,20 +144,20 @@ bool Node::operator<(Node& n)
 
 vector<Trip> Graph::Dijkstra(vector<Trip>trips, int src, int dest, int tripType, int method)
 {
-    //µÚÒ»²¿·Ö£¬½«Í¼µÈĞ§ÎªintÍ¼
+    //ç¬¬ä¸€éƒ¨åˆ†ï¼Œå°†å›¾ç­‰æ•ˆä¸ºintå›¾
     for (int i = 0; i < V; i++)
     {
         for (int j = 0; j < V; j++)
         {
             if (!g[i][j].Sdata.empty())
             {
-                g[i][j].choose(tripType, method);//¸³ÓèÈ¨Öµ
+                g[i][j].choose(tripType, method);//èµ‹äºˆæƒå€¼
             }
         }
     }
 
-    //µÚ¶ş²¿·Ö£¬Ö÷ÌåËã·¨
-    int v = src;//¼ò»¯±äÁ¿Ãû³Æ
+    //ç¬¬äºŒéƒ¨åˆ†ï¼Œä¸»ä½“ç®—æ³•
+    int v = src;//ç®€åŒ–å˜é‡åç§°
     int dist[V];
     int path[V];
     int S[V];
@@ -175,6 +184,10 @@ vector<Trip> Graph::Dijkstra(vector<Trip>trips, int src, int dest, int tripType,
                 mindus = dist[j];
             }
         }
+        if (u == -1) {
+            vector<Trip>empty;
+            return empty;
+        }
         S[u] = 1;
         for (int j = 0; j < V; j++)
         {
@@ -187,22 +200,30 @@ vector<Trip> Graph::Dijkstra(vector<Trip>trips, int src, int dest, int tripType,
         }
     }
 
-    //µÚÈı²¿·Ö£¬´òÓ¡Â·¾¶ºÍ½á¹û£¬¸ù¾İÇ°¶Ë²»Í¬¸Ä±ä
+    //ç¬¬ä¸‰éƒ¨åˆ†ï¼Œæ‰“å°è·¯å¾„å’Œç»“æœï¼Œæ ¹æ®å‰ç«¯ä¸åŒæ”¹å˜
     int i = dest;
+    vector<Trip> answer;
     if (S[i] == 1 && i != v)
     {
-        vector<Trip> apath;
-        cout << dist[i];
-        apath.push_back(trips[i]);
+        vector<int> apath;
+        vector<Trip> answer;
+        apath.push_back(i);
         int pre = path[i];
         while (pre != v)
         {
-            apath.push_back(trips[i]);
+            apath.push_back(pre);
             pre = path[pre];
         }
-        return apath;
+        apath.push_back(src);
+        for (int k = apath.size() - 1; k >= 1; k--)
+        {
+            int tmp = k - 1;
+            answer.push_back(trips[g[apath[k]][apath[tmp]].id]);
+        }
+        return answer;
     }
-    else {
+    else
+    {
         vector<Trip> empty;
         return  empty;
     }
