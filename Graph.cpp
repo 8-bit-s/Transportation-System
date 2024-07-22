@@ -2,7 +2,7 @@
 
 Node::Node() {
     //Sdata = new TripNode*[10];//10是两个城市间最多Trip数，不知道有什么简短概念能表述这个意思，故暂未定义为常量
-    data = 0;
+    data = INT_MAX;
 }
 
 Graph::Graph() {
